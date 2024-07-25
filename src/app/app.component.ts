@@ -7,7 +7,6 @@ import {LoginPageComponent} from "./login-page/login-page.component";
   standalone: true,
   imports: [RouterOutlet, LoginPageComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'books-tracker-front';
