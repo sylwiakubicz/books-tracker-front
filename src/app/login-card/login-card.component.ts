@@ -8,7 +8,6 @@ import {LoginFormComponent} from "../login-form/login-form.component";
     LoginFormComponent
   ],
   templateUrl: './login-card.component.html',
-  styleUrl: './login-card.component.css'
 })
 export class LoginCardComponent {
 
