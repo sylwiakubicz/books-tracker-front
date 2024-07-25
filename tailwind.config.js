@@ -7,7 +7,15 @@ module.exports = {
     fontFamily: {
       "font-montserrat": ["Montserrat", "sans-serif"]
     },
-    extend: {},
+    screens: {
+      'tablet': '640px',
+      'laptop': '1024px',
+    },
+    extend: {
+      colors: {
+        'custom-gray': '#d5d5d5',
+      },
+    },
   },
   plugins: [],
 }
