@@ -3,8 +3,8 @@
                 laptop:h-[17rem] laptop:mt-10">
   <div class="flex flex-col pt-14
                 tablet:pt-4">
-    <app-form-input type="email" placeholder="Email"></app-form-input>
-    <app-form-input type="password" placeholder="Password"></app-form-input>
+    <input class="border-b-2 pb-1.5 mb-4 focus:outline-none" type="text" placeholder="Username" [(ngModel)]="loginObj.username" name="username" required>
+    <input class="border-b-2 pb-1.5 mb-4 focus:outline-none" type="password" placeholder="Password" [(ngModel)]="loginObj.password" name="password" required>
   </div>
   <app-submit-btn (buttonClick)="handleSignIn()" buttonText="Sign In"></app-submit-btn>
 </form>
