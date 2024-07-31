@@ -4,6 +4,7 @@ import {FormsModule} from "@angular/forms";
 import {AuthService} from "../../services/AuthService";
 import {NgIf} from "@angular/common";
 import {ErrorDisplayComponent} from "../error-display/error-display.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register-form',
@@ -21,7 +22,7 @@ export class RegisterFormComponent {
   registerObj : RegisterData;
   error: string | null = null;
 
-  constructor(private authService: AuthService,) {
+  constructor(private authService: AuthService,private router: Router) {
     this.registerObj = new RegisterData();
   }
 
@@ -29,6 +30,7 @@ export class RegisterFormComponent {
     this.authService.Register(this.registerObj.username, this.registerObj.email, this.registerObj.password).subscribe({
       next: (response) => {
         this.error = null;
+        this.router.navigate(['/login']);
       },
       error: (err) => {
         this.error = err.error.message.split(",",1);
