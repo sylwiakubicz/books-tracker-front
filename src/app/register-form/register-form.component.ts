@@ -3,6 +3,7 @@ import {SubmitBtnComponent} from "../submit-btn/submit-btn.component";
 import {FormsModule} from "@angular/forms";
 import {AuthService} from "../../services/AuthService";
 import {NgIf} from "@angular/common";
+import {ErrorDisplayComponent} from "../error-display/error-display.component";
 
 @Component({
   selector: 'app-register-form',
@@ -10,7 +11,8 @@ import {NgIf} from "@angular/common";
   imports: [
     SubmitBtnComponent,
     FormsModule,
-    NgIf
+    NgIf,
+    ErrorDisplayComponent
   ],
   templateUrl: './register-form.component.html',
 })
