@@ -1,6 +1,9 @@
 <form class="flex flex-col h-[25rem] justify-between
                 tablet:h-[20rem] tablet:justify-start tablet:mt-20
                 laptop:h-[17rem] laptop:mt-10">
+  <div *ngIf="error" class="error-message text-red-500 text-center">
+    {{ error }}
+  </div>
   <div class="flex flex-col pt-14
                 tablet:pt-4">
     <input class="border-b-2 pb-1.5 mb-4 focus:outline-none" type="email" placeholder="Email" [(ngModel)]="registerObj.email" name="email" required>

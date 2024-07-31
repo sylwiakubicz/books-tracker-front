@@ -2,32 +2,34 @@ import { Component } from '@angular/core';
 import {SubmitBtnComponent} from "../submit-btn/submit-btn.component";
 import {FormsModule} from "@angular/forms";
 import {AuthService} from "../../services/AuthService";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-register-form',
   standalone: true,
   imports: [
     SubmitBtnComponent,
-    FormsModule
+    FormsModule,
+    NgIf
   ],
   templateUrl: './register-form.component.html',
 })
 
 export class RegisterFormComponent {
   registerObj : RegisterData;
+  error: string | null = null;
 
   constructor(private authService: AuthService,) {
     this.registerObj = new RegisterData();
   }
 
   register() {
-    console.log("Attempting to register...");
     this.authService.Register(this.registerObj.username, this.registerObj.email, this.registerObj.password).subscribe({
       next: (response) => {
-        console.log("Registered successfully", response);
+        this.error = null;
       },
       error: (err) => {
-        console.error("Registration error", err);
+        this.error = err.error.message.split(",",1);
       }
     });
   }
