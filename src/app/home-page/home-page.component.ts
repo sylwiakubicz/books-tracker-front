@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import {SubmitBtnComponent} from "../submit-btn/submit-btn.component";
 import {BooksService} from "../../services/BooksService";
+import {NavbarComponent} from "../navbar/navbar.component";
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
   imports: [
-    SubmitBtnComponent
+    SubmitBtnComponent,
+    NavbarComponent
   ],
   templateUrl: './home-page.component.html',
 })
