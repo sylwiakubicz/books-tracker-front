@@ -8,7 +8,7 @@ module.exports = {
       "font-montserrat": ["Montserrat", "sans-serif"]
     },
     screens: {
-      'tablet': '640px',
+      'tablet': '744px',
       'laptop': '1024px',
     },
     extend: {
