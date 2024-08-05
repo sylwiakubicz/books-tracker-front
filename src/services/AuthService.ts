@@ -28,4 +28,13 @@ export class AuthService {
     );
   }
 
+  Logout(): Observable<any> {
+    console.log("logout...")
+    return this.http.get("http://localhost:8080/api/auth/logout",  { withCredentials: true }).pipe(
+      map((response) => {
+        console.log("Response received:", response);
+        return response;
+      })
+    );
+  }
 }
