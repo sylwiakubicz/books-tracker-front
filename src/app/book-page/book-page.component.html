@@ -8,18 +8,12 @@
     <img src="https://ecsmedia.pl/c/fourth-wing-czwarte-skrzydlo-b-iext158331354.jpg" class="mb-4 pl-1 w-1/2 bigMobile:w-[15.5rem]">
 
     <div class="flex flex-col items-center">
-      <h1 class="text-3xl pt-2 pb-2">Fourth Wing</h1>
+      <h1 class="text-3xl pt-2 pb-2 font-semibold">Fourth Wing</h1>
       <h3 class="text-gray-600 text-lg">Rebecca Yarros</h3>
 
-      <span class="flex pb-6">
-        <fa-icon class="text-2xl pl-1" [icon]="farStar"></fa-icon>
-        <fa-icon class="text-2xl pl-1" [icon]="farStar"></fa-icon>
-        <fa-icon class="text-2xl pl-1" [icon]="farStar"></fa-icon>
-        <fa-icon class="text-2xl pl-1" [icon]="farStar"></fa-icon>
-        <fa-icon class="text-2xl pl-1" [icon]="farStar"></fa-icon>
-      </span>
+      <app-star-rating class="flex pb-6" [rating]="0"></app-star-rating>
 
-      <select id="statuses" class="bg-emerald-600 text-white p-2 mb-6">
+      <select id="statuses" class="bg-emerald-600 mb-6 border-2 p-2 rounded-lg text-white">
         <option value="" selected hidden disabled>Set status</option>
         <option value="to read">To read</option>
         <option value="reading">Currently reading</option>

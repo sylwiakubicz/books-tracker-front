@@ -1,0 +1,4 @@
+fa-icon:hover, fa-icon:hover ~ fa-icon {
+  scale: 1.2;
+  transition: all ease-in-out .3s;
+}

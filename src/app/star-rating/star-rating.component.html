@@ -1,0 +1,9 @@
+
+<div class="flex flex-row-reverse">
+  <fa-icon [icon]="rating >=5 ? faStar : farStar" class="text-yellow-400 text-2xl pl-1 cursor-pointer " (click)="rating == 5 ? setRating(0) : setRating(5)"></fa-icon>
+  <fa-icon [icon]="rating >=4 ? faStar : farStar" class="text-yellow-400 text-2xl pl-1 cursor-pointer " (click)="rating == 4 ? setRating(0) : setRating(4)"></fa-icon>
+  <fa-icon [icon]="rating >=3 ? faStar : farStar" class="text-yellow-400 text-2xl pl-1 cursor-pointer " (click)="rating == 3 ? setRating(0) : setRating(3)"></fa-icon>
+  <fa-icon [icon]="rating >=2 ? faStar : farStar" class="text-yellow-400 text-2xl pl-1 cursor-pointer " (click)="rating == 2 ? setRating(0) : setRating(2)"></fa-icon>
+  <fa-icon [icon]="rating >=1 ? faStar : farStar" class="text-yellow-400 text-2xl pl-1 cursor-pointer " (click)="rating == 1 ? setRating(0) : setRating(1)"></fa-icon>
+</div>
+
