@@ -8,10 +8,12 @@ export const routes: Routes = [
   {
     path: "",
     "component": HomePageComponent,
+    title: "BooksTracker",
     children: [
-      {path: "mybooks", component: MyBooksPageComponent}
+      {path: "mybooks", component: MyBooksPageComponent},
+      {path: "boook/{id}", component: MyBooksPageComponent}
   ]},
-  {path: 'login', component: LoginPageComponent},
-  {path: 'register', component: RegisterPageComponent}
+  {path: 'login', component: LoginPageComponent, title:"Sign in"},
+  {path: 'register', component: RegisterPageComponent, title: "Register"}
 ];
 
