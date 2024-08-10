@@ -8,8 +8,10 @@ module.exports = {
       "font-montserrat": ["Montserrat", "sans-serif"]
     },
     screens: {
-      'tablet': '744px',
+      'bigMobile': '576px',
+      'tablet': '768px',
       'laptop': '1024px',
+      'desktop': '1200px'
     },
     extend: {
       colors: {
