@@ -1,5 +1,16 @@
-<select id="statuses" class="bg-emerald-600 mb-6 border-2 p-2 rounded-lg text-white cursor-pointer">
-  <option value="to read" class="bg-white text-emerald-500 hover:bg-gray-500 cursor-pointer">Want to read</option>
-  <option value="reading" class="bg-white text-emerald-500 hover:bg-gray-500 cursor-pointer">Currently reading</option>
-  <option value="read" class="bg-white text-emerald-500 hover:bg-gray-500 cursor-pointer">Read</option>
-</select>
+<div class="flex">
+  <button class="w-[11rem] border-[1px] p-2 rounded-bl-lg rounded-tl-lg border-white border-r-0 text-white font-semibold bg-emerald-600 text-lg cursor-auto text-center
+                tablet:mt-2">{{ status }}</button>
+  <span class="w-[2.5rem] border-[1px] p-2 text-white bg-emerald-600 border-white rounded-br-lg rounded-tr-lg text-center text-xs font-semibold cursor-pointer hover:bg-emerald-500 relative
+                tablet:mt-2" (click)="handleShowStatuses()">
+    <div class="absolute bg-white rounded-lg w-[15px] h-[3px] rotate-45 top-[22px] left-[7px] "></div>
+    <div class="absolute bg-white rounded-lg w-[15px] h-[3px] rotate-[-45deg] top-[22px] left-[16px]"></div>
+  </span>
+</div>
+
+<div [class]="showStatuses ? 'absolute' : 'hidden'" class="border-2 bg-white text-black w-[13.5rem]">
+  <option class="border-2 hover:bg-gray-200 text-center cursor-pointer p-1" (click)="handleSetStatus('Want to read')">Want to read</option>
+  <option class="border-2 hover:bg-gray-200 text-center cursor-pointer p-1" (click)="handleSetStatus('Currently reading')">Currently reading</option>
+  <option class="border-2 hover:bg-gray-200 text-center cursor-pointer p-1" (click)="handleSetStatus('Read')">Read</option>
+</div>
+
