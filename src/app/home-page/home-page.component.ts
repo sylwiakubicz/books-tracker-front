@@ -3,6 +3,7 @@ import {SubmitBtnComponent} from "../submit-btn/submit-btn.component";
 import {BooksService} from "../../services/BooksService";
 import {NavbarComponent} from "../navbar/navbar.component";
 import {BookCardComponent} from "../book-card/book-card.component";
+import {BannerComponent} from "../banner/banner.component";
 
 @Component({
   selector: 'app-home-page',
@@ -10,7 +11,8 @@ import {BookCardComponent} from "../book-card/book-card.component";
   imports: [
     SubmitBtnComponent,
     NavbarComponent,
-    BookCardComponent
+    BookCardComponent,
+    BannerComponent
   ],
   templateUrl: './home-page.component.html',
 })
