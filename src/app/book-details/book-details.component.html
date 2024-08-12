@@ -1,42 +1,24 @@
-<div class="flex items-center flex-col pt-4 w-full pl-10 pr-10 mt-2
-            tablet:bg-white tablet:p-10 tablet:m-auto tablet:w-10/12 tablet:mt-10
-            laptop:w-2/3">
 
-  <div class="flex items-center flex-col
-              bigMobile:flex-row bigMobile:w-full bigMobile:justify-around ">
+<div class="text-center tablet:pl-5 tablet:pt-3 tablet:w-full tablet:text-left">
+  <h1 class="text-3xl pb-2 font-semibold tablet:order-1 tablet:self-start tablet:font-bold tablet:pb-0">Fourth Wing</h1>
+  <h3 class="text-gray-600 text-lg tablet:order-2 ">Rebecca Yarros</h3>
+</div>
 
-    <img src="https://ecsmedia.pl/c/fourth-wing-czwarte-skrzydlo-b-iext158331354.jpg" class="mb-4 pl-1 w-7/12 bigMobile:w-[15.5rem]">
-    <h1 class="text-3xl pb-2 font-semibold">Fourth Wing</h1>
-    <h3 class="text-gray-600 text-lg">Rebecca Yarros</h3>
-    <app-star-rating class="flex pb-6" [rating]="0"></app-star-rating>
-    <app-status-btn class="mb-4"></app-status-btn>
+<div class="flex items-center flex-col pt-4 w-full mt-2
+            tablet:m-auto tablet:flex-row tablet:pl-5 tablet:pr-5">
 
+  <div class="flex items-center flex-col">
+    <img src="https://ecsmedia.pl/c/fourth-wing-czwarte-skrzydlo-b-iext158331354.jpg" class="mb-4 w-7/12 tablet:w-[13rem] tablet:order-3">
+    <app-star-rating class="flex pb-6 tablet:order-4" [rating]="0"></app-star-rating>
+    <app-status-btn class="mb-4 tablet:order-5"></app-status-btn>
   </div>
 
-
-  <p class="text-justify">Twenty-year-old Violet Sorrengail was supposed to enter the Scribe Quadrant, living a quiet life among books and history. Now, the commanding
-    general—also known as her tough-as-talons mother—has ordered Violet to join the hundreds of candidates striving to become the elite of Navarre: dragon riders.
-    But when you’re smaller than everyone else and your body is brittle, death is only a heartbeat away...because dragons don’t bond to “fragile” humans. They incinerate them.
-  </p>
-
-
-  <!--PRZENIEŚĆ DO OSOBNEGO KOMPONENTU - BOOK DETAILS INFO-->
-  <div class="bg-custom-gray mt-4 mb-4 pl-4 pr-4 flex flex-col">
-    <h3 class="font-bold text-center pb-1">Information</h3>
-    <div class=" flex">
-      <div class="flex flex-col items-end pr-4 font-semibold">
-        <p>Genres:</p>
-        <p>Page number:</p>
-        <p>ISBN:</p>
-        <p>Publication year:</p>
-      </div>
-      <div>
-        <p>Fantasy, Romance</p>
-        <p>640</p>
-        <p>123456789</p>
-        <p>2023</p>
-      </div>
-    </div>
+  <div>
+    <p class="text-justify pl-4 pr-4 tablet:h-[18rem] tablet:pl-5 tablet:pr-0">Twenty-year-old Violet Sorrengail was supposed to enter the Scribe Quadrant, living a quiet life among books and history. Now, the commanding
+      general—also known as her tough-as-talons mother—has ordered Violet to join the hundreds of candidates striving to become the elite of Navarre: dragon riders.
+      But when you’re smaller than everyone else and your body is brittle, death is only a heartbeat away...because dragons don’t bond to “fragile” humans. They incinerate them.
+    </p>
+    <app-information-card></app-information-card>
   </div>
 
 </div>
