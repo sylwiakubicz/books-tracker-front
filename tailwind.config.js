@@ -15,7 +15,10 @@ module.exports = {
     },
     extend: {
       colors: {
-        'custom-gray': '#d5d5d5',
+        'primary-color': "#F8EDE3",
+        'secondary-color': '#BDD2B6',
+        'akcent-color': "#A2B29F",
+        "additional-color": '#798777'
       },
     },
   },
