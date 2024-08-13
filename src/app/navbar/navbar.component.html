@@ -1,25 +1,25 @@
-<nav class="flex flex-col pr-8 pl-8 bg-akcent-color shadow pt-3 pb-3 tablet:flex-row tablet:justify-between tablet:items-center">
-  <div class="flex justify-between">
+<nav class="flex flex-col pr-8 pl-8 bg-akcent-color shadow pt-3 pb-3 tablet:flex-row tablet:justify-between tablet:items-center tablet:pt-0 tablet:pb-0">
+  <div class="flex justify-between items-center">
     <div class="font-bold text-secondary-color text-xl tablet:text-2xl">
       <a href="" class="flex">
         <p>LOGO</p>
         <p class="pl-2">BooksTracker</p>
       </a>
     </div>
-    <button [ngClass]="{'border-white' : openedBool}" class="flex items-center px-3 py-2 border rounded hover:text-white tablet:hidden" (click)="toggleOpenedBool()">
+    <button [ngClass]="{'border-secondary-color' : openedBool}" class="flex items-center px-3 py-2 border rounded hover:text-white tablet:hidden bg-secondary-color" (click)="toggleOpenedBool()">
       <svg class="h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
     </button>
   </div>
 
-  <div [ngClass]="openedBool ? 'max-h-screen' : 'max-h-0'" class="overflow-hidden transition-all duration-500 ease-in-out tablet:max-h-screen">
-    <ul class="flex flex-col items-end font-semibold pt-5 pb-3 tablet:flex-row tablet:text-lg">
+  <div [ngClass]="openedBool ? 'max-h-screen' : 'max-h-0'" class="overflow-hidden transition-all duration-500 ease-in-out tablet:max-h-screen items-center">
+    <ul class="flex flex-col items-end font-semibold pt-3 pb-3 tablet:flex-row tablet:text-lg">
       <li class="hover:underline hover:underline-offset-4 hover:transition-all hover:text-gray-700 tablet:pr-5 tablet:pl-5 text-primary-color">
         <a href="">Books</a>
       </li>
       <li class="hover:underline hover:underline-offset-4 hover:transition-all hover:text-gray-700 tablet:pr-5 tablet:pl-5 text-primary-color">
         <a href="/mybooks">MyBooks</a>
       </li>
-      <li class="tablet:pr-5 tablet:pl-5">
+      <li class="tablet:pl-5">
         <button class="text-secondary-color hover:underline hover:underline-offset-4 hover:transition-all" (click)="logout()">Sign Out</button>
       </li>
     </ul>
