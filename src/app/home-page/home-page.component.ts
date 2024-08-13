@@ -30,6 +30,16 @@ export class HomePageComponent {
       }
     })
     console.log("test")
+  }
 
+  getBook(id : number) {
+    this.booksService.GetBook(id).subscribe({
+      next: (response) => {
+      console.log("Test successful:", response);
+    },
+      error: (error) => {
+      console.error("Test failed:", error);
+    }
+    })
   }
 }
