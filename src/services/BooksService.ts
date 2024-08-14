@@ -6,10 +6,11 @@ import {map} from "rxjs/operators";
 @Injectable({
   providedIn: 'root',
 })
+
 export class BooksService {
   constructor(private http: HttpClient) {}
 
-  Test(): Observable<any> {
+  GetAllBooks(): Observable<any> {
     return this.http.get("http://localhost:8080/books/get", { withCredentials: true }).pipe(
       map((response) => {
         return response;
