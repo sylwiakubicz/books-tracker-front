@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-information-card',
@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
   styles: ``
 })
 export class InformationCardComponent {
+
+  @Input() genres : string = '';
+  @Input() pageNum : number | undefined;
+  @Input() pubYear : number | undefined;
+  @Input() ISBN : string | undefined;
 
 }
