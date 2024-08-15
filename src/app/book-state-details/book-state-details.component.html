@@ -1,9 +1,9 @@
 
 <div class="bg-secondary-color w-full pl-5 pr-5">
-  <h2 class="font-semibold text-3xl">Your Progress</h2>
+  <h2 class="font-semibold text-3xl pb-4 pt-3">Your Progress</h2>
   <div class="flex justify-between">
 
-    <div class="flex">
+    <div class="flex pb-1">
       <p>{{startDate | date : 'longDate'}}</p>
       <input type="date" [ngModel]="startDate" (ngModelChange)="startDate = $event" class="bg-secondary-color cursor-pointer pl-1 focus-visible:outline-none">
     </div>
@@ -13,6 +13,16 @@
     </div>
   </div>
 
+  <div class="h-4 bg-gray-300 rounded-md mb-2">
+    <div class="h-4 bg-additional-color rounded-md mb-2 relative" [style.width.%]="totalPageNumber != undefined ? (currentPage/totalPageNumber) * 100 : '0'"></div>
+  </div>
 
+  <div class="flex justify-between pb-4 text-lg ">
+    <p class="font-semibold text-gray-800">You can do it! Keep up reading.</p>
+    <span>
+      <input type="number" [ngModel]="currentPage" (ngModelChange)="currentPage = $event" class="bg-gray-300 w-[4rem] text-center rounded-md focus-visible:outline-none mt-1.5">
+       / {{totalPageNumber}}
+    </span>
+  </div>
 
 </div>
