@@ -1,0 +1,33 @@
+<div [ngSwitch]="status">
+
+  <div *ngSwitchCase="'to read'">
+    <fa-icon
+      [icon]="status ? faSquareCheck : farSquareCheck"
+      class="text-lg cursor-pointer text-green-900">
+    </fa-icon>
+  </div>
+
+  <div *ngSwitchCase="'in progress'">
+    <fa-icon
+      [icon]="status ? faSquareCheck : farSquareCheck"
+      class="text-lg cursor-pointer text-orange-900">
+    </fa-icon>
+  </div>
+
+  <div *ngSwitchCase="'read'">
+    <fa-icon
+      [icon]="status ? faSquareCheck : farSquareCheck"
+      class="text-lg cursor-pointer text-blue-900">
+    </fa-icon>
+  </div>
+
+  <div *ngSwitchCase="''">
+    <fa-icon
+      [icon]="status ? faSquareCheck : farSquareCheck"
+      class="text-lg cursor-pointer text-black">
+    </fa-icon>
+  </div>
+
+
+</div>
+

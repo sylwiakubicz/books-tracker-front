@@ -1,17 +1,16 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
-import {faSquareCheck} from "@fortawesome/free-solid-svg-icons/faSquareCheck";
-import {faSquareCheck as farSquareCheck} from "@fortawesome/free-regular-svg-icons/faSquareCheck";
 import {RouterLink} from "@angular/router";
 import {Author} from "../home-page/home-page.component";
-import {BookStatesService} from "../../services/BookStatesService";
+import {StatusIconComponent} from "../status-icon/status-icon.component";
 
 @Component({
   selector: 'app-book-card',
   standalone: true,
   imports: [
     FaIconComponent,
-    RouterLink
+    RouterLink,
+    StatusIconComponent
   ],
   templateUrl: './book-card.component.html',
   styles: ``
@@ -25,17 +24,9 @@ export class BookCardComponent implements OnInit{
   url : string = "https://drive.google.com/thumbnail?id=";
   authorsNames: string = "";
 
-  status : string = "";
-
-  protected readonly faSquareCheck = faSquareCheck;
-  protected readonly farSquareCheck = farSquareCheck;
-
-  constructor(private bookStatesService : BookStatesService) {
-  }
 
   ngOnInit() {
     this.manageReceivedData()
-    this.checkIfBookStateExist()
   }
 
   manageReceivedData() {
@@ -46,12 +37,6 @@ export class BookCardComponent implements OnInit{
     ).join(', ') || '';
   }
 
-  checkIfBookStateExist() {
-    this.bookStatesService.CheckIfExistAndThenGet(this.id).subscribe({
-      next: (response) => {
-        this.status = response?.status.statusName;
-      }
-    })
-  }
+
 
 }
