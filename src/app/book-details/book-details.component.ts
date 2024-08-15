@@ -4,6 +4,7 @@ import {StatusBtnComponent} from "../status-btn/status-btn.component";
 import {InformationCardComponent} from "../information-card/information-card.component";
 import {BooksService} from "../../services/BooksService";
 import {NgOptimizedImage} from "@angular/common";
+import {BookStateDetailsComponent} from "../book-state-details/book-state-details.component";
 
 @Component({
   selector: 'app-book-details',
@@ -12,7 +13,8 @@ import {NgOptimizedImage} from "@angular/common";
     StarRatingComponent,
     StatusBtnComponent,
     InformationCardComponent,
-    NgOptimizedImage
+    NgOptimizedImage,
+    BookStateDetailsComponent
   ],
   templateUrl: './book-details.component.html',
   styles: ``
