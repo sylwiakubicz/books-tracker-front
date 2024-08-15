@@ -1,5 +1,5 @@
 <app-banner></app-banner>
-<div class="bigMobile:grid bigMobile:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4 bg-primary-color">
+  <div class="bigMobile:grid bigMobile:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4 bg-primary-color">
   <app-book-card
     *ngFor="let book of booksData"
     [title]="book.title"
@@ -8,7 +8,8 @@
     [description]="book.description"
     [id]="book.bookId">
   </app-book-card>
-</div>
+  </div>
+<app-recomended-section></app-recomended-section>
 
 
 

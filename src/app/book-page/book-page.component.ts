@@ -5,6 +5,7 @@ import {StatusBtnComponent} from "../status-btn/status-btn.component";
 import {BannerComponent} from "../banner/banner.component";
 import {BookDetailsComponent} from "../book-details/book-details.component";
 import {ActivatedRoute, Router} from "@angular/router";
+import {RecomendedSectionComponent} from "../recomended-section/recomended-section.component";
 
 @Component({
   selector: 'app-book-page',
@@ -14,7 +15,8 @@ import {ActivatedRoute, Router} from "@angular/router";
     StarRatingComponent,
     StatusBtnComponent,
     BannerComponent,
-    BookDetailsComponent
+    BookDetailsComponent,
+    RecomendedSectionComponent
   ],
   templateUrl: './book-page.component.html',
 })

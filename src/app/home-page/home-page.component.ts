@@ -5,6 +5,7 @@ import {NavbarComponent} from "../navbar/navbar.component";
 import {BookCardComponent} from "../book-card/book-card.component";
 import {BannerComponent} from "../banner/banner.component";
 import {NgForOf} from "@angular/common";
+import {RecomendedSectionComponent} from "../recomended-section/recomended-section.component";
 
 @Component({
   selector: 'app-home-page',
@@ -14,7 +15,8 @@ import {NgForOf} from "@angular/common";
     NavbarComponent,
     BookCardComponent,
     BannerComponent,
-    NgForOf
+    NgForOf,
+    RecomendedSectionComponent
   ],
   templateUrl: './home-page.component.html',
 })
