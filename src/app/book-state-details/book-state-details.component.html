@@ -1,0 +1,18 @@
+
+<div class="bg-secondary-color w-full pl-5 pr-5">
+  <h2 class="font-semibold text-3xl">Your Progress</h2>
+  <div class="flex justify-between">
+
+    <div class="flex">
+      <p>{{startDate | date : 'longDate'}}</p>
+      <input type="date" [ngModel]="startDate" (ngModelChange)="startDate = $event" class="bg-secondary-color cursor-pointer pl-1 focus-visible:outline-none">
+    </div>
+    <div class="flex">
+      <p class="cursor-auto">{{endDate | date : 'longDate'}}</p>
+      <input type="date" [ngModel]="endDate" (ngModelChange)="endDate = $event" class="bg-secondary-color cursor-pointer pl-1 focus-visible:outline-none">
+    </div>
+  </div>
+
+
+
+</div>
