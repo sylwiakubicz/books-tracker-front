@@ -22,7 +22,6 @@ export class BookStateDetailsComponent {
   endDate : Date = new Date();
   currentPage : number = 0;
   hideSaveBtn : boolean = true;
-  error : string = "";
 
   onCurrentPageChange(newVal : number) {
     this.hideSaveBtn = false;
