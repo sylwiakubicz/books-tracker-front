@@ -14,7 +14,7 @@ export class StarRatingComponent {
   protected readonly farStar = farStar;
   protected readonly faStar = faStar;
 
-  @Input() rating = 0;
+  @Input() rating : number | undefined;
 
   setRating (value : number) {
     this.rating = value;
