@@ -22,9 +22,20 @@ export class BookStateDetailsComponent {
   endDate : Date = new Date();
   currentPage : number = 0;
   hideSaveBtn : boolean = true;
+  error : string = "";
 
   onCurrentPageChange(newVal : number) {
     this.hideSaveBtn = false;
+    if (newVal < 0) {
+      this.currentPage = 0;
+      return;
+    }
+    if( this.totalPageNumber ) {
+      if (newVal > this.totalPageNumber) {
+        this.currentPage = this.totalPageNumber;
+        return;
+      }
+    }
     this.currentPage = newVal;
   }
 
