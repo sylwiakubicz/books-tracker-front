@@ -17,7 +17,7 @@
     <div class="h-4 bg-additional-color rounded-md mb-2 relative" [style.width.%]="totalPageNumber != undefined ? (currentPage/totalPageNumber) * 100 : '0'"></div>
   </div>
 
-  <div class="flex justify-between pb-4 text-lg ">
+  <div class="flex justify-between pb-4 text-lg flex-col tablet:flex-row ">
     <p class="font-semibold text-gray-800">You can do it! Keep up reading.</p>
     <span>
       <input type="number" [ngModel]="currentPage" (ngModelChange)="onChange($event)" class="bg-gray-300 w-[4rem] text-center rounded-md focus-visible:outline-none mt-1.5">
