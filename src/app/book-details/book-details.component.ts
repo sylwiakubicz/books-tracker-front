@@ -5,6 +5,7 @@ import {InformationCardComponent} from "../information-card/information-card.com
 import {BooksService} from "../../services/BooksService";
 import {NgOptimizedImage} from "@angular/common";
 import {BookStateDetailsComponent} from "../book-state-details/book-state-details.component";
+import {BookStatesService} from "../../services/BookStatesService";
 
 @Component({
   selector: 'app-book-details',
@@ -23,19 +24,21 @@ import {BookStateDetailsComponent} from "../book-state-details/book-state-detail
 export class BookDetailsComponent implements OnInit {
   @Input() id : number = 0;
   bookData : Book | undefined;
+  bookStateData : BookState | undefined;
   authorsNames: string = "";
   genresNames: string ='';
   url : string = "https://drive.google.com/thumbnail?id=";
 
-  constructor(private booksService: BooksService) {
+  constructor(private booksService: BooksService, private  bookStateService : BookStatesService) {
   }
 
   ngOnInit(): void {
     this.getBook(this.id);
+    this.getBookStateData(this.id)
   }
 
-  getBook(id : number) {
-    this.booksService.GetBook(id).subscribe({
+  getBook(bookId : number) {
+    this.booksService.GetBook(bookId).subscribe({
       next: (response) => {
         this.bookData = response;
         this.authorsNames = this.bookData?.authors?.map((author: Author) =>
@@ -45,6 +48,18 @@ export class BookDetailsComponent implements OnInit {
           `${genre.name}`
         ).join(', ') || '';
         this.url = this.url + this.bookData?.covering;
+      },
+      error: (error) => {
+        console.log(error)
+      }
+    })
+  }
+
+  getBookStateData(bookId : number) {
+    this.bookStateService.CheckIfExistAndThenGet(bookId).subscribe({
+      next: (response) => {
+       this.bookStateData = response;
+       console.log(this.bookStateData)
       },
       error: (error) => {
         console.log(error)
@@ -74,4 +89,19 @@ export interface Author {
 export interface Genre {
   genreId: number;
   name: string;
+}
+
+export interface BookState {
+  book : Book;
+  bookStateId : number;
+  currentPage : number;
+  endDate : Date;
+  rate : number;
+  startDate : Date;
+  status : Status;
+}
+
+export interface Status {
+  id : number;
+  statusName : string;
 }
