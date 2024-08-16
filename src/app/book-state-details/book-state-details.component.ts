@@ -18,9 +18,9 @@ import {FormsModule} from "@angular/forms";
 })
 export class BookStateDetailsComponent {
   @Input() totalPageNumber : number | undefined;
-  startDate : Date = new Date();
-  endDate : Date = new Date();
-  currentPage : number = 0;
+  @Input() startDate : Date | undefined;
+  @Input() endDate : Date | undefined;
+  @Input() currentPage : number | undefined;
   hideSaveBtn : boolean = true;
 
   onCurrentPageChange(newVal : number) {
