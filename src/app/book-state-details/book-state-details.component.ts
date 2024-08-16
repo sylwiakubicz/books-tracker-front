@@ -23,8 +23,18 @@ export class BookStateDetailsComponent {
   currentPage : number = 0;
   hideSaveBtn : boolean = true;
 
-  onChange(newVal : number | Date) {
+  onCurrentPageChange(newVal : number) {
     this.hideSaveBtn = false;
+    this.currentPage = newVal;
+  }
+
+  onEndDateChange(newVal : Date) {
+    this.hideSaveBtn = false;
+    this.endDate = newVal;
+  }
+  onStartDateChange(newVal : Date) {
+    this.hideSaveBtn = false;
+    this.startDate = newVal;
   }
 
   saveData() {

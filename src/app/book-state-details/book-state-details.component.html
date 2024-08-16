@@ -5,11 +5,11 @@
 
     <div class="flex pb-1">
       <p>{{startDate | date : 'longDate'}}</p>
-      <input type="date" [ngModel]="startDate" (ngModelChange)="onChange($event)" class="bg-secondary-color cursor-pointer pl-1 focus-visible:outline-none">
+      <input type="date" [ngModel]="startDate" (ngModelChange)="onStartDateChange($event)" class="bg-secondary-color cursor-pointer pl-1 focus-visible:outline-none">
     </div>
     <div class="flex">
       <p class="cursor-auto">{{endDate | date : 'longDate'}}</p>
-      <input type="date" [ngModel]="endDate" (ngModelChange)="onChange($event)" class="bg-secondary-color cursor-pointer pl-1 focus-visible:outline-none">
+      <input type="date" [ngModel]="endDate" (ngModelChange)="onEndDateChange($event)" class="bg-secondary-color cursor-pointer pl-1 focus-visible:outline-none">
     </div>
   </div>
 
@@ -20,7 +20,7 @@
   <div class="flex justify-between pb-4 text-lg flex-col tablet:flex-row ">
     <p class="font-semibold text-gray-800">You can do it! Keep up reading.</p>
     <span>
-      <input type="number" [ngModel]="currentPage" (ngModelChange)="onChange($event)" class="bg-gray-300 w-[4rem] text-center rounded-md focus-visible:outline-none mt-1.5">
+      <input type="number" [ngModel]="currentPage" (ngModelChange)="onCurrentPageChange($event)" class="bg-gray-300 w-[4rem] text-center rounded-md focus-visible:outline-none mt-1.5">
        / {{totalPageNumber}}
     </span>
   </div>
