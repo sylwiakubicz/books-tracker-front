@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {StarRatingComponent} from "../star-rating/star-rating.component";
 import {StatusBtnComponent} from "../status-btn/status-btn.component";
 import { DatePipe } from '@angular/common';
@@ -21,5 +21,14 @@ export class BookStateDetailsComponent {
   startDate : Date = new Date();
   endDate : Date = new Date();
   currentPage : number = 0;
+  hideSaveBtn : boolean = true;
+
+  onChange(newVal : number | Date) {
+    this.hideSaveBtn = false;
+  }
+
+  saveData() {
+    this.hideSaveBtn = true;
+  }
 
 }
