@@ -1,6 +1,7 @@
 <div class="flex">
   <button class="w-[11rem] border-[1px] p-1.5 border-white border-r-0 text-white font-semibold bg-additional-color
-                tablet:mt-2 tablet:w-[10.4rem]">
+                tablet:mt-2 tablet:w-[10.4rem]"
+  (click)="handleSetStatus(statusText)">
     <fa-icon
       [hidden]="!status"
       [icon]="farSquareCheck"
