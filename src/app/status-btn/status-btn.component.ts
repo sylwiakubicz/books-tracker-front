@@ -1,6 +1,7 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {SubmitBtnComponent} from "../submit-btn/submit-btn.component";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import {faSquareCheck as farSquareCheck} from "@fortawesome/free-regular-svg-icons/faSquareCheck";
 
 @Component({
   selector: 'app-status-btn',
@@ -14,6 +15,10 @@ import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 })
 export class StatusBtnComponent implements  OnChanges{
   @Input() status : string | undefined;
+  statusText: string = "Want to read";
+  showStatuses : boolean = false;
+
+  protected readonly farSquareCheck = farSquareCheck;
 
   ngOnChanges() {
     if (this.status) {
@@ -26,14 +31,8 @@ export class StatusBtnComponent implements  OnChanges{
       if (this.status == 'read') {
         this.statusText = "Read";
       }
-
-    } else {
-      this.status = "Want to read"
     }
   }
-
-  statusText: string = "Want to read";
-  showStatuses : boolean = false;
 
   handleShowStatuses() {
     this.showStatuses = !this.showStatuses;
@@ -43,5 +42,4 @@ export class StatusBtnComponent implements  OnChanges{
     this.statusText = status;
     this.showStatuses = false;
   }
-
 }
