@@ -8,7 +8,7 @@
   </span>
 </div>
 
-<div [class]="showStatuses ? 'absolute' : 'hidden'" class="border-2 bg-white text-black w-[13.5rem]">
+<div [class]="showStatuses ? 'absolute' : 'hidden'" class="border-2 bg-white text-black w-[13.5rem] tablet:w-[11.9rem]">
   <option class="border-2 hover:bg-gray-200 text-center cursor-pointer p-1" (click)="handleSetStatus('Want to read')">Want to read</option>
   <option class="border-2 hover:bg-gray-200 text-center cursor-pointer p-1" (click)="handleSetStatus('Currently reading')">Currently reading</option>
   <option class="border-2 hover:bg-gray-200 text-center cursor-pointer p-1" (click)="handleSetStatus('Read')">Read</option>
