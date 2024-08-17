@@ -21,13 +21,13 @@ export class BookStatesService {
     );
   }
 
-  AddBookToStatus(book_id : number, status : string, rate :number, currentPage : number, startDate : Date, endDate : Date  ) : Observable<any> {
+  AddBookToStatus(book_id: number, status: string, rate: number | null, currentPage: number | null, startDate: Date | null, endDate: Date | null) : Observable<any> {
     this.bookStateData = {
       status : status,
       currentPage : currentPage,
       rate : rate,
-      startDate : new Date(startDate).toJSON(),
-      endDate : new Date(endDate).toJSON()
+      startDate : startDate ? new Date(startDate).toJSON() : null,
+      endDate : endDate ? new Date(endDate).toJSON() : null
     }
 
     return this.http.post(`http://localhost:8080/bookstate/create/${book_id}`, this.bookStateData, { withCredentials: true }).pipe(
@@ -40,11 +40,11 @@ export class BookStatesService {
 }
 
 export interface BookStateData {
-  status : string,
-  currentPage: number,
-  rate : number,
-  startDate : string,
-  endDate : string
+  status : string | undefined,
+  currentPage: number | null,
+  rate : number | null,
+  startDate : string | null,
+  endDate : string | null
 }
 
 
