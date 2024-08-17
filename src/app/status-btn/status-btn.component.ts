@@ -17,26 +17,15 @@ import {BookStatesService} from "../../services/BookStatesService";
 export class StatusBtnComponent implements OnChanges{
   @Input() status : string | undefined;
   @Input() book_id : number | undefined;
-  statusText: string = "Want to read";
   showStatuses : boolean = false;
-
+  statusText : string = "Want to read"
   protected readonly farSquareCheck = farSquareCheck;
 
   constructor(private bookStateService : BookStatesService) {
   }
 
   ngOnChanges() {
-    if (this.status) {
-      if (this.status == 'want to read') {
-        this.statusText = "Want to read";
-      }
-      if (this.status == 'in progress') {
-        this.statusText = "Currently reading"
-      }
-      if (this.status == 'read') {
-        this.statusText = "Read";
-      }
-    }
+    this.statusText = this.status ? this.status : "Want to read";
   }
 
   handleShowStatuses() {
@@ -44,37 +33,19 @@ export class StatusBtnComponent implements OnChanges{
   }
 
   handleSetStatus(status : string) {
-    this.statusText = status;
     this.showStatuses = false;
+    this.statusText = status;
 
     if (this.status) {
-      console.log("stat1 " + this.status)
-      this.manageStatuses(status)
-      console.log("stat2 " + this.status)
-
+      this.status = status;
       if (this.book_id) {
         this.updateBookToNewStatus(this.book_id, this.status)
       }
-
     } else {
-      console.log("stat3 " + this.status)
-      this.manageStatuses(status)
-      console.log("stat4 " + this.status)
+      this.status = status;
       if (this.book_id && this.status) {
         this.addBookToNewStatus(this.book_id, this.status)
       }
-    }
-  }
-
-  manageStatuses (status :string) {
-    if (status == "Want to read") {
-      this.status = 'to read'
-    }
-    if (status == "Currently reading"){
-      this.status = 'in progress'
-    }
-    if (status == 'Read') {
-      this.status = 'read'
     }
   }
 
@@ -82,7 +53,6 @@ export class StatusBtnComponent implements OnChanges{
     this.bookStateService.AddBookToStatus(book_id, status , null, null,null, null).subscribe(
       {
         next: (response) => {
-          console.log(response)
           window.location.reload();
         },
         error : (error) => {
@@ -96,7 +66,6 @@ export class StatusBtnComponent implements OnChanges{
     this.bookStateService.UpdateBookToStatus(book_id, status , null, null,null, null).subscribe(
       {
         next: (response) => {
-          console.log(response)
           window.location.reload();
         },
         error : (error) => {
