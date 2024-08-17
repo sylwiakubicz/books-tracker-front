@@ -18,7 +18,7 @@
   </div>
 
   <div class="flex justify-between pb-4 text-lg flex-col tablet:flex-row ">
-    <p class="font-semibold text-gray-800">You can do it! Keep up reading.</p>
+    <p class="font-semibold text-gray-800">{{startDate ? (endDate ? "Good job! Find another book to read." : "You can do it! Keep up reading.") : "It's time to start reading!"}}</p>
     <span>
       <input type="number" [ngModel]="currentPage == undefined ? 0 : currentPage" (ngModelChange)="onCurrentPageChange($event)" class="bg-gray-300 w-[4rem] text-center rounded-md focus-visible:outline-none mt-1.5">
        / {{totalPageNumber}}
