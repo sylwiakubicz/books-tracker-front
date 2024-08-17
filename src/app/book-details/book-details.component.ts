@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {StarRatingComponent} from "../star-rating/star-rating.component";
 import {StatusBtnComponent} from "../status-btn/status-btn.component";
 import {InformationCardComponent} from "../information-card/information-card.component";
@@ -21,8 +21,9 @@ import {BookStatesService} from "../../services/BookStatesService";
   styles: ``
 })
 
-export class BookDetailsComponent implements OnInit {
+export class BookDetailsComponent implements OnChanges {
   @Input() id : number = 0;
+
   bookData : Book | undefined;
   bookStateData : BookState | undefined;
   authorsNames: string = "";
@@ -32,8 +33,7 @@ export class BookDetailsComponent implements OnInit {
   constructor(private booksService: BooksService, private  bookStateService : BookStatesService) {
   }
 
-  ngOnInit(): void {
-    this.getBook(this.id);
+  ngOnChanges() {
     this.getBookStateData(this.id)
   }
 
@@ -41,13 +41,7 @@ export class BookDetailsComponent implements OnInit {
     this.booksService.GetBook(bookId).subscribe({
       next: (response) => {
         this.bookData = response;
-        this.authorsNames = this.bookData?.authors?.map((author: Author) =>
-          `${author.name} ${author.surname}`
-        ).join(', ') || '';
-        this.genresNames = this.bookData?.genres?.map((genre: Genre) =>
-          `${genre.name}`
-        ).join(', ') || '';
-        this.url = this.url + this.bookData?.covering;
+        this.manageData()
       },
       error: (error) => {
         console.log(error)
@@ -59,12 +53,28 @@ export class BookDetailsComponent implements OnInit {
     this.bookStateService.CheckIfExistAndThenGet(bookId).subscribe({
       next: (response) => {
        this.bookStateData = response;
-       console.log(this.bookStateData)
+
+       if (this.bookStateData == null) {
+         this.getBook(bookId);
+         return
+       }
+       this.bookData = this.bookStateData?.book;
+       this.manageData()
       },
       error: (error) => {
         console.log(error)
       }
     })
+  }
+
+  manageData () {
+    this.authorsNames = this.bookData?.authors?.map((author: Author) =>
+      `${author.name} ${author.surname}`
+    ).join(', ') || '';
+    this.genresNames = this.bookData?.genres?.map((genre: Genre) =>
+      `${genre.name}`
+    ).join(', ') || '';
+    this.url = this.url + this.bookData?.covering;
   }
 }
 
