@@ -54,16 +54,15 @@ export class BookStateDetailsComponent {
   }
 
   saveData() {
-    if (this.startDate && this.endDate) {
+    if (this.endDate != null) {
       this.status = "Read"
     }
-    if (this.startDate && !this.endDate) {
+    else if (this.startDate != null && this.endDate == null) {
       this.status = "Currently reading"
     }
     else {
       this.status = "Want to read"
     }
-
     if (this.book_id && this.status) {
       this.updateBookToNewStatus(this.book_id, this.status, this.currentPage ? this.currentPage : null, this.startDate ? this.startDate : null, this.endDate ? this.endDate : null)
     }
