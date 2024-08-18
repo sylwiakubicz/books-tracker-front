@@ -3,13 +3,15 @@ import {SubmitBtnComponent} from "../submit-btn/submit-btn.component";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faSquareCheck as farSquareCheck} from "@fortawesome/free-regular-svg-icons/faSquareCheck";
 import {BookStatesService} from "../../services/BookStatesService";
+import {DeleteStatusOptionComponent} from "../delete-status-option/delete-status-option.component";
 
 @Component({
   selector: 'app-status-btn',
   standalone: true,
   imports: [
     SubmitBtnComponent,
-    FaIconComponent
+    FaIconComponent,
+    DeleteStatusOptionComponent
   ],
   templateUrl: './status-btn.component.html',
   styles: ``
