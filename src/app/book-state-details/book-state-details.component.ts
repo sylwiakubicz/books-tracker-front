@@ -64,8 +64,6 @@ export class BookStateDetailsComponent {
       this.status = "Want to read"
     }
 
-    console.log(this.status)
-    console.log(this.book_id)
     if (this.book_id && this.status) {
       this.updateBookToNewStatus(this.book_id, this.status, this.currentPage ? this.currentPage : null, this.startDate ? this.startDate : null, this.endDate ? this.endDate : null)
     }
@@ -77,7 +75,6 @@ export class BookStateDetailsComponent {
     this.bookStateService.UpdateBookToStatus(book_id, status , null, currentPage,startDate, endDate).subscribe(
       {
         next: (response) => {
-          console.log("uruchamiam?")
           window.location.reload();
         },
         error : (error) => {
