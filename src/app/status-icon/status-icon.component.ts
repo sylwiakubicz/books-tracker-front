@@ -42,7 +42,6 @@ export class StatusIconComponent implements OnInit, OnChanges{
   }
 
   addWantToReadStatus() {
-    console.log("test")
     this.bookStatesService.AddBookToStatus(this.id, "Want to read", null, null, null, null).subscribe({
       next: (response) => {
         this.status = response.status.statusName;
@@ -50,4 +49,7 @@ export class StatusIconComponent implements OnInit, OnChanges{
     })
   }
 
+  deleteWantToReadStatus(book_id : number) {
+    this.bookStatesService.DeleteBookState(book_id).subscribe(() => this.status='')
+  }
 }

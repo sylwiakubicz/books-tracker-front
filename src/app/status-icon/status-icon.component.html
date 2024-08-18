@@ -3,7 +3,8 @@
   <div *ngSwitchCase="'Want to read'">
     <fa-icon
       [icon]="status ? faSquareCheck : farSquareCheck"
-      class="text-lg cursor-pointer text-green-900">
+      class="text-lg cursor-pointer text-green-900"
+      (click)="deleteWantToReadStatus(id)">
     </fa-icon>
   </div>
 
