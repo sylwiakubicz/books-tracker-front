@@ -6,6 +6,7 @@ import {BannerComponent} from "../banner/banner.component";
 import {BookDetailsComponent} from "../book-details/book-details.component";
 import {ActivatedRoute, Router} from "@angular/router";
 import {RecomendedSectionComponent} from "../recomended-section/recomended-section.component";
+import {CarouselSectionComponent} from "../carousel-section/carousel-section.component";
 
 @Component({
   selector: 'app-book-page',
@@ -16,7 +17,8 @@ import {RecomendedSectionComponent} from "../recomended-section/recomended-secti
     StatusBtnComponent,
     BannerComponent,
     BookDetailsComponent,
-    RecomendedSectionComponent
+    RecomendedSectionComponent,
+    CarouselSectionComponent
   ],
   templateUrl: './book-page.component.html',
 })
