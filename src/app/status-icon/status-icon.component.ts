@@ -34,6 +34,7 @@ export class StatusIconComponent implements OnInit{
     this.bookStatesService.CheckIfExistAndThenGet(this.id).subscribe({
       next: (response) => {
         this.status = response?.status.statusName ? response.status.statusName : "";
+        console.log(this.status)
       }
     })
   }
