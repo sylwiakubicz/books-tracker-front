@@ -14,7 +14,7 @@
   </div>
 
   <div class="h-4 bg-gray-300 rounded-md mb-2">
-    <div class="h-4 bg-additional-color rounded-md mb-2 relative" [style.width.%]="totalPageNumber != undefined && currentPage != undefined ? (currentPage/totalPageNumber) * 100 : '0'"></div>
+    <div class="h-4 bg-additional-color rounded-md mb-2 relative" [style.width.%]="barProgress"></div>
   </div>
 
   <div class="flex justify-between pb-4 text-lg flex-col tablet:flex-row ">

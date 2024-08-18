@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {StarRatingComponent} from "../star-rating/star-rating.component";
 import {StatusBtnComponent} from "../status-btn/status-btn.component";
 import { DatePipe } from '@angular/common';
@@ -17,7 +17,7 @@ import {BookStatesService} from "../../services/BookStatesService";
   templateUrl: './book-state-details.component.html',
   styleUrl: `./book-state-details.component.css`
 })
-export class BookStateDetailsComponent {
+export class BookStateDetailsComponent implements OnChanges {
   @Input() totalPageNumber : number | undefined;
   @Input() startDate : Date | undefined;
   @Input() endDate : Date | undefined;
@@ -25,8 +25,15 @@ export class BookStateDetailsComponent {
   @Input() book_id : number | undefined;
   @Input() status : string | undefined;
   hideSaveBtn : boolean = true;
+  barProgress : number = 0;
 
   constructor(private bookStateService : BookStatesService) {
+  }
+
+  ngOnChanges() {
+    if (this.currentPage && this.totalPageNumber) {
+      this.barProgress = (this.currentPage / this.totalPageNumber) * 100
+    }
   }
 
   onCurrentPageChange(newVal : number) {
@@ -54,15 +61,19 @@ export class BookStateDetailsComponent {
   }
 
   saveData() {
-    if (this.endDate != null) {
+    if (this.endDate != null || this.currentPage == this.totalPageNumber) {
       this.status = "Read"
+      if (this.currentPage && this.totalPageNumber && this.currentPage < this.totalPageNumber) {
+        this.status = "Currently reading"
+      }
     }
-    else if (this.startDate != null && this.endDate == null) {
+    else if (this.startDate != null && this.endDate == null || this.currentPage != null) {
       this.status = "Currently reading"
     }
     else {
       this.status = "Want to read"
     }
+    console.log(this.status)
     if (this.book_id && this.status) {
       this.updateBookToNewStatus(this.book_id, this.status, this.currentPage ? this.currentPage : null, this.startDate ? this.startDate : null, this.endDate ? this.endDate : null)
     }
