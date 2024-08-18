@@ -5,8 +5,9 @@ import {NavbarComponent} from "../navbar/navbar.component";
 import {BookCardComponent} from "../book-card/book-card.component";
 import {BannerComponent} from "../banner/banner.component";
 import {NgForOf} from "@angular/common";
-import {RecomendedSectionComponent} from "../recomended-section/recomended-section.component";
 import {CarouselSectionComponent} from "../carousel-section/carousel-section.component";
+import {CarouselWrapperPopularComponent} from "../carousel-wrapper-popular/carousel-wrapper-popular.component";
+import {CarouselWrapperRandomComponent} from "../carousel-wrapper-random/carousel-wrapper-random.component";
 
 @Component({
   selector: 'app-home-page',
@@ -17,8 +18,9 @@ import {CarouselSectionComponent} from "../carousel-section/carousel-section.com
     BookCardComponent,
     BannerComponent,
     NgForOf,
-    RecomendedSectionComponent,
-    CarouselSectionComponent
+    CarouselSectionComponent,
+    CarouselWrapperPopularComponent,
+    CarouselWrapperRandomComponent
   ],
   templateUrl: './home-page.component.html',
 })

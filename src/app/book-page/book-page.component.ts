@@ -4,9 +4,8 @@ import {StarRatingComponent} from "../star-rating/star-rating.component";
 import {StatusBtnComponent} from "../status-btn/status-btn.component";
 import {BannerComponent} from "../banner/banner.component";
 import {BookDetailsComponent} from "../book-details/book-details.component";
-import {ActivatedRoute, Router} from "@angular/router";
-import {RecomendedSectionComponent} from "../recomended-section/recomended-section.component";
-import {CarouselSectionComponent} from "../carousel-section/carousel-section.component";
+import {ActivatedRoute} from "@angular/router";
+import {CarouselWrapperRandomComponent} from "../carousel-wrapper-random/carousel-wrapper-random.component";
 
 @Component({
   selector: 'app-book-page',
@@ -17,8 +16,7 @@ import {CarouselSectionComponent} from "../carousel-section/carousel-section.com
     StatusBtnComponent,
     BannerComponent,
     BookDetailsComponent,
-    RecomendedSectionComponent,
-    CarouselSectionComponent
+    CarouselWrapperRandomComponent,
   ],
   templateUrl: './book-page.component.html',
 })
