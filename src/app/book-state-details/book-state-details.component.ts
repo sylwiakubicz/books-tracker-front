@@ -63,7 +63,7 @@ export class BookStateDetailsComponent implements OnChanges {
   saveData() {
     if (this.endDate != null || this.currentPage == this.totalPageNumber) {
       this.status = "Read"
-      if (this.currentPage && this.totalPageNumber && this.currentPage < this.totalPageNumber) {
+      if (this.currentPage && this.totalPageNumber && this.currentPage < this.totalPageNumber || this.currentPage == 0) {
         this.status = "Currently reading"
       }
     }
@@ -75,13 +75,13 @@ export class BookStateDetailsComponent implements OnChanges {
     }
     console.log(this.status)
     if (this.book_id && this.status) {
-      this.updateBookToNewStatus(this.book_id, this.status, this.currentPage ? this.currentPage : null, this.startDate ? this.startDate : null, this.endDate ? this.endDate : null)
+      this.updateBookToNewStatus(this.book_id, this.status, this.currentPage ? this.currentPage : 0, this.startDate ? this.startDate : null, this.endDate ? this.endDate : null)
     }
     this.hideSaveBtn = true;
 
   }
 
-  updateBookToNewStatus(book_id : number, status : string, currentPage : number | null, startDate : Date | null, endDate : Date | null) {
+  updateBookToNewStatus(book_id : number, status : string, currentPage : number, startDate : Date | null, endDate : Date | null) {
     this.bookStateService.UpdateBookToStatus(book_id, status , null, currentPage,startDate, endDate).subscribe(
       {
         next: (response) => {
