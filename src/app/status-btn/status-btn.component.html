@@ -20,6 +20,6 @@
   <option class="border-2 hover:bg-gray-200 text-center cursor-pointer p-1" (click)="handleSetStatus('Want to read')">Want to read</option>
   <option class="border-2 hover:bg-gray-200 text-center cursor-pointer p-1" (click)="handleSetStatus('Currently reading')">Currently reading</option>
   <option class="border-2 hover:bg-gray-200 text-center cursor-pointer p-1" (click)="handleSetStatus('Read')">Read</option>
-  <app-delete-status-option [book_id]="book_id ? book_id : 0"></app-delete-status-option>
+  <app-delete-status-option [book_id]="book_id ? book_id : 0" [status]="status ? status : ''"></app-delete-status-option>
 </div>
 

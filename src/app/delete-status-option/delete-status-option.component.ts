@@ -10,6 +10,7 @@ import {BookStatesService} from "../../services/BookStatesService";
 })
 export class DeleteStatusOptionComponent {
   @Input() book_id : number = 0;
+  @Input() status : string = ''
 
   constructor(private bookStatesService : BookStatesService) {
   }
