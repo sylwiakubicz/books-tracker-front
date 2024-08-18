@@ -11,7 +11,7 @@
 
   <div class="flex items-center flex-col bg-primary-color">
     <img [src]="url" alt="book cover" class="mb-2 w-7/12 mt-1.5 tablet:order-3 tablet:max-w-[12.8rem] tablet:w-[12.8rem]">
-    <app-star-rating class="flex pb-2 tablet:order-4 tablet:pb-0" [rating]="bookStateData?.rate" [book_id]="bookData?.bookId" [startDate]="bookStateData?.startDate" [endDate]="bookStateData?.endDate"></app-star-rating>
+    <app-star-rating [class]="bookStateData ? 'flex' : 'hidden'" class="pb-2 tablet:order-4 tablet:pb-0" [rating]="bookStateData?.rate" [book_id]="bookData?.bookId" [startDate]="bookStateData?.startDate" [endDate]="bookStateData?.endDate"></app-star-rating>
     <app-status-btn class="mb-3 tablet:order-5 tablet:mb-5" [status]="bookStateData?.status?.statusName" [book_id]="bookData?.bookId"></app-status-btn>
   </div>
 
