@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import {CarouselItemComponent} from "../carousel-item/carousel-item.component";
 
 @Component({
   selector: 'app-carousel-section',
   standalone: true,
-  imports: [],
+  imports: [
+    CarouselItemComponent
+  ],
   templateUrl: './carousel-section.component.html',
   styles: ``
 })
