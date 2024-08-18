@@ -53,6 +53,10 @@ export class BookStatesService {
     )
   };
 
+  DeleteBookState(book_id : number) {
+    return this.http.delete(`http://localhost:8080/bookstate/${book_id}`)
+  }
+
   formatDateToCustomString = (date: Date | null): string | null => {
     if (!date) return null;
 
