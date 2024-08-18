@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {BookStatesService} from "../../services/BookStatesService";
 import {faSquareCheck} from "@fortawesome/free-solid-svg-icons/faSquareCheck";
 import {faSquareCheck as farSquareCheck} from "@fortawesome/free-regular-svg-icons/faSquareCheck";
@@ -16,7 +16,7 @@ import {NgSwitch, NgSwitchCase} from "@angular/common";
   templateUrl: './status-icon.component.html',
   styles: ``
 })
-export class StatusIconComponent implements OnInit{
+export class StatusIconComponent implements OnInit, OnChanges{
   @Input() id : number = 0;
   status : string = "";
 
@@ -29,13 +29,25 @@ export class StatusIconComponent implements OnInit{
   ngOnInit() {
     this.checkIfBookStateExist();
   }
+  ngOnChanges(changes: SimpleChanges) {
+
+  }
 
   checkIfBookStateExist() {
     this.bookStatesService.CheckIfExistAndThenGet(this.id).subscribe({
       next: (response) => {
         this.status = response?.status.statusName ? response.status.statusName : "";
-        console.log(this.status)
       }
     })
   }
+
+  addWantToReadStatus() {
+    console.log("test")
+    this.bookStatesService.AddBookToStatus(this.id, "Want to read", null, null, null, null).subscribe({
+      next: (response) => {
+        this.status = response.status.statusName;
+      }
+    })
+  }
+
 }

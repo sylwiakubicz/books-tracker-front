@@ -24,7 +24,8 @@
   <div *ngSwitchCase="''">
     <fa-icon
       [icon]="status ? faSquareCheck : farSquareCheck"
-      class="text-lg cursor-pointer text-black">
+      class="text-lg cursor-pointer text-black"
+    (click)="addWantToReadStatus()">
     </fa-icon>
   </div>
 
