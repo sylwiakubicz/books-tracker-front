@@ -1,15 +1,17 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {CarouselItemComponent} from "../carousel-item/carousel-item.component";
+import {NgClass} from "@angular/common";
 
 @Component({
   selector: 'app-carousel-section',
   standalone: true,
   imports: [
-    CarouselItemComponent
+    CarouselItemComponent,
+    NgClass
   ],
   templateUrl: './carousel-section.component.html',
-  styles: ``
+  styleUrl: `./carousel-section.component.css`
 })
 export class CarouselSectionComponent {
-
+  @Input() title : string = ''
 }

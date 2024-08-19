@@ -1,6 +1,5 @@
 
-<ul class="grid grid-flow-col overflow-x-hidden gap-2 w-full" style="grid-auto-columns: calc(100% / 6 - 6px)">
-  <app-carousel-item></app-carousel-item>
+<ul class="grid grid-flow-col overflow-x-hidden gap-4 justify-items-center" [class]="title == 'Random choice:' ? 'random' : 'popular'">
   <app-carousel-item></app-carousel-item>
   <app-carousel-item></app-carousel-item>
   <app-carousel-item></app-carousel-item>
