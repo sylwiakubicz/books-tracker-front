@@ -5,7 +5,6 @@ import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faAngleLeft} from "@fortawesome/free-solid-svg-icons/faAngleLeft";
 import {faAngleRight} from "@fortawesome/free-solid-svg-icons/faAngleRight";
 
-
 @Component({
   selector: 'app-carousel-section',
   standalone: true,
@@ -22,4 +21,8 @@ export class CarouselSectionComponent {
 
   protected readonly faAngleLeft = faAngleLeft;
   protected readonly faAngleRight = faAngleRight;
+
+  dragging(event: MouseEvent): void {
+    console.log(event.pageX)
+  }
 }

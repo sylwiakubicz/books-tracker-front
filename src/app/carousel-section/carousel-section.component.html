@@ -5,7 +5,9 @@
                                        desktop:left-[-12px] desktop:h-[40px] desktop:w-[40px]">
   </fa-icon>
   <ul class="grid grid-flow-col overflow-x-hidden gap-4 justify-items-center -mr-4 tablet:-mr-2 desktop:mr-0"
-      [class]="title == 'RANDOM CHOICE' ? 'random' : 'popular'">
+      [class]="title == 'RANDOM CHOICE' ? 'random' : 'popular'"
+      id="carousel"
+      (mousemove)="dragging($event)">
     <app-carousel-item></app-carousel-item>
     <app-carousel-item></app-carousel-item>
     <app-carousel-item></app-carousel-item>
