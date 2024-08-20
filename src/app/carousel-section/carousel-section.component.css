@@ -6,3 +6,47 @@ ul.popular {
   width: 1020px;
   grid-auto-columns: calc(100% / 6 - 14px);
 }
+
+@media screen and (max-width: 1240px){
+  ul.random {
+    grid-auto-columns: calc(100% / 5 - 14px);
+  }
+
+  ul.popular {
+    width: calc(100vw - 260px);
+    grid-auto-columns: calc(100% / 4 - 14px);
+  }
+}
+
+@media screen and (max-width: 830px){
+  ul.random {
+    grid-auto-columns: calc(100% / 4 - 14px);
+  }
+
+  ul.popular {
+    grid-auto-columns: calc(100% / 3 - 14px);
+  }
+}
+
+@media screen and (max-width: 680px){
+  ul.random {
+    grid-auto-columns: calc(100% / 3 - 14px);
+  }
+
+  ul.popular {
+    grid-auto-columns: calc(100% / 2 - 14px)
+  }
+}
+
+@media screen and (max-width: 576px){
+  ul.random {
+    grid-auto-columns: calc(100% / 2 - 14px);
+  }
+
+  ul.popular {
+    gap: 0;
+    margin-right: -4px;
+    width: 140px;
+    grid-auto-columns: 100%;
+  }
+}
