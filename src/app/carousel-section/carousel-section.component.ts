@@ -27,10 +27,15 @@ export class CarouselSectionComponent {
   protected readonly faAngleLeft = faAngleLeft;
   protected readonly faAngleRight = faAngleRight;
 
+  isDragging : boolean = false;
+
+  dragStart(event : MouseEvent, carouselElement : HTMLElement) {
+    this.isDragging = true;
+    carouselElement.classList.add("select-none")
+    carouselElement.classList.add("cursor-grab")
+  }
   dragging(event: MouseEvent, carouselElement : HTMLElement ): void {
-    console.log(event.pageX)
-    if (carouselElement) {
-      carouselElement.scrollLeft = event.pageX;
-    }
+    if (!this.isDragging) return
+    if (carouselElement) carouselElement.scrollLeft = event.pageX;
   }
 }
