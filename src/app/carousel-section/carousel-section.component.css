@@ -1,3 +1,7 @@
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
 ul.random {
   grid-auto-columns: calc(100% / 7 - 14px);
 }

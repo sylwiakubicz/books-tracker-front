@@ -5,7 +5,7 @@
                                        absolute top-1/2 translate-y-[-50%] left-[-20px]
                                        desktop:left-[-12px] desktop:h-[40px] desktop:w-[40px]">
   </fa-icon>
-  <ul #carouselElement class="carousel cursor-pointer grid grid-flow-col overflow-x-hidden gap-4 justify-items-center -mr-4 tablet:-mr-2 desktop:mr-0"
+  <ul #carouselElement class="carousel cursor-pointer grid grid-flow-col overflow-x-auto gap-4 justify-items-center -mr-4 tablet:-mr-2 desktop:mr-0 scroll-smooth snap-x snap-mandatory"
       [class]="title == 'RANDOM CHOICE' ? 'random' : 'popular'"
       (mousemove)="dragging($event, carouselElement)"
       (mousedown)="dragStart($event, carouselElement)"

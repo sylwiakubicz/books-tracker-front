@@ -35,6 +35,9 @@ export class CarouselSectionComponent {
     this.isDragging = true;
     carouselElement.classList.add("select-none")
     carouselElement.classList.add("cursor-grab")
+    carouselElement.classList.add("snap-none")
+    carouselElement.classList.remove("scroll-smooth")
+    carouselElement.classList.remove("snap-x")
     this.startX = event.pageX;
     this.startScrollLeft = carouselElement.scrollLeft
   }
@@ -47,6 +50,10 @@ export class CarouselSectionComponent {
     this.isDragging = false;
     carouselElement.classList.remove("select-none")
     carouselElement.classList.remove("cursor-grab")
+    carouselElement.classList.remove("snap-none")
+    carouselElement.classList.add("scroll-smooth")
+    carouselElement.classList.add("snap-x")
+
   }
 
   arrowClick(event : MouseEvent, direction: string, carouselElement: HTMLElement) {
