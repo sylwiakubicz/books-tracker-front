@@ -7,7 +7,8 @@
   <ul #carouselElement class="carousel cursor-pointer grid grid-flow-col overflow-x-hidden gap-4 justify-items-center -mr-4 tablet:-mr-2 desktop:mr-0"
       [class]="title == 'RANDOM CHOICE' ? 'random' : 'popular'"
       (mousemove)="dragging($event, carouselElement)"
-      (mousedown)="dragStart($event, carouselElement)">
+      (mousedown)="dragStart($event, carouselElement)"
+      (mouseup)="dragStop($event, carouselElement)">
     <app-carousel-item  *ngFor="let book of booksData"
                         [bookTitle]="book.title"
                         [bookUrl]="book.covering"></app-carousel-item>

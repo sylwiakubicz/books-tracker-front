@@ -38,4 +38,10 @@ export class CarouselSectionComponent {
     if (!this.isDragging) return
     if (carouselElement) carouselElement.scrollLeft = event.pageX;
   }
+
+  dragStop(event : MouseEvent, carouselElement : HTMLElement) {
+    this.isDragging = false;
+    carouselElement.classList.remove("select-none")
+    carouselElement.classList.remove("cursor-grab")
+  }
 }
