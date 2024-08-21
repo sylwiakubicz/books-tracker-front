@@ -48,4 +48,12 @@ export class CarouselSectionComponent {
     carouselElement.classList.remove("select-none")
     carouselElement.classList.remove("cursor-grab")
   }
+
+  arrowClick(event : MouseEvent, direction: string, carouselElement: HTMLElement) {
+    const firstCard = carouselElement.querySelector<HTMLElement>(".card");
+    if (firstCard) {
+      const firstCardWidth = firstCard.offsetWidth;
+      carouselElement.scrollLeft += direction === "left" ? -firstCardWidth : firstCardWidth;
+    }
+  }
 }
