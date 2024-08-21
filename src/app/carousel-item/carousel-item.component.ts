@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-carousel-item',
@@ -8,5 +8,8 @@ import { Component } from '@angular/core';
   styles: ``
 })
 export class CarouselItemComponent {
+  @Input() bookTitle : string | undefined;
+  @Input() bookUrl : string | undefined = '';
 
+  url : string = "https://drive.google.com/thumbnail?id=";
 }

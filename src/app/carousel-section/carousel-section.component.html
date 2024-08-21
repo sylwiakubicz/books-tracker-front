@@ -4,20 +4,15 @@
                                        absolute top-1/2 translate-y-[-50%] left-[-20px]
                                        desktop:left-[-12px] desktop:h-[40px] desktop:w-[40px]">
   </fa-icon>
-  <ul class="grid grid-flow-col overflow-x-hidden gap-4 justify-items-center -mr-4 tablet:-mr-2 desktop:mr-0"
+  <ul #carouselElement class="carousel grid grid-flow-col overflow-x-hidden gap-4 justify-items-center -mr-4 tablet:-mr-2 desktop:mr-0"
       [class]="title == 'RANDOM CHOICE' ? 'random' : 'popular'"
-      id="carousel"
-      (mousemove)="dragging($event)">
-    <app-carousel-item></app-carousel-item>
-    <app-carousel-item></app-carousel-item>
-    <app-carousel-item></app-carousel-item>
-    <app-carousel-item></app-carousel-item>
-    <app-carousel-item></app-carousel-item>
-    <app-carousel-item></app-carousel-item>
-    <app-carousel-item></app-carousel-item>
-    <app-carousel-item></app-carousel-item>
-    <app-carousel-item></app-carousel-item>
-    <app-carousel-item></app-carousel-item>
+      (mousemove)="dragging($event, carouselElement)">
+    <app-carousel-item  *ngFor="let book of booksData"
+                        [bookTitle]="book.title"
+                        [bookUrl]="book.covering"></app-carousel-item>
+    <app-carousel-item  *ngFor="let book of booksData"
+                        [bookTitle]="book.title"
+                        [bookUrl]="book.covering"></app-carousel-item>
   </ul>
   <fa-icon [icon]="faAngleRight" class="flex h-[30px] w-[30px] justify-center items-center
                                         rounded-full bg-black opacity-60 text-white z-10
