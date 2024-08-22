@@ -1,10 +1,10 @@
-<div class="card relative flex justify-center w-full snap-start" [routerLink]="['/book', id]">
+<div class="card relative flex justify-center w-full snap-start" >
   <img [src]="url+bookUrl" alt="book cover">
   <span class="flex justify-center items-center
               absolute top-0 bottom-0 left-0 right-0
               bg-black bg-opacity-75 opacity-0 hover:opacity-100
               uppercase text-white text-sm text-center pl-1.5 pr-1.5"
         [ngClass]="dragging ? 'hover:opacity-0' : 'hover:opacity-100'"
-        draggable="false">{{bookTitle}}</span>
+        draggable="false"><p [routerLink]="['/book', id]">{{bookTitle}}</p></span>
 </div>
 
