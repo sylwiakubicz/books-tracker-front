@@ -8,6 +8,8 @@ import {NgForOf} from "@angular/common";
 import {CarouselSectionComponent} from "../carousel-section/carousel-section.component";
 import {CarouselWrapperPopularComponent} from "../carousel-wrapper-popular/carousel-wrapper-popular.component";
 import {CarouselWrapperRandomComponent} from "../carousel-wrapper-random/carousel-wrapper-random.component";
+import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-home-page',
@@ -20,7 +22,8 @@ import {CarouselWrapperRandomComponent} from "../carousel-wrapper-random/carouse
     NgForOf,
     CarouselSectionComponent,
     CarouselWrapperPopularComponent,
-    CarouselWrapperRandomComponent
+    CarouselWrapperRandomComponent,
+    FaIconComponent
   ],
   templateUrl: './home-page.component.html',
 })
@@ -47,6 +50,7 @@ export class HomePageComponent implements OnInit{
     })
   }
 
+  protected readonly faMagnifyingGlass = faMagnifyingGlass;
 }
 
 export interface Book {
