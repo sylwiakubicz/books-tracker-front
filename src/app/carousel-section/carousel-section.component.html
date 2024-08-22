@@ -18,11 +18,13 @@
                        *ngFor="let book of booksData"
                        [bookTitle]="book.title"
                        [bookUrl]="book.covering"
+                       [id]="book.bookId"
                        ></app-carousel-item>
     <app-carousel-item #carouselItemElement
                        *ngFor="let book of booksData"
                        [bookTitle]="book.title"
                        [bookUrl]="book.covering"
+                       [id]="book.bookId"
                        ></app-carousel-item>
   </ul>
   <fa-icon id="right" (click)="arrowClick($event, 'right', carouselElement)"
