@@ -40,16 +40,19 @@ export class CarouselSectionComponent implements AfterViewInit, OnChanges{
   isDragging : boolean = false;
   startX : number = 0;
   startScrollLeft : number = 0;
+  timeoutId: any;
   @ViewChild('carouselElement') carouselElement!: ElementRef<HTMLUListElement>;
   @ViewChildren(CarouselItemComponent, { read: ElementRef }) carouselItems!: QueryList<ElementRef>;
 
   ngAfterViewInit() {
     this.setupCarousel();
+    this.autoPlay();
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (this.booksData) {
       this.setupCarousel();
+      this.autoPlay();
     }
   }
 
@@ -77,6 +80,26 @@ export class CarouselSectionComponent implements AfterViewInit, OnChanges{
 
         console.log('Adding elements at the beginning:', carouselChildren.slice(-cardsPerView).map(card => card.outerHTML));
         console.log('Adding elements at the end:', carouselChildren.slice(0, cardsPerView).map(card => card.outerHTML));
+      }
+    }
+  }
+
+  autoPlay() {
+    if (window.innerWidth < 680) return;
+
+    const carousel = this.carouselElement.nativeElement;
+    const firstCard = this.carouselItems.first.nativeElement;
+
+    if (firstCard) {
+      const firstCardWidth = firstCard.offsetWidth;
+
+      clearTimeout(this.timeoutId);
+
+      if (!carousel.matches(":hover")) {
+        this.timeoutId = setTimeout(() => {
+          carousel.scrollLeft += firstCardWidth;
+          this.autoPlay();
+        }, 2500);
       }
     }
   }
@@ -131,6 +154,7 @@ export class CarouselSectionComponent implements AfterViewInit, OnChanges{
       carouselElement.classList.remove("scroll-auto")
       carouselElement.classList.add("scroll-smooth")
     }
-
   }
+
+  protected readonly clearTimeout = clearTimeout;
 }

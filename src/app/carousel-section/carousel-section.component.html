@@ -11,7 +11,9 @@
       (mousemove)="dragging($event, carouselElement)"
       (mousedown)="dragStart($event, carouselElement)"
       (mouseup)="dragStop($event, carouselElement)"
-      (scroll)="infiniteScroll($event, carouselElement)">
+      (scroll)="infiniteScroll($event, carouselElement)"
+      (mouseenter)="clearTimeout(timeoutId)"
+      (mouseleave)="autoPlay()">
     <app-carousel-item #carouselItemElement
                        *ngFor="let book of booksData"
                        [bookTitle]="book.title"
