@@ -19,6 +19,7 @@
                        [bookTitle]="book.title"
                        [bookUrl]="book.covering"
                        [id]="book.bookId"
+                       [dragging]="isDragging"
                        ></app-carousel-item>
     <app-carousel-item #carouselItemElement
                        *ngFor="let book of booksData"
