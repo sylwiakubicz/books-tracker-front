@@ -5,17 +5,22 @@
                                        absolute top-1/2 translate-y-[-50%] left-[-20px]
                                        desktop:left-[-12px] desktop:h-[40px] desktop:w-[40px]">
   </fa-icon>
-  <ul #carouselElement class="carousel cursor-pointer grid grid-flow-col overflow-x-auto gap-4 justify-items-center -mr-4 tablet:-mr-2 desktop:mr-0 scroll-smooth snap-x snap-mandatory"
+  <ul #carouselElement class="carousel cursor-pointer grid grid-flow-col overflow-x-auto gap-4 justify-items-stretch
+                              -mr-3 desktop:mr-0 scroll-smooth snap-x snap-mandatory"
       [class]="title == 'RANDOM CHOICE' ? 'random' : 'popular'"
       (mousemove)="dragging($event, carouselElement)"
       (mousedown)="dragStart($event, carouselElement)"
       (mouseup)="dragStop($event, carouselElement)">
-    <app-carousel-item  *ngFor="let book of booksData"
-                        [bookTitle]="book.title"
-                        [bookUrl]="book.covering"></app-carousel-item>
-    <app-carousel-item  *ngFor="let book of booksData"
-                        [bookTitle]="book.title"
-                        [bookUrl]="book.covering"></app-carousel-item>
+    <app-carousel-item #carouselItemElement
+                       *ngFor="let book of booksData"
+                       [bookTitle]="book.title"
+                       [bookUrl]="book.covering"
+                       ></app-carousel-item>
+    <app-carousel-item #carouselItemElement
+                       *ngFor="let book of booksData"
+                       [bookTitle]="book.title"
+                       [bookUrl]="book.covering"
+                       ></app-carousel-item>
   </ul>
   <fa-icon id="right" (click)="arrowClick($event, 'right', carouselElement)"
            [icon]="faAngleRight" class="flex h-[30px] w-[30px] justify-center items-center

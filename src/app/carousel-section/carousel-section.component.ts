@@ -1,4 +1,13 @@
-import {Component, Input} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  OnChanges, QueryList,
+  SimpleChanges,
+  ViewChild,
+  ViewChildren
+} from '@angular/core';
 import {CarouselItemComponent} from "../carousel-item/carousel-item.component";
 import {NgClass, NgForOf} from "@angular/common";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
@@ -20,7 +29,7 @@ import {BookCardComponent} from "../book-card/book-card.component";
   templateUrl: './carousel-section.component.html',
   styleUrl: `./carousel-section.component.css`
 })
-export class CarouselSectionComponent {
+export class CarouselSectionComponent implements AfterViewInit, OnChanges{
   @Input() title : string = ''
   @Input() booksData : Book[] | undefined;
 
@@ -30,6 +39,47 @@ export class CarouselSectionComponent {
   isDragging : boolean = false;
   startX : number = 0;
   startScrollLeft : number = 0;
+
+  @ViewChild('carouselElement') carouselElement!: ElementRef<HTMLUListElement>;
+  @ViewChildren(CarouselItemComponent, { read: ElementRef }) carouselItems!: QueryList<ElementRef>;
+
+  ngAfterViewInit() {
+    this.setupCarousel();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (this.booksData) {
+      this.setupCarousel();
+    }
+  }
+
+  setupCarousel() {
+    const carousel = this.carouselElement.nativeElement;
+    if (carousel) {
+      const firstCard = this.carouselItems.first.nativeElement;
+      if (firstCard) {
+        const firstCardWidth = firstCard.offsetWidth;
+        console.log("cała szerokość")
+        console.log(carousel.offsetWidth)
+        console.log("szerkość jednej karty")
+        console.log(firstCardWidth)
+        const cardsPerView = Math.round(carousel.offsetWidth / firstCardWidth) - 1;
+
+        const carouselChildren = Array.from(carousel.children);
+
+        carouselChildren.slice(-cardsPerView).reverse().forEach(card => {
+          carousel.insertAdjacentHTML("afterbegin", (card as HTMLElement).outerHTML);
+        });
+
+        carouselChildren.slice(0, cardsPerView).forEach(card => {
+          carousel.insertAdjacentHTML("beforeend", (card as HTMLElement).outerHTML);
+        });
+
+        console.log('Adding elements at the beginning:', carouselChildren.slice(-cardsPerView).map(card => card.outerHTML));
+        console.log('Adding elements at the end:', carouselChildren.slice(0, cardsPerView).map(card => card.outerHTML));
+      }
+    }
+  }
 
   dragStart(event : MouseEvent, carouselElement : HTMLElement) {
     this.isDragging = true;
@@ -41,6 +91,7 @@ export class CarouselSectionComponent {
     this.startX = event.pageX;
     this.startScrollLeft = carouselElement.scrollLeft
   }
+
   dragging(event: MouseEvent, carouselElement : HTMLElement ): void {
     if (!this.isDragging) return
     if (carouselElement) carouselElement.scrollLeft = this.startScrollLeft - (event.pageX - this.startX);

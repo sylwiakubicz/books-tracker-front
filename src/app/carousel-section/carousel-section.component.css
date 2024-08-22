@@ -38,7 +38,8 @@ ul.popular {
   }
 
   ul.popular {
-    grid-auto-columns: calc(100% / 2 - 14px)
+    grid-auto-columns: calc(100% / 2 - 14px);
+
   }
 }
 
@@ -48,7 +49,6 @@ ul.popular {
   }
 
   ul.popular {
-    gap: 0;
     margin-right: -4px;
     width: 140px;
     grid-auto-columns: 100%;
