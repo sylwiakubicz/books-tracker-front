@@ -10,7 +10,8 @@
       [class]="title == 'RANDOM CHOICE' ? 'random' : 'popular'"
       (mousemove)="dragging($event, carouselElement)"
       (mousedown)="dragStart($event, carouselElement)"
-      (mouseup)="dragStop($event, carouselElement)">
+      (mouseup)="dragStop($event, carouselElement)"
+      (scroll)="infiniteScroll($event, carouselElement)">
     <app-carousel-item #carouselItemElement
                        *ngFor="let book of booksData"
                        [bookTitle]="book.title"

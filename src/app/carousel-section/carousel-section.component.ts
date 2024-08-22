@@ -36,10 +36,10 @@ export class CarouselSectionComponent implements AfterViewInit, OnChanges{
   protected readonly faAngleLeft = faAngleLeft;
   protected readonly faAngleRight = faAngleRight;
 
+
   isDragging : boolean = false;
   startX : number = 0;
   startScrollLeft : number = 0;
-
   @ViewChild('carouselElement') carouselElement!: ElementRef<HTMLUListElement>;
   @ViewChildren(CarouselItemComponent, { read: ElementRef }) carouselItems!: QueryList<ElementRef>;
 
@@ -113,5 +113,14 @@ export class CarouselSectionComponent implements AfterViewInit, OnChanges{
       const firstCardWidth = firstCard.offsetWidth;
       carouselElement.scrollLeft += direction === "left" ? -firstCardWidth : firstCardWidth;
     }
+  }
+
+  infiniteScroll(event : Event, carouselElement : HTMLElement) {
+    if(carouselElement.scrollLeft === 0) {
+      console.log("you've reached to the left")
+    } else if (Math.ceil(carouselElement.scrollLeft) === carouselElement.scrollWidth - carouselElement.offsetWidth) {
+      console.log("you've reached to the right")
+    }
+
   }
 }
