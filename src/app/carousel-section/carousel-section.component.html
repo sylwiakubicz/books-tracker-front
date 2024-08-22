@@ -1,6 +1,6 @@
 <div class="relative">
   <fa-icon id="left" (click)="arrowClick($event, 'left', carouselElement)"
-           [icon]="faAngleLeft" class="flex h-[30px] w-[30px] justify-center items-center
+           [icon]="faAngleLeft" class="flex h-[30px] w-[30px] justify-center items-center cursor-pointer
                                        rounded-full bg-black opacity-60 text-white z-10
                                        absolute top-1/2 translate-y-[-50%] left-[-20px]
                                        desktop:left-[-12px] desktop:h-[40px] desktop:w-[40px]">
@@ -29,7 +29,7 @@
                        ></app-carousel-item>
   </ul>
   <fa-icon id="right" (click)="arrowClick($event, 'right', carouselElement)"
-           [icon]="faAngleRight" class="flex h-[30px] w-[30px] justify-center items-center
+           [icon]="faAngleRight" class="flex h-[30px] w-[30px] justify-center items-center cursor-pointer
                                         rounded-full bg-black opacity-60 text-white z-10
                                         absolute top-1/2 translate-y-[-50%] right-[-20px]
                                         desktop:right-[-12px] desktop:h-[40px] desktop:w-[40px]">
