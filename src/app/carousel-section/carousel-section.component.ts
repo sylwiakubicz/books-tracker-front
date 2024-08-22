@@ -119,9 +119,17 @@ export class CarouselSectionComponent implements AfterViewInit, OnChanges{
 
   infiniteScroll(event : Event, carouselElement : HTMLElement) {
     if(carouselElement.scrollLeft === 0) {
-      console.log("you've reached to the left")
+      carouselElement.classList.remove("scroll-smooth")
+      carouselElement.classList.add("scroll-auto")
+      carouselElement.scrollLeft = carouselElement.scrollWidth - (2 * carouselElement.offsetWidth);
+      carouselElement.classList.remove("scroll-auto")
+      carouselElement.classList.add("scroll-smooth")
     } else if (Math.ceil(carouselElement.scrollLeft) === carouselElement.scrollWidth - carouselElement.offsetWidth) {
-      console.log("you've reached to the right")
+      carouselElement.classList.remove("scroll-smooth")
+      carouselElement.classList.add("scroll-auto")
+      carouselElement.scrollLeft = carouselElement.offsetWidth;
+      carouselElement.classList.remove("scroll-auto")
+      carouselElement.classList.add("scroll-smooth")
     }
 
   }
