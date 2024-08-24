@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import {BannerComponent} from "../banner/banner.component";
 
 @Component({
   selector: 'app-books-page',
   standalone: true,
-  imports: [],
+  imports: [
+    BannerComponent
+  ],
   templateUrl: './books-page.component.html',
   styles: ``
 })

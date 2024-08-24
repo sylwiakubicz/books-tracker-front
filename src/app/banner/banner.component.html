@@ -1,7 +1,7 @@
 <div class="relative w-full">
   <img src="./assets/images/library.png" class="w-full h-[8rem] object-cover border-t-2 border-b-2 border-black
             bigMobile:h-[12rem] laptop:h-[16rem] desktop:h-[19rem]">
-  <div class="flex justify-center  w-full absolute bottom-[-20px]">
+  <div class="justify-center  w-full absolute bottom-[-20px]" [ngClass]="isSearch ? 'flex' : 'hidden'">
     <input type="text" class="rounded-full h-[44px] w-[15rem] drop-shadow-md mr-1.5 pl-2 pr-2 focus-visible:outline-none
                               tablet:w-[30rem]" placeholder="Search..." >
     <button class="rounded-full bg-akcent-color w-[44px] h-[44px] border-secondary-color border-2 drop-shadow-md">
