@@ -1,13 +1,15 @@
-<div class="flex m-4 border pt-2 bg-white">
-  <img [src]="url" alt="book cover" class="w-20 h-[8rem] m-2 pl-1">
-  <div class="flex flex-col pr-2 pl-1">
-    <div class="flex justify-between" >
-      <h1 class="text-xl font-semibold cursor-pointer" [routerLink]="['/book', id]">{{title}}</h1>
-      <app-status-icon [id]="id"></app-status-icon>
-    </div>
+<div class="flex flex-row border bg-white w-[270px] h-[200px] p-1">
+    <img [src]="url" alt="book cover" class="object-fill w-[150px] h-full">
+
+  <div class="flex flex-col pl-2 justify-end relative">
+    <app-status-icon [id]="id" class="absolute top-0 right-0"></app-status-icon>
+
+    <h1 class="text-md font-semibold cursor-pointer" [routerLink]="['/book', id]">{{title}}</h1>
+
     <h2 class="text-sm text-gray-600">{{authorsNames}}</h2>
-    <p class="text-sm text-justify pt-1 ">{{description.split(", ", 1)}}
-      <a [routerLink]="['/book', id]" class="text-additional-color">Read more...</a>
-    </p>
+
+    <p class="text-xs text-justify pt-1 ">{{description.substring(0,70)}}...</p>
+    <a [routerLink]="['/book', id]" class="text-additional-color font-semibold text-xs">Read more</a>
+
   </div>
 </div>

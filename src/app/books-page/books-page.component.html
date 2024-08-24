@@ -1,7 +1,7 @@
 <div class="bg-primary-color">
   <app-banner [isSearch]="false"></app-banner>
   <app-search-books-panel></app-search-books-panel>
-  <div class=" bigMobile:grid bigMobile:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4">
+  <div class=" bigMobile:grid bigMobile:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4 bigMobile:mr-5 bigMobile:ml-5">
     <app-book-card
       *ngFor="let book of booksData"
       [title]="book.title"
