@@ -3,6 +3,7 @@ import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {RouterLink} from "@angular/router";
 import {Author} from "../home-page/home-page.component";
 import {StatusIconComponent} from "../status-icon/status-icon.component";
+import {faArrowRight} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-book-card',
@@ -38,5 +39,5 @@ export class BookCardComponent implements OnInit{
   }
 
 
-
+  protected readonly faArrowRight = faArrowRight;
 }

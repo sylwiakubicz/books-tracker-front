@@ -13,10 +13,11 @@ import {NgSwitch, NgSwitchCase} from "@angular/common";
     NgSwitch,
     NgSwitchCase
   ],
+
   templateUrl: './status-icon.component.html',
   styles: ``
 })
-export class StatusIconComponent implements OnInit, OnChanges{
+export class StatusIconComponent implements OnInit{
   @Input() id : number = 0;
   status : string = "";
 
@@ -28,9 +29,6 @@ export class StatusIconComponent implements OnInit, OnChanges{
 
   ngOnInit() {
     this.checkIfBookStateExist();
-  }
-  ngOnChanges(changes: SimpleChanges) {
-
   }
 
   checkIfBookStateExist() {

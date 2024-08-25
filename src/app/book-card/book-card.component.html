@@ -1,15 +1,21 @@
-<div class="flex flex-row border bg-white w-[270px] h-[200px] p-1">
-    <img [src]="url" alt="book cover" class="object-fill w-[150px] h-full">
+<div class="flex flex-row border bg-white w-full h-[200px] p-1">
+    <img [src]="url" alt="book cover" class="object-fill h-full">
 
-  <div class="flex flex-col pl-2 justify-end relative">
-    <app-status-icon [id]="id" class="absolute top-0 right-0"></app-status-icon>
-
-    <h1 class="text-md font-semibold cursor-pointer" [routerLink]="['/book', id]">{{title}}</h1>
-
-    <h2 class="text-sm text-gray-600">{{authorsNames}}</h2>
-
-    <p class="text-xs text-justify pt-1 ">{{description.substring(0,70)}}...</p>
-    <a [routerLink]="['/book', id]" class="text-additional-color font-semibold text-xs">Read more</a>
-
+  <div class="flex flex-col justify-between">
+    <div class="flex flex-col pl-2 justify-start relative">
+      <app-status-icon [id]="id" class="absolute top-0 right-1"></app-status-icon>
+      <h1 class="text-md font-semibold cursor-pointer mr-5" [routerLink]="['/book', id]">{{title}}</h1>
+      <h2 class="text-xs text-gray-600">{{authorsNames}}</h2>
+    </div>
+    <div class="flex flex-col justify-end pl-2 pr-1">
+      <p class="text-xs text-justify pt-1 pb-1">{{description.substring(0,70)}}...</p>
+      <div class="flex items-center justify-between relative">
+        <a [routerLink]="['/book', id]" class="align-middle text-additional-color font-extrabold text-[0.7rem] text-nowrap pr-2 pt-1">Read more</a>
+        <hr [routerLink]="['/book', id]" class="h-[2px] bg-additional-color border-none w-[3.5rem] cursor-pointer
+                  before:absolute before:w-2 before:bg-additional-color before:h-0.5 before:top-[8px] before:right-[-1px] before:rotate-[35deg]
+                  after:absolute after:w-2 after:bg-additional-color after:h-0.5 after:bottom-[7px] after:right-[-1px] after:rotate-[-35deg]">
+      </div>
+    </div>
   </div>
+
 </div>
