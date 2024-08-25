@@ -39,15 +39,17 @@ export class StatusIconComponent implements OnInit{
     })
   }
 
-  addWantToReadStatus() {
-    this.bookStatesService.AddBookToStatus(this.id, "Want to read", null, null, null, null).subscribe({
-      next: (response) => {
-        this.status = response.status.statusName;
-      }
-    })
+  addWantToReadStatus(status : string) {
+    if (status === '') {
+      this.bookStatesService.AddBookToStatus(this.id, "Want to read", null, null, null, null).subscribe({
+        next: (response) => {
+          this.status = response.status.statusName;
+        }
+      })
+    } else {
+      console.log("skip")
+      return
+    }
   }
 
-  deleteWantToReadStatus(book_id : number) {
-    this.bookStatesService.DeleteBookState(book_id).subscribe(() => this.status='')
-  }
 }

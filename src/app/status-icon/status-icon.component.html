@@ -1,35 +1,8 @@
-<div [ngSwitch]="status">
 
-  <div *ngSwitchCase="'Want to read'">
     <fa-icon
       [icon]="status ? faSquareCheck : farSquareCheck"
       class="text-lg cursor-pointer text-green-900"
-      (click)="deleteWantToReadStatus(id)">
+      (click)="addWantToReadStatus(status ? status : '')">
     </fa-icon>
-  </div>
 
-  <div *ngSwitchCase="'Currently reading'">
-    <fa-icon
-      [icon]="status ? faSquareCheck : farSquareCheck"
-      class="text-lg cursor-pointer text-orange-900">
-    </fa-icon>
-  </div>
-
-  <div *ngSwitchCase="'Read'">
-    <fa-icon
-      [icon]="status ? faSquareCheck : farSquareCheck"
-      class="text-lg cursor-pointer text-blue-900">
-    </fa-icon>
-  </div>
-
-  <div *ngSwitchCase="''">
-    <fa-icon
-      [icon]="status ? faSquareCheck : farSquareCheck"
-      class="text-lg cursor-pointer text-black"
-    (click)="addWantToReadStatus()">
-    </fa-icon>
-  </div>
-
-
-</div>
 
