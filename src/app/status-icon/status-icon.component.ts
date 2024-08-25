@@ -47,7 +47,6 @@ export class StatusIconComponent implements OnInit{
         }
       })
     } else {
-      console.log("skip")
       return
     }
   }
