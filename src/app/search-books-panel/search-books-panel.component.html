@@ -1,1 +1,15 @@
-<p>search-books-panel works!</p>
+<div class="pl-5 pr-5 pt-5">
+  <div class="flex justify-between relative">
+    <fa-icon [icon]="faSearch" class="text-additional-color absolute top-2.5 left-2"></fa-icon>
+    <input class="w-full mr-10 h-[44px] rounded-xl border-2 border-additional-color pl-7 pr-2 focus-visible:outline-none" placeholder="Find here book you looking for">
+    <button class="rounded-full bg-additional-color text-secondary-color font-bold w-[150px] pl-5 pr-5">Search</button>
+  </div>
+
+  <select>
+    <option disabled selected>Genres</option>
+    <option *ngFor="let genre of genresList">{{genre.name}}</option>
+  </select>
+
+  <span>1 2 3 4 </span>
+
+</div>
