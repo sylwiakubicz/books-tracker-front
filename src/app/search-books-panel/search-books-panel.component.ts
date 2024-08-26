@@ -4,6 +4,7 @@ import {faSearch, faArrowDown, faArrowUp} from "@fortawesome/free-solid-svg-icon
 import {NgClass, NgForOf} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
 import {GenresService} from "../../services/GenresService";
+import {CustomSelectSortComponent} from "../custom-select-sort/custom-select-sort.component";
 
 
 @Component({
@@ -13,7 +14,8 @@ import {GenresService} from "../../services/GenresService";
     FaIconComponent,
     NgForOf,
     HttpClientModule,
-    NgClass
+    NgClass,
+    CustomSelectSortComponent
   ],
   providers: [],
   templateUrl: './search-books-panel.component.html',
@@ -27,9 +29,6 @@ export class SearchBooksPanelComponent implements OnInit{
   }
 
   genresList : Genres[] = [];
-  isShow : Boolean = false;
-  selectedOption: string = 'Title';
-  sort : string = 'asc';
 
   ngOnInit() {
     this.getAllGenres()
@@ -46,18 +45,6 @@ export class SearchBooksPanelComponent implements OnInit{
     })
   }
 
-  toggleDropdown() {
-    this.isShow = !this.isShow;
-  }
-
-  selectOption(option: string, sort : string) {
-    this.selectedOption = option;
-    this.isShow = false;
-    this.sort = sort;
-  }
-
-  protected readonly faArrowDown = faArrowDown;
-  protected readonly faArrowUp = faArrowUp;
 }
 
 export interface Genres {
