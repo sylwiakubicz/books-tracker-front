@@ -1,6 +1,14 @@
 <div class="bg-primary-color">
   <app-banner [isSearch]="true"></app-banner>
 
+  <div class="flex justify-center w-full pt-5">
+    <input type="text" class="rounded-full h-[44px] w-[15rem] drop-shadow-md mr-1.5 pl-2 pr-2 focus-visible:outline-none
+                              tablet:w-[30rem]" placeholder="Search..." >
+    <button class="rounded-full bg-akcent-color w-[44px] h-[44px] border-secondary-color border-2 drop-shadow-md">
+      <fa-icon [icon]="faMagnifyingGlass" class="text-secondary-color"></fa-icon>
+    </button>
+  </div>
+
   <h2 class="pl-5 pr-5 pt-5 pb-2 text-left font-bold text-xl text-additional-color">Welcome to BooksTracker!</h2>
   <p class="pl-5 pr-5 pb-5 text-justify font-semibold">
     Organize your bookshelf and take full control of your reading journey! Easily sort your books by
