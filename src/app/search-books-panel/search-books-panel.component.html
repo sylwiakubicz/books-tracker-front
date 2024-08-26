@@ -10,6 +10,12 @@
         <option disabled selected>Genres</option>
         <option *ngFor="let genre of genresList">{{genre.name}}</option>
       </select>
+
+      <select class="w-full h-[44px] focus-visible:outline-none border-secondary-color border-4 pl-1.5 bigMobile:w-[12rem] bigMobile:mr-5"
+              [class]="isMyBooks ? '' : 'hidden'">
+        <option disabled selected>Status</option>
+        <option *ngFor="let status of statusList">{{status.statusName}}</option>
+      </select>
     </div>
 
     <div class="flex items-center justify-center">

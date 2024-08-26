@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
-import {faSearch, faArrowDown, faArrowUp} from "@fortawesome/free-solid-svg-icons";
+import {faSearch} from "@fortawesome/free-solid-svg-icons";
 import {NgClass, NgForOf} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
 import {GenresService} from "../../services/GenresService";
 import {CustomSelectSortComponent} from "../custom-select-sort/custom-select-sort.component";
+import {Status} from "../book-details/book-details.component";
 
 
 @Component({
@@ -29,6 +30,8 @@ export class SearchBooksPanelComponent implements OnInit{
   }
 
   genresList : Genres[] = [];
+  statusList : Status[] = [];
+  @Input() isMyBooks :boolean = false;
 
   ngOnInit() {
     this.getAllGenres()
@@ -43,6 +46,10 @@ export class SearchBooksPanelComponent implements OnInit{
         console.error("Test failed:", error);
       }
     })
+  }
+
+  getAllStatuses() {
+    console.log("statusy")
   }
 
 }
