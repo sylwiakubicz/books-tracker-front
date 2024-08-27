@@ -1,0 +1,19 @@
+<div class="relative bigMobile:w-[12rem] h-[44px] z-10">
+  <div class="flex justify-between relative">
+    <button class="w-full focus-visible:outline-none border-secondary-color border-4 pl-1.5 flex justify-between items-center py-[0.35rem] mt-[1px] bg-white"
+            (click)="toggleDropdown()">
+          <span>
+            {{ selectedOption }}
+          </span>
+    </button>
+    <div class="h-0.5 w-2.5 bg-additional-color rotate-45 absolute bottom-5 right-3" [class]="isShow ? '-rotate-45' :''"></div>
+    <div class="h-0.5 w-2.5 bg-additional-color  absolute bottom-5 right-1.5" [class]="isShow ? 'rotate-45' : '-rotate-45'"></div>
+  </div>
+
+  <ul class="absolute w-full bg-white border-secondary-color border-4" [ngClass]="isShow ? '' : 'hidden'">
+    <li  *ngFor="let genre of genresList" class="px-2 hover:bg-gray-200 flex justify-between items-center" (click)="selectOption(genre.name)">
+      {{genre.name}}
+    </li>
+  </ul>
+</div>
+
