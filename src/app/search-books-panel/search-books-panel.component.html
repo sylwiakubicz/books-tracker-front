@@ -4,15 +4,15 @@
     <input class="w-full h-[44px] border-4 border-secondary-color pl-7 pr-2 focus-visible:outline-none" placeholder="Find here book you looking for">
   </div>
 
-  <div class="flex pb-3 justify-between flex-col bigMobile:flex-row">
+  <div class="flex pb-3 justify-between flex-col tablet:flex-row">
     <div class="flex flex-col bigMobile:flex-row bigMobile:items-center">
-      <app-custom-select [class]="isMyBooks ? ' mb-3 bigMobile:mb-0 bigMobile:mr-3' : 'mb-0'"></app-custom-select>
-      <app-custom-select-static-data [class]="isMyBooks ? ' mb-3 bigMobile:mb-0' : 'hidden'"></app-custom-select-static-data>
+      <app-custom-select [class]="isMyBooks ? 'mb-3 bigMobile:mb-0 bigMobile:mr-3' : 'mb-0'"></app-custom-select>
+      <app-custom-select-static-data [class]="isMyBooks ? 'mb-3 bigMobile:mb-0' : 'hidden'"></app-custom-select-static-data>
     </div>
 
-    <div class="flex items-center justify-center">
+    <div class="flex items-center">
       <app-custom-select-sort class="h-[44px]"></app-custom-select-sort>
-      <button class="bg-additional-color text-secondary-color font-bold w-[150px] mt-[1px] h-[43px] pl-5 pr-5">Search</button>
+      <button class="bg-additional-color text-secondary-color font-bold w-full bigMobile:w-[100px] laptop:w-[150px] mt-[1px] h-[43px] pl-5 pr-5">Search</button>
     </div>
 
   </div>
