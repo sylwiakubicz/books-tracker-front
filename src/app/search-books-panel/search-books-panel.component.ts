@@ -6,6 +6,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {GenresService} from "../../services/GenresService";
 import {CustomSelectSortComponent} from "../custom-select-sort/custom-select-sort.component";
 import {Status} from "../book-details/book-details.component";
+import {CustomSelectStaticDataComponent} from "../custom-select-static-data/custom-select-static-data.component";
+import {CustomSelectComponent} from "../custom-select/custom-select.component";
 
 
 @Component({
@@ -16,45 +18,21 @@ import {Status} from "../book-details/book-details.component";
     NgForOf,
     HttpClientModule,
     NgClass,
-    CustomSelectSortComponent
+    CustomSelectSortComponent,
+    CustomSelectStaticDataComponent,
+    CustomSelectComponent
   ],
   providers: [],
   templateUrl: './search-books-panel.component.html',
   styles: ``
 })
 
-export class SearchBooksPanelComponent implements OnInit{
+export class SearchBooksPanelComponent {
   protected readonly faSearch = faSearch;
 
-  constructor(private genresService : GenresService) {
-  }
+  @Input() isMyBooks : boolean = false;
 
-  genresList : Genres[] = [];
-  statusList : Status[] = [];
-  @Input() isMyBooks :boolean = false;
-
-  ngOnInit() {
-    this.getAllGenres()
-  }
-
-  getAllGenres() {
-    this.genresService.GetAllGenres().subscribe({
-      next: (response) => {
-        this.genresList = response
-      },
-      error: (error) => {
-        console.error("Test failed:", error);
-      }
-    })
-  }
-
-  getAllStatuses() {
-    console.log("statusy")
-  }
 
 }
 
-export interface Genres {
-  id : number
-  name : string
-}
+
