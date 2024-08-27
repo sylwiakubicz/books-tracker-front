@@ -8,6 +8,8 @@ import {CustomSelectSortComponent} from "../custom-select-sort/custom-select-sor
 import {Status} from "../book-details/book-details.component";
 import {CustomSelectStaticDataComponent} from "../custom-select-static-data/custom-select-static-data.component";
 import {CustomSelectComponent} from "../custom-select/custom-select.component";
+import {NgxPaginationModule} from "ngx-pagination";
+import {FormsModule} from "@angular/forms";
 
 
 @Component({
@@ -20,7 +22,9 @@ import {CustomSelectComponent} from "../custom-select/custom-select.component";
     NgClass,
     CustomSelectSortComponent,
     CustomSelectStaticDataComponent,
-    CustomSelectComponent
+    CustomSelectComponent,
+    NgxPaginationModule,
+    FormsModule
   ],
   providers: [],
   templateUrl: './search-books-panel.component.html',
@@ -32,6 +36,20 @@ export class SearchBooksPanelComponent {
 
   @Input() isMyBooks : boolean = false;
 
+  totalItems = 100;
+  pageSize = 10;
+  currentPage = 1;
+
+  items = this.getData(this.currentPage - 1, this.pageSize);
+
+  pageChanged(event : any) {
+    this.currentPage = event.page;
+    this.items = this.getData(this.currentPage - 1, this.pageSize);
+  }
+
+  getData(currentPage : number, pageSize :number) {
+    return []
+  }
 
 }
 
