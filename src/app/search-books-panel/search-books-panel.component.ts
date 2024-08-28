@@ -30,7 +30,7 @@ import {BooksService} from "../../services/BooksService";
   ],
   providers: [],
   templateUrl: './search-books-panel.component.html',
-  styles: ``
+  styleUrl: `./search-books-panel.component.css`
 })
 
 export class SearchBooksPanelComponent implements OnInit{
