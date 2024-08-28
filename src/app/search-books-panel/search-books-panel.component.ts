@@ -55,6 +55,7 @@ export class SearchBooksPanelComponent implements OnInit{
   handleSearch() {
     console.log(this.search)
     console.log(this.selectedGenre)
+    console.log(this.selectedSort)
     this.getAllBooks();
   }
 
@@ -65,6 +66,10 @@ export class SearchBooksPanelComponent implements OnInit{
 
   onGenreSelected(selectedGenre: string) {
     this.selectedGenre = selectedGenre;
+  }
+
+  onSortSelected(sortSelected: string) {
+    this.selectedSort = sortSelected;
   }
 
   getAllBooks() {
