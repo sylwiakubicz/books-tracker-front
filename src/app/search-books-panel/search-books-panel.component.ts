@@ -54,12 +54,17 @@ export class SearchBooksPanelComponent implements OnInit{
 
   handleSearch() {
     console.log(this.search)
+    console.log(this.selectedGenre)
     this.getAllBooks();
   }
 
   pageChanged(page : number) {
     this.currentPage = page
     this.getAllBooks()
+  }
+
+  onGenreSelected(selectedGenre: string) {
+    this.selectedGenre = selectedGenre;
   }
 
   getAllBooks() {

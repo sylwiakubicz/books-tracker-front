@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {NgClass, NgForOf} from "@angular/common";
 import {GenresService} from "../../services/GenresService";
 
@@ -13,6 +13,7 @@ import {GenresService} from "../../services/GenresService";
   styles: ``
 })
 export class CustomSelectComponent implements OnInit{
+  @Output() genreSelected = new EventEmitter<string>();
 
   constructor(private genresService : GenresService) {
   }
@@ -28,6 +29,7 @@ export class CustomSelectComponent implements OnInit{
   selectOption(option: string) {
     this.selectedOption = option;
     this.isShow = false;
+    this.genreSelected.emit(option)
   }
 
   ngOnInit() {
