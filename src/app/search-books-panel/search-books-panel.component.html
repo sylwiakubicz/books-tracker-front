@@ -45,3 +45,15 @@
   </app-book-card>
 </div>
 
+<pagination-controls (pageChange)="pageChanged($event)"
+                     [maxSize]="5"
+                     [directionLinks]="true"
+                     [autoHide]="true"
+                     [responsive]="true"
+                     previousLabel="Previous"
+                     nextLabel="Next"
+                     screenReaderPaginationLabel="Pagination"
+                     screenReaderPageLabel="page"
+                     screenReaderCurrentLabel="You're on page"
+                     class="flex ml-5 customPagination flex-row-reverse"
+></pagination-controls>
