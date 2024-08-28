@@ -14,9 +14,34 @@
       <app-custom-select-sort class="h-[44px]"></app-custom-select-sort>
       <button class="bg-additional-color text-secondary-color font-bold w-full bigMobile:w-[100px] laptop:w-[150px] mt-[1px] h-[43px] pl-5 pr-5 border-4 border-additional-color">Search</button>
     </div>
-
   </div>
 
-  <pagination-controls (pageChange)="pageChanged($event)" [(ngModel)]="currentPage"></pagination-controls>
-
 </div>
+
+<pagination-controls (pageChange)="pageChanged($event)"
+                     [maxSize]="5"
+                     [directionLinks]="true"
+                     [autoHide]="true"
+                     [responsive]="true"
+                     previousLabel="Previous"
+                     nextLabel="Next"
+                     screenReaderPaginationLabel="Pagination"
+                     screenReaderPageLabel="page"
+                     screenReaderCurrentLabel="You're on page"
+                     class="flex ml-5"
+></pagination-controls>
+
+<div class="flex flex-col bigMobile:gap-3 bigMobile:grid bigMobile:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4 tablet:mr-5 tablet:ml-5">
+  <app-book-card
+    *ngFor="let book of booksData | paginate: {itemsPerPage: pageSize,
+                                                    currentPage: currentPage,
+                                                    totalItems: totalItems}"
+    [title]="book.title"
+    [authors]="book.authors"
+    [covering]="book.covering"
+    [description]="book.description"
+    [id]="book.bookId"
+    class="mb-2">
+  </app-book-card>
+</div>
+

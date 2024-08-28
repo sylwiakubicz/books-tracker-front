@@ -38,7 +38,15 @@ export class HomePageComponent implements OnInit{
   }
 
   getAllBooks() {
-    this.booksService.GetAllBooks().subscribe({
+    this.booksService.GetAllBooks({
+      size: '',
+      sort: '',
+      page: '',
+      title: '',
+      author: '',
+      genre: '',
+      year: ''
+    }).subscribe({
       next: (response) => {
         console.log("Test successful:", response);
         this.booksData = response.content;
