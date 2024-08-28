@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 import {faSearch} from "@fortawesome/free-solid-svg-icons";
 import {NgClass, NgForOf} from "@angular/common";
@@ -48,13 +48,13 @@ export class SearchBooksPanelComponent implements OnInit{
   selectedGenre : string ='';
   selectedSort : string = '';
 
-
-  pageChanged(event : any) {
-    this.currentPage = event.page;
-  }
-
   ngOnInit() {
     this.getAllBooks();
+  }
+
+  pageChanged(page : number) {
+    this.currentPage = page
+    this.getAllBooks()
   }
 
   getAllBooks() {
