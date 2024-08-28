@@ -23,11 +23,8 @@ export class BooksService {
     if (params.page) {
       httpParams = httpParams.set('page', params.page);
     }
-    if (params.title) {
-      httpParams = httpParams.set('title', params.title);
-    }
-    if (params.author) {
-      httpParams = httpParams.set('author', params.author);
+    if (params.search) {
+      httpParams = httpParams.set('title', params.search);
     }
     if (params.genre) {
       httpParams = httpParams.set('genre', params.genre);

@@ -44,7 +44,7 @@ export class SearchBooksPanelComponent implements OnInit{
   totalItems = 0;
   pageSize = 2;
   currentPage = 1;
-  title : string ='';
+  search : string ='';
   selectedGenre : string ='';
   selectedSort : string = '';
 
@@ -62,8 +62,7 @@ export class SearchBooksPanelComponent implements OnInit{
       size: this.pageSize ,
       sort: this.selectedSort,
       page: this.currentPage - 1,
-      title: this.title,
-      author: '',
+      search : this.search,
       genre: this.selectedGenre,
     }).subscribe({
       next: (response) => {
