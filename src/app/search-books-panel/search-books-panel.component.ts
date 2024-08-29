@@ -11,7 +11,6 @@ import {FormsModule} from "@angular/forms";
 import {BookCardComponent} from "../book-card/book-card.component";
 import {Book} from "../home-page/home-page.component";
 import {BooksService} from "../../services/BooksService";
-import {BookStatesService} from "../../services/BookStatesService";
 
 
 @Component({
@@ -36,7 +35,7 @@ import {BookStatesService} from "../../services/BookStatesService";
 
 export class SearchBooksPanelComponent implements OnInit{
   protected readonly faSearch = faSearch;
-  constructor(private booksService : BooksService, private bookStatesService : BookStatesService) {
+  constructor(private booksService : BooksService) {
   }
 
   booksData : Book[] = [];
@@ -70,26 +69,6 @@ export class SearchBooksPanelComponent implements OnInit{
 
   onSortSelected(sortSelected: string) {
     this.selectedSort = sortSelected;
-  }
-
-  getAllBooksState() {
-    this.bookStatesService.GetAllBooksState({
-      size: this.pageSize ,
-      sort: this.selectedSort,
-      page: this.currentPage - 1,
-      status: '',
-      rate: ''
-    }).subscribe({
-      next: (response) => {
-        console.log(response)
-        this.booksData = response.content.map((item: any) => item.book);
-        console.log(this.booksData)
-        this.totalItems = response.totalElements
-      },
-      error : (error) => {
-        console.log(error)
-      }
-    })
   }
 
   getAllBooks() {

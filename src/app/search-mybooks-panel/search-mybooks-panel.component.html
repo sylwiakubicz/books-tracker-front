@@ -1,1 +1,63 @@
-<p>search-mybooks-panel works!</p>
+<div class="pl-2 pr-2 pt-5 flex flex-col w-full bigMobile:pr-5 bigMobile:pl-5">
+  <div class="flex justify-between relative pb-3">
+    <fa-icon [icon]="faSearch" class="text-additional-color absolute top-2.5 left-2"></fa-icon>
+    <input class="w-full h-[44px] border-4 border-secondary-color pl-7 pr-2 focus-visible:outline-none"
+           placeholder="Find here book you looking for"
+           [(ngModel)]="search">
+  </div>
+
+  <div class="flex pb-3 justify-between flex-col tablet:flex-row">
+    <div class="flex flex-col bigMobile:flex-row bigMobile:items-center">
+      <app-custom-select (genreSelected)="onGenreSelected($event)" class="mb-3 bigMobile:mb-0"></app-custom-select>
+      <app-custom-select-static-data class="mb-3 bigMobile:mb-0"></app-custom-select-static-data>
+    </div>
+
+    <div class="flex items-center">
+      <app-custom-select-sort (sortSelected)="onSortSelected($event)" class="h-[44px]"></app-custom-select-sort>
+      <button class="bg-additional-color text-secondary-color font-bold w-full
+                     bigMobile:w-[100px] laptop:w-[150px] mt-[1px] h-[43px] pl-5 pr-5 border-4 border-additional-color"
+              (click)="handleSearch()">Search</button>
+    </div>
+  </div>
+
+</div>
+
+<pagination-controls (pageChange)="pageChanged($event)"
+                     [maxSize]="5"
+                     [directionLinks]="true"
+                     [autoHide]="true"
+                     [responsive]="true"
+                     previousLabel="Previous"
+                     nextLabel="Next"
+                     screenReaderPaginationLabel="Pagination"
+                     screenReaderPageLabel="page"
+                     screenReaderCurrentLabel="You're on page"
+                     class="flex ml-5 customPagination"
+></pagination-controls>
+
+<div class="flex flex-col bigMobile:gap-3 bigMobile:grid bigMobile:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4 tablet:mr-5 tablet:ml-5">
+  <app-mybook-card
+    *ngFor="let book of booksData | paginate: {itemsPerPage: pageSize,
+                                                    currentPage: currentPage,
+                                                    totalItems: totalItems}"
+    [title]="book.title"
+    [authors]="book.authors"
+    [covering]="book.covering"
+    [description]="book.description"
+    [id]="book.bookId"
+    class="mb-2">
+  </app-mybook-card>
+</div>
+
+<pagination-controls (pageChange)="pageChanged($event)"
+                     [maxSize]="5"
+                     [directionLinks]="true"
+                     [autoHide]="true"
+                     [responsive]="true"
+                     previousLabel="Previous"
+                     nextLabel="Next"
+                     screenReaderPaginationLabel="Pagination"
+                     screenReaderPageLabel="page"
+                     screenReaderCurrentLabel="You're on page"
+                     class="flex ml-5 customPagination flex-row-reverse"
+></pagination-controls>
