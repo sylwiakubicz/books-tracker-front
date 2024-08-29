@@ -1,14 +1,21 @@
-<div class="flex flex-row border bg-white w-full h-[200px] p-1">
+<div class="flex flex-row border bg-white h-[200px] p-1 w-full">
   <img [src]="url" alt="book cover" class="object-fill h-full">
 
-  <div class="flex flex-col justify-between">
+  <div class="flex flex-col justify-between w-full">
     <div class="flex flex-col pl-2 justify-start relative">
       <app-status-icon [id]="id" class="absolute top-0 right-1"></app-status-icon>
       <h1 class="text-md font-semibold cursor-pointer mr-5" [routerLink]="['/book', id]">{{title}}</h1>
       <h2 class="text-xs text-gray-600">{{authorsNames}}</h2>
     </div>
     <div class="flex flex-col justify-end pl-2 pr-1">
-      <p class="text-xs text-justify pt-1 pb-1">{{description.substring(0,70)}}...</p>
+      <p class="text-lg font-semibold text-additional-color text-justify pt-1 pb-1">{{status}}</p>
+
+      <div class="h-4 bg-gray-300 rounded-md mb-2">
+        <div class="h-4 bg-additional-color rounded-md mb-2 relative" [style.width.%]="barProgress"></div>
+      </div>
+      <span>
+       {{currentBookPage == null ? 0 : currentBookPage}} / {{totalBookPageNumber}}
+      </span>
       <div class="flex items-center justify-between relative">
         <a [routerLink]="['/book', id]" class="align-middle text-additional-color font-extrabold text-[0.7rem] text-nowrap pr-2 pt-1">Read more</a>
         <hr [routerLink]="['/book', id]" class="h-[2px] bg-additional-color border-none w-[3.5rem] cursor-pointer

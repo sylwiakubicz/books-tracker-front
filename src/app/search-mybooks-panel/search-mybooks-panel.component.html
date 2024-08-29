@@ -37,14 +37,16 @@
 
 <div class="flex flex-col bigMobile:gap-3 bigMobile:grid bigMobile:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4 tablet:mr-5 tablet:ml-5">
   <app-mybook-card
-    *ngFor="let book of booksData | paginate: {itemsPerPage: pageSize,
-                                                    currentPage: currentPage,
-                                                    totalItems: totalItems}"
-    [title]="book.title"
-    [authors]="book.authors"
-    [covering]="book.covering"
-    [description]="book.description"
-    [id]="book.bookId"
+    *ngFor="let bookState of bookStateData | paginate: {itemsPerPage: pageSize,
+                                                             currentPage: currentPage,
+                                                             totalItems: totalItems}"
+    [title]="bookState.book.title"
+    [authors]="bookState.book.authors"
+    [covering]="bookState.book.covering"
+    [id]="bookState.book.bookId"
+    [currentBookPage]="bookState.currentPage"
+    [totalBookPageNumber]="bookState.book.pageNumber"
+    [status]="bookState.status.statusName"
     class="mb-2">
   </app-mybook-card>
 </div>

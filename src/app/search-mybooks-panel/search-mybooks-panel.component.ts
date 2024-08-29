@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {BookStatesService} from "../../services/BookStatesService";
 import {Book} from "../home-page/home-page.component";
 import {faSearch} from "@fortawesome/free-solid-svg-icons";
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
@@ -11,6 +10,8 @@ import {NgxPaginationModule} from "ngx-pagination";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CustomSelectStaticDataComponent} from "../custom-select-static-data/custom-select-static-data.component";
 import {MybookCardComponent} from "../mybook-card/mybook-card.component";
+import {Status} from "../book-details/book-details.component";
+import {BookStatesService} from "../../services/BookStatesService";
 
 
 @Component({
@@ -34,7 +35,7 @@ import {MybookCardComponent} from "../mybook-card/mybook-card.component";
 export class SearchMybooksPanelComponent implements OnInit{
   protected readonly faSearch = faSearch;
 
-  booksData : Book[] = [];
+  bookStateData : BookState[] = [];
 
   totalItems = 0;
   pageSize = 10;
@@ -42,7 +43,6 @@ export class SearchMybooksPanelComponent implements OnInit{
   search : string ='';
   selectedGenre : string ='';
   selectedSort : string = '';
-
 
   constructor(private bookStatesService : BookStatesService) {
   }
@@ -60,9 +60,11 @@ export class SearchMybooksPanelComponent implements OnInit{
       rate: ''
     }).subscribe({
       next: (response) => {
-        console.log(response)
-        this.booksData = response.content.map((item: any) => item.book);
-        console.log(this.booksData)
+        this.bookStateData = response.content.map((item: any): BookState => ({
+          book: item.book,
+          currentPage: item.currentPage,
+          status: item.status
+        }));
         this.totalItems = response.totalElements
       },
       error : (error) => {
@@ -87,4 +89,10 @@ export class SearchMybooksPanelComponent implements OnInit{
   onSortSelected(sortSelected: string) {
     this.selectedSort = sortSelected;
   }
+}
+
+export interface BookState {
+  book: Book;
+  currentPage: number;
+  status: Status;
 }

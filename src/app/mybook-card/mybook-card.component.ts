@@ -4,6 +4,7 @@ import {RouterLink} from "@angular/router";
 import {Author} from "../home-page/home-page.component";
 import {faArrowRight} from "@fortawesome/free-solid-svg-icons";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @Component({
@@ -12,23 +13,27 @@ import {FaIconComponent} from "@fortawesome/angular-fontawesome";
   imports: [
     StatusIconComponent,
     RouterLink,
-    FaIconComponent
+    FaIconComponent,
+    ReactiveFormsModule
   ],
   templateUrl: './mybook-card.component.html',
   styles: ``
 })
 export class MybookCardComponent implements OnInit{
+  @Input() currentBookPage : number = 0;
+  @Input() totalBookPageNumber : number = 0;
+  @Input() status : string = '';
   @Input() title: string = '';
   @Input() authors: Author[] = [];
   @Input() covering: string = '';
-  @Input() description: string = '';
   @Input() id : number = 0;
   url : string = "https://drive.google.com/thumbnail?id=";
   authorsNames: string = "";
-
+  barProgress : number = 0;
 
   ngOnInit() {
     this.manageReceivedData()
+    this.barProgress = (this.currentBookPage / this.totalBookPageNumber) * 100
   }
 
   manageReceivedData() {
