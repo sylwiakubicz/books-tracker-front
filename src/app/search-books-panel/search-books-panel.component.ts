@@ -39,7 +39,6 @@ export class SearchBooksPanelComponent implements OnInit{
   constructor(private booksService : BooksService, private bookStatesService : BookStatesService) {
   }
 
-  @Input() isMyBooks : boolean = false;
   booksData : Book[] = [];
 
   totalItems = 0;

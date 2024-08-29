@@ -8,8 +8,7 @@
 
   <div class="flex pb-3 justify-between flex-col tablet:flex-row">
     <div class="flex flex-col bigMobile:flex-row bigMobile:items-center">
-      <app-custom-select (genreSelected)="onGenreSelected($event)" [class]="isMyBooks ? ' bigMobile:mr-3' : 'mr-0'" class="mb-3 bigMobile:mb-0"></app-custom-select>
-      <app-custom-select-static-data [class]="isMyBooks ? 'mb-3 bigMobile:mb-0' : 'hidden'"></app-custom-select-static-data>
+      <app-custom-select (genreSelected)="onGenreSelected($event)" class="mb-3 bigMobile:mb-0"></app-custom-select>
     </div>
 
     <div class="flex items-center">
