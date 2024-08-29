@@ -13,7 +13,7 @@
     </div>
 
     <div class="flex items-center">
-      <app-custom-select-sort (sortSelected)="onSortSelected($event)" class="h-[44px]"></app-custom-select-sort>
+      <app-custom-select-sort (sortSelected)="onSortSelected($event)" [isMyBooks]="true" class="h-[44px]"></app-custom-select-sort>
       <button class="bg-additional-color text-secondary-color font-bold w-full
                      bigMobile:w-[100px] laptop:w-[150px] mt-[1px] h-[43px] pl-5 pr-5 border-4 border-additional-color"
               (click)="handleSearch()">Search</button>

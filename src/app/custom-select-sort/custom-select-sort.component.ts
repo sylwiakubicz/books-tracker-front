@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {faArrowDown, faArrowUp} from "@fortawesome/free-solid-svg-icons";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {NgClass} from "@angular/common";
@@ -15,6 +15,7 @@ import {NgClass} from "@angular/common";
 })
 export class CustomSelectSortComponent {
   @Output() sortSelected = new EventEmitter<string>();
+  @Input() isMyBooks : boolean = false;
 
   isShow : Boolean = false;
   selectedOption: string = 'Title';

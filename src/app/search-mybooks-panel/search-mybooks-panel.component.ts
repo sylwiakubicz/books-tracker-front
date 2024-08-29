@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Book} from "../home-page/home-page.component";
 import {faSearch} from "@fortawesome/free-solid-svg-icons";
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
@@ -35,6 +35,7 @@ import {BookStatesService} from "../../services/BookStatesService";
 export class SearchMybooksPanelComponent implements OnInit{
   protected readonly faSearch = faSearch;
 
+  @Input() isMyBooks : boolean = false;
   bookStateData : BookState[] = [];
 
   totalItems = 0;
