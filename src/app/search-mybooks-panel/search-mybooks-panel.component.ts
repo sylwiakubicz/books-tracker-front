@@ -40,9 +40,10 @@ export class SearchMybooksPanelComponent implements OnInit{
   totalItems = 0;
   pageSize = 10;
   currentPage = 1;
-  search : string ='';
-  selectedGenre : string ='';
+  search : string = '';
+  selectedGenre : string = '';
   selectedSort : string = '';
+  statusSelected : string = '';
 
   constructor(private bookStatesService : BookStatesService) {
   }
@@ -56,7 +57,7 @@ export class SearchMybooksPanelComponent implements OnInit{
       size: this.pageSize ,
       sort: this.selectedSort,
       page: this.currentPage - 1,
-      status: '',
+      status: this.statusSelected,
       rate: ''
     }).subscribe({
       next: (response) => {
@@ -88,6 +89,10 @@ export class SearchMybooksPanelComponent implements OnInit{
 
   onSortSelected(sortSelected: string) {
     this.selectedSort = sortSelected;
+  }
+
+  onStatusSelected(statusSelected : string) {
+    this.statusSelected = statusSelected;
   }
 }
 

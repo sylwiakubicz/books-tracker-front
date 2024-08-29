@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {NgClass} from "@angular/common";
 
@@ -13,6 +13,7 @@ import {NgClass} from "@angular/common";
   styles: ``
 })
 export class CustomSelectStaticDataComponent {
+  @Output() statusSelected = new EventEmitter<string>
 
   isShow : Boolean = false;
   selectedOption: string = 'Status';
@@ -24,6 +25,7 @@ export class CustomSelectStaticDataComponent {
   selectOption(option: string) {
     this.selectedOption = option;
     this.isShow = false;
+    this.statusSelected.emit(option)
   }
 
 }
