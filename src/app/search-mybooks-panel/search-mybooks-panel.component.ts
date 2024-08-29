@@ -58,7 +58,8 @@ export class SearchMybooksPanelComponent implements OnInit{
       sort: this.selectedSort,
       page: this.currentPage - 1,
       status: this.statusSelected,
-      rate: ''
+      rate: '',
+      genre: this.selectedGenre
     }).subscribe({
       next: (response) => {
         this.bookStateData = response.content.map((item: any): BookState => ({

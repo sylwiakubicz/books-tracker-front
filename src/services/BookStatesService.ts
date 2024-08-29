@@ -28,6 +28,9 @@ export class BookStatesService {
     if (params.status) {
       httpParams = httpParams.set('status', params.status);
     }
+    if (params.genre) {
+      httpParams = httpParams.set('genre', params.genre);
+    }
     if (params.rate) {
       httpParams = httpParams.set('rate', params.rate);
     }
