@@ -8,12 +8,12 @@
       <h2 class="text-xs text-gray-600">{{authorsNames}}</h2>
     </div>
     <div class="flex flex-col justify-end pl-2 pr-1">
-      <p class="text-lg font-semibold text-additional-color text-justify pt-1 pb-1">{{status}}</p>
+      <p class="text-[0.8rem] font-semibold text-additional-color text-justify pt-1 pb-1">{{status}}</p>
 
       <div class="h-2 bg-gray-300 rounded-md mb-2">
         <div class="h-2 bg-additional-color rounded-md mb-2 relative" [style.width.%]="barProgress"></div>
       </div>
-      <span class="text-sm pb-3">
+      <span class="text-[0.6rem] pb-3">
        {{currentBookPage == null ? 0 : currentBookPage}} / {{totalBookPageNumber}}
       </span>
 
