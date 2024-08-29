@@ -6,7 +6,7 @@
           </span>
     <fa-icon [icon]="sort === 'asc' ? faArrowUp : faArrowDown" class="text-additional-color pr-1"></fa-icon>
   </button>
-  <ul class="absolute w-full bg-white border-secondary-color border-4" [ngClass]="isShow ? '' : 'hidden'">
+  <ul [class]="isMyBooks ? 'hidden' : ''" class="absolute w-full bg-white border-secondary-color border-4" [ngClass]="isShow ? '' : 'hidden'">
     <li class="px-2 hover:bg-gray-200 flex justify-between items-center" (click)="selectOption('Title', 'asc', 'title,asc')">
       Title
       <fa-icon [icon]="faArrowUp" class="text-additional-color"></fa-icon>
@@ -15,28 +15,30 @@
       Title
       <fa-icon [icon]="faArrowDown" class="text-additional-color"></fa-icon>
     </li>
-    <li class="px-2 hover:bg-gray-200 flex justify-between items-center" [class]="isMyBooks ? 'hidden' : ''" (click)="selectOption('Publication year', 'asc', 'publicationYear,asc')">
+    <li class="px-2 hover:bg-gray-200 flex justify-between items-center" (click)="selectOption('Publication year', 'asc', 'publicationYear,asc')">
       Publication year
       <fa-icon [icon]="faArrowUp" class="text-additional-color"></fa-icon>
     </li>
-    <li class="px-2 hover:bg-gray-200 flex justify-between items-center" [class]="isMyBooks ? 'hidden' : ''" (click)="selectOption('Publication year', 'desc', 'publicationYear,desc')">
+    <li class="px-2 hover:bg-gray-200 flex justify-between items-center"  (click)="selectOption('Publication year', 'desc', 'publicationYear,desc')">
       Publication year
       <fa-icon [icon]="faArrowDown" class="text-additional-color"></fa-icon>
     </li>
+    </ul>
 
-    <li class="px-2 hover:bg-gray-200 flex justify-between items-center" [class]="isMyBooks ? '' : 'hidden'" (click)="selectOption('Rate', 'asc', 'rate,asc')">
+    <ul [class]="isMyBooks ? '' : 'hidden'" class="absolute w-full bg-white border-secondary-color border-4" [ngClass]="isShow ? '' : 'hidden'">
+    <li class="px-2 hover:bg-gray-200 flex justify-between items-center" (click)="selectOption('Rate', 'asc', 'rate,asc')">
       Rate
       <fa-icon [icon]="faArrowUp" class="text-additional-color"></fa-icon>
     </li>
-    <li class="px-2 hover:bg-gray-200 flex justify-between items-center" [class]="isMyBooks ? '' : 'hidden'" (click)="selectOption('Rate', 'desc', 'rate,desc')">
+    <li class="px-2 hover:bg-gray-200 flex justify-between items-center" (click)="selectOption('Rate', 'desc', 'rate,desc')">
       Rate
       <fa-icon [icon]="faArrowDown" class="text-additional-color"></fa-icon>
     </li>
-    <li class="px-2 hover:bg-gray-200 flex justify-between items-center" [class]="isMyBooks ? '' : 'hidden'" (click)="selectOption('Date in status', 'asc', 'startDate,asc')">
+    <li class="px-2 hover:bg-gray-200 flex justify-between items-center" (click)="selectOption('Date in status', 'asc', 'startDate,asc')">
       Date in status
       <fa-icon [icon]="faArrowUp" class="text-additional-color"></fa-icon>
     </li>
-    <li class="px-2 hover:bg-gray-200 flex justify-between items-center" [class]="isMyBooks ? '' : 'hidden'" (click)="selectOption('Date in status', 'desc', 'startDate,desc')">
+    <li class="px-2 hover:bg-gray-200 flex justify-between items-center" (click)="selectOption('Date in status', 'desc', 'startDate,desc')">
       Date in status
       <fa-icon [icon]="faArrowDown" class="text-additional-color"></fa-icon>
     </li>

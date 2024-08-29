@@ -18,7 +18,7 @@ export class CustomSelectSortComponent {
   @Input() isMyBooks : boolean = false;
 
   isShow : Boolean = false;
-  selectedOption: string = 'Title';
+  selectedOption: string = 'Sort';
   sort : string = 'asc';
 
   toggleDropdown() {
