@@ -10,12 +10,13 @@
     <div class="flex flex-col justify-end pl-2 pr-1">
       <p class="text-lg font-semibold text-additional-color text-justify pt-1 pb-1">{{status}}</p>
 
-      <div class="h-4 bg-gray-300 rounded-md mb-2">
-        <div class="h-4 bg-additional-color rounded-md mb-2 relative" [style.width.%]="barProgress"></div>
+      <div class="h-2 bg-gray-300 rounded-md mb-2">
+        <div class="h-2 bg-additional-color rounded-md mb-2 relative" [style.width.%]="barProgress"></div>
       </div>
-      <span>
+      <span class="text-sm pb-3">
        {{currentBookPage == null ? 0 : currentBookPage}} / {{totalBookPageNumber}}
       </span>
+
       <div class="flex items-center justify-between relative">
         <a [routerLink]="['/book', id]" class="align-middle text-additional-color font-extrabold text-[0.7rem] text-nowrap pr-2 pt-1">Read more</a>
         <hr [routerLink]="['/book', id]" class="h-[2px] bg-additional-color border-none w-[3.5rem] cursor-pointer

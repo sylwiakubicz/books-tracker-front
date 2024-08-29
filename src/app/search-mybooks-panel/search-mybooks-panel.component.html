@@ -6,9 +6,9 @@
            [(ngModel)]="search">
   </div>
 
-  <div class="flex pb-3 justify-between flex-col tablet:flex-row">
+  <div class="flex pb-3 justify-between flex-col tablet:flex-row bigMobile:mb-2">
     <div class="flex flex-col bigMobile:flex-row bigMobile:items-center">
-      <app-custom-select (genreSelected)="onGenreSelected($event)" class="mb-3 bigMobile:mb-0"></app-custom-select>
+      <app-custom-select (genreSelected)="onGenreSelected($event)" class="mb-3 bigMobile:mb-0 bigMobile:mr-3"></app-custom-select>
       <app-custom-select-static-data class="mb-3 bigMobile:mb-0"></app-custom-select-static-data>
     </div>
 
