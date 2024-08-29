@@ -58,7 +58,6 @@ export class SearchMybooksPanelComponent implements OnInit{
       sort: this.selectedSort,
       page: this.currentPage - 1,
       status: this.statusSelected,
-      rate: '',
       genre: this.selectedGenre
     }).subscribe({
       next: (response) => {

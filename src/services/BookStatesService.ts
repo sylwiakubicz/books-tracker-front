@@ -31,10 +31,6 @@ export class BookStatesService {
     if (params.genre) {
       httpParams = httpParams.set('genre', params.genre);
     }
-    if (params.rate) {
-      httpParams = httpParams.set('rate', params.rate);
-    }
-    console.log(httpParams)
 
     return this.http.get("http://localhost:8080/bookstate", {
       params: httpParams,
