@@ -1,5 +1,8 @@
-<div class="bg-primary-color">
-  <app-banner [isSearch]="false"></app-banner>
-  <app-search-mybooks-panel></app-search-mybooks-panel>
+<div class="flex flex-col justify-between bg-primary-color min-h-screen">
+  <div>
+    <app-navbar></app-navbar>
+    <app-banner [isSearch]="false"></app-banner>
+    <app-search-mybooks-panel></app-search-mybooks-panel>
+  </div>
+  <app-footer></app-footer>
 </div>
-
