@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Data} from "@angular/router";
 
 @Component({
   selector: 'app-footer',
@@ -8,5 +9,6 @@ import { Component } from '@angular/core';
   styles: ``
 })
 export class FooterComponent {
+  year : number = new Date().getFullYear()
 
 }
