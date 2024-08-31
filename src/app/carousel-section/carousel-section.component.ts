@@ -45,27 +45,28 @@ export class CarouselSectionComponent implements AfterViewInit, OnChanges{
   @ViewChildren(CarouselItemComponent, { read: ElementRef }) carouselItems!: QueryList<ElementRef>;
 
   ngAfterViewInit() {
-    this.setupCarousel();
-    this.autoPlay();
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (this.booksData) {
+    if (this.carouselElement) {
       this.setupCarousel();
       this.autoPlay();
     }
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['booksData'] && this.booksData) {
+      if (this.carouselElement) {
+        this.setupCarousel();
+        this.autoPlay();
+      }
+    }
+  }
+
   setupCarousel() {
-    const carousel = this.carouselElement.nativeElement;
-    if (carousel) {
-      const firstCard = this.carouselItems.first.nativeElement;
-      if (firstCard) {
+    if (this.carouselElement && this.carouselElement.nativeElement) {
+      const carousel = this.carouselElement.nativeElement;
+      const firstCard = this.carouselItems.first?.nativeElement;
+
+      if (carousel && firstCard) {
         const firstCardWidth = firstCard.offsetWidth;
-        console.log("cała szerokość")
-        console.log(carousel.offsetWidth)
-        console.log("szerkość jednej karty")
-        console.log(firstCardWidth)
         const cardsPerView = Math.round(carousel.offsetWidth / firstCardWidth) - 1;
 
         const carouselChildren = Array.from(carousel.children);
@@ -77,9 +78,6 @@ export class CarouselSectionComponent implements AfterViewInit, OnChanges{
         carouselChildren.slice(0, cardsPerView).forEach(card => {
           carousel.insertAdjacentHTML("beforeend", (card as HTMLElement).outerHTML);
         });
-
-        console.log('Adding elements at the beginning:', carouselChildren.slice(-cardsPerView).map(card => card.outerHTML));
-        console.log('Adding elements at the end:', carouselChildren.slice(0, cardsPerView).map(card => card.outerHTML));
       }
     }
   }
@@ -87,19 +85,21 @@ export class CarouselSectionComponent implements AfterViewInit, OnChanges{
   autoPlay() {
     if (window.innerWidth < 680) return;
 
-    const carousel = this.carouselElement.nativeElement;
-    const firstCard = this.carouselItems.first.nativeElement;
+    if (this.carouselElement && this.carouselElement.nativeElement) {
+      const carousel = this.carouselElement.nativeElement;
+      const firstCard = this.carouselItems.first?.nativeElement;
 
-    if (firstCard) {
-      const firstCardWidth = firstCard.offsetWidth;
+      if (firstCard) {
+        const firstCardWidth = firstCard.offsetWidth;
 
-      clearTimeout(this.timeoutId);
+        clearTimeout(this.timeoutId);
 
-      if (!carousel.matches(":hover")) {
-        this.timeoutId = setTimeout(() => {
-          carousel.scrollLeft += firstCardWidth;
-          this.autoPlay();
-        }, 2500);
+        if (!carousel.matches(":hover")) {
+          this.timeoutId = setTimeout(() => {
+            carousel.scrollLeft += firstCardWidth;
+            this.autoPlay();
+          }, 2500);
+        }
       }
     }
   }
