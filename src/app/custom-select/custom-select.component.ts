@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild} from '@angular/core';
 import {NgClass, NgForOf} from "@angular/common";
 import {GenresService} from "../../services/GenresService";
 
@@ -14,6 +14,8 @@ import {GenresService} from "../../services/GenresService";
 })
 export class CustomSelectComponent implements OnInit{
   @Output() genreSelected = new EventEmitter<string>();
+
+  @ViewChild('dropdown', { static: false }) dropdown!: ElementRef;
 
   constructor(private genresService : GenresService) {
   }
@@ -47,6 +49,12 @@ export class CustomSelectComponent implements OnInit{
     })
   }
 
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: MouseEvent) {
+    if (this.isShow && this.dropdown && !this.dropdown.nativeElement.contains(event.target)) {
+      this.isShow = false;
+    }
+  }
 }
 
 export interface Genres {
