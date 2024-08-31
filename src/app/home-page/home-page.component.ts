@@ -10,6 +10,8 @@ import {CarouselWrapperPopularComponent} from "../carousel-wrapper-popular/carou
 import {CarouselWrapperRandomComponent} from "../carousel-wrapper-random/carousel-wrapper-random.component";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
+import {RouterOutlet} from "@angular/router";
+import {FooterComponent} from "../footer/footer.component";
 
 @Component({
   selector: 'app-home-page',
@@ -23,7 +25,9 @@ import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
     CarouselSectionComponent,
     CarouselWrapperPopularComponent,
     CarouselWrapperRandomComponent,
-    FaIconComponent
+    FaIconComponent,
+    RouterOutlet,
+    FooterComponent
   ],
   templateUrl: './home-page.component.html',
 })

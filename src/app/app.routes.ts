@@ -4,7 +4,6 @@ import {RegisterPageComponent} from "./register-page/register-page.component";
 import {HomePageComponent} from "./home-page/home-page.component";
 import {MyBooksPageComponent} from "./my-books-page/my-books-page.component";
 import {BookPageComponent} from "./book-page/book-page.component";
-import {NavbarComponent} from "./navbar/navbar.component";
 import {BooksPageComponent} from "./books-page/books-page.component";
 import {PageNotfoundComponent} from "./page-notfound/page-notfound.component";
 

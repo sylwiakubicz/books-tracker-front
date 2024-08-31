@@ -3,6 +3,9 @@ import {BannerComponent} from "../banner/banner.component";
 import {SearchBooksPanelComponent} from "../search-books-panel/search-books-panel.component";
 import {BookCardComponent} from "../book-card/book-card.component";
 import {NgForOf} from "@angular/common";
+import {NavbarComponent} from "../navbar/navbar.component";
+import {RouterOutlet} from "@angular/router";
+import {FooterComponent} from "../footer/footer.component";
 
 @Component({
   selector: 'app-books-page',
@@ -11,7 +14,10 @@ import {NgForOf} from "@angular/common";
     BannerComponent,
     SearchBooksPanelComponent,
     BookCardComponent,
-    NgForOf
+    NgForOf,
+    NavbarComponent,
+    RouterOutlet,
+    FooterComponent
   ],
   templateUrl: './books-page.component.html',
   styles: ``
