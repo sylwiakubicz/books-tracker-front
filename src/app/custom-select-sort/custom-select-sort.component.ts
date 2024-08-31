@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild} from '@angular/core';
 import {faArrowDown, faArrowUp} from "@fortawesome/free-solid-svg-icons";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {NgClass} from "@angular/common";
@@ -21,6 +21,8 @@ export class CustomSelectSortComponent {
   selectedOption: string = 'Sort';
   sort : string = 'asc';
 
+  @ViewChild('dropdown', { static: false }) dropdown!: ElementRef;
+
   toggleDropdown() {
     this.isShow = !this.isShow;
   }
@@ -30,6 +32,13 @@ export class CustomSelectSortComponent {
     this.isShow = false;
     this.sort = sort;
     this.sortSelected.emit(sortSelected)
+  }
+
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: MouseEvent) {
+    if (this.isShow && this.dropdown && !this.dropdown.nativeElement.contains(event.target)) {
+      this.isShow = false;
+    }
   }
 
   protected readonly faArrowUp = faArrowUp;
