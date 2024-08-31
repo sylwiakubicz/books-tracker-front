@@ -1,13 +1,13 @@
 <div class="bg-primary-color">
   <app-banner [isSearch]="true"></app-banner>
 
-  <div class="flex justify-center w-full pt-5">
-    <input type="text" class="rounded-full h-[44px] w-[15rem] drop-shadow-md mr-1.5 pl-5 pr-5 focus-visible:outline-none
-                              tablet:w-[30rem]" placeholder="Search..." >
+  <a class="flex justify-center w-full pt-5" href="/books">
+    <button class="rounded-full bg-white text-left h-[44px] w-[15rem] drop-shadow-md mr-1.5 pl-5 pr-5 focus-visible:outline-none cursor-pointer
+                              tablet:w-[30rem]">Search...</button>
     <button class="rounded-full bg-akcent-color w-[44px] h-[44px] border-secondary-color border-2 drop-shadow-md">
       <fa-icon [icon]="faMagnifyingGlass" class="text-secondary-color"></fa-icon>
     </button>
-  </div>
+  </a>
 
   <h2 class="pl-5 pr-5 pt-5 pb-2 text-left font-bold text-xl text-additional-color">Welcome to BooksTracker!</h2>
   <p class="pl-5 pr-5 pb-5 text-justify font-semibold">
