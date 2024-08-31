@@ -6,6 +6,7 @@ import {MyBooksPageComponent} from "./my-books-page/my-books-page.component";
 import {BookPageComponent} from "./book-page/book-page.component";
 import {NavbarComponent} from "./navbar/navbar.component";
 import {BooksPageComponent} from "./books-page/books-page.component";
+import {PageNotfoundComponent} from "./page-notfound/page-notfound.component";
 
 export const routes: Routes = [
   {path: "", component: HomePageComponent},
@@ -13,6 +14,7 @@ export const routes: Routes = [
   {path: "mybooks", component: MyBooksPageComponent},
   {path: "book/:id", component: BookPageComponent},
   {path: 'login', component: LoginPageComponent, title:"Sign in"},
-  {path: 'register', component: RegisterPageComponent, title: "Register"}
+  {path: 'register', component: RegisterPageComponent, title: "Register"},
+  {path: '**', component: PageNotfoundComponent}
 ];
 
