@@ -1,7 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 import {faSearch} from "@fortawesome/free-solid-svg-icons";
-import {NgClass, NgForOf} from "@angular/common";
+import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
 import {CustomSelectSortComponent} from "../custom-select-sort/custom-select-sort.component";
 import {CustomSelectStaticDataComponent} from "../custom-select-static-data/custom-select-static-data.component";
@@ -13,6 +13,7 @@ import {Book} from "../home-page/home-page.component";
 import {BooksService} from "../../services/BooksService";
 import {AuthService} from "../../services/AuthService";
 import {Router} from "@angular/router";
+import {LoadingComponent} from "../loading/loading.component";
 
 
 @Component({
@@ -28,7 +29,9 @@ import {Router} from "@angular/router";
     CustomSelectComponent,
     NgxPaginationModule,
     FormsModule,
-    BookCardComponent
+    BookCardComponent,
+    NgIf,
+    LoadingComponent
   ],
   providers: [],
   templateUrl: './search-books-panel.component.html',
@@ -48,6 +51,7 @@ export class SearchBooksPanelComponent implements OnInit{
   search : string ='';
   selectedGenre : string ='';
   selectedSort : string = '';
+  isLoading : boolean | undefined;
 
   ngOnInit() {
     this.getAllBooks()
@@ -83,6 +87,7 @@ export class SearchBooksPanelComponent implements OnInit{
   }
 
   getAllBooks() {
+    this.isLoading = true
     this.booksService.GetAllBooks({
       size: this.pageSize ,
       sort: this.selectedSort,
@@ -94,9 +99,11 @@ export class SearchBooksPanelComponent implements OnInit{
         console.log("Test successful:", response);
         this.booksData = response.content;
         this.totalItems = response.totalElements
+        this.isLoading = false;
       },
       error: (error) => {
         console.error("Test failed:", error);
+        this.isLoading = false;
       }
     });
   }

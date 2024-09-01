@@ -5,7 +5,7 @@ import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 import {BookCardComponent} from "../book-card/book-card.component";
 import {CustomSelectComponent} from "../custom-select/custom-select.component";
 import {CustomSelectSortComponent} from "../custom-select-sort/custom-select-sort.component";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {NgxPaginationModule} from "ngx-pagination";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CustomSelectStaticDataComponent} from "../custom-select-static-data/custom-select-static-data.component";
@@ -14,6 +14,7 @@ import {Status} from "../book-details/book-details.component";
 import {BookStatesService} from "../../services/BookStatesService";
 import {AuthService} from "../../services/AuthService";
 import {Router} from "@angular/router";
+import {LoadingComponent} from "../loading/loading.component";
 
 
 @Component({
@@ -29,7 +30,9 @@ import {Router} from "@angular/router";
     ReactiveFormsModule,
     FormsModule,
     CustomSelectStaticDataComponent,
-    MybookCardComponent
+    MybookCardComponent,
+    LoadingComponent,
+    NgIf
   ],
   templateUrl: './search-mybooks-panel.component.html',
   styleUrl: `./search-mybooks-panel.component.css`
@@ -47,6 +50,7 @@ export class SearchMybooksPanelComponent implements OnInit{
   selectedGenre : string = '';
   selectedSort : string = '';
   statusSelected : string = '';
+  isLoading : boolean | undefined;
 
   constructor(private bookStatesService : BookStatesService, private authService: AuthService, private router: Router) {
   }
@@ -56,6 +60,7 @@ export class SearchMybooksPanelComponent implements OnInit{
   }
 
   getAllBooksState() {
+    this.isLoading = true
     this.bookStatesService.GetAllBooksState({
       size: this.pageSize ,
       sort: this.selectedSort,
@@ -71,9 +76,11 @@ export class SearchMybooksPanelComponent implements OnInit{
           status: item.status
         }));
         this.totalItems = response.totalElements
+        this.isLoading = false
       },
       error : (error) => {
         console.log(error)
+        this.isLoading = false
       }
     })
   }

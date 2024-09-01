@@ -34,7 +34,8 @@
                      class="flex ml-5 customPagination"
 ></pagination-controls>
 
-<div class="flex flex-col bigMobile:gap-3 bigMobile:grid bigMobile:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4 tablet:mr-5 tablet:ml-5">
+<app-loading [isLoading]="isLoading"></app-loading>
+<div *ngIf="!isLoading" class="flex flex-col bigMobile:gap-3 bigMobile:grid bigMobile:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4 tablet:mr-5 tablet:ml-5">
   <app-book-card
     *ngFor="let book of booksData | paginate: {itemsPerPage: pageSize,
                                                     currentPage: currentPage,
