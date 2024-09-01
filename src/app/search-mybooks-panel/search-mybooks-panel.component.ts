@@ -12,6 +12,8 @@ import {CustomSelectStaticDataComponent} from "../custom-select-static-data/cust
 import {MybookCardComponent} from "../mybook-card/mybook-card.component";
 import {Status} from "../book-details/book-details.component";
 import {BookStatesService} from "../../services/BookStatesService";
+import {AuthService} from "../../services/AuthService";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -46,7 +48,7 @@ export class SearchMybooksPanelComponent implements OnInit{
   selectedSort : string = '';
   statusSelected : string = '';
 
-  constructor(private bookStatesService : BookStatesService) {
+  constructor(private bookStatesService : BookStatesService, private authService: AuthService, private router: Router) {
   }
 
   ngOnInit() {
@@ -77,12 +79,24 @@ export class SearchMybooksPanelComponent implements OnInit{
   }
 
   handleSearch() {
-    this.getAllBooksState();
+    this.authService.GetUserRole().subscribe(role => {
+      if (role === null) {
+        this.router.navigate(['/login']);
+      } else {
+        this.getAllBooksState();
+      }
+    })
   }
 
   pageChanged(page : number) {
     this.currentPage = page
-    this.getAllBooksState()
+    this.authService.GetUserRole().subscribe(role => {
+      if (role === null) {
+        this.router.navigate(['/login']);
+      } else {
+        this.getAllBooksState();
+      }
+    })
   }
 
   onGenreSelected(selectedGenre: string) {

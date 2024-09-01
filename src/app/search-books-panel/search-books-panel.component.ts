@@ -11,6 +11,8 @@ import {FormsModule} from "@angular/forms";
 import {BookCardComponent} from "../book-card/book-card.component";
 import {Book} from "../home-page/home-page.component";
 import {BooksService} from "../../services/BooksService";
+import {AuthService} from "../../services/AuthService";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -35,7 +37,7 @@ import {BooksService} from "../../services/BooksService";
 
 export class SearchBooksPanelComponent implements OnInit{
   protected readonly faSearch = faSearch;
-  constructor(private booksService : BooksService) {
+  constructor(private booksService : BooksService, private authService: AuthService, private router: Router) {
   }
 
   booksData : Book[] = [];
@@ -48,19 +50,28 @@ export class SearchBooksPanelComponent implements OnInit{
   selectedSort : string = '';
 
   ngOnInit() {
-    this.getAllBooks();
+    this.getAllBooks()
   }
 
   handleSearch() {
-    console.log(this.search)
-    console.log(this.selectedGenre)
-    console.log(this.selectedSort)
-    this.getAllBooks();
+    this.authService.GetUserRole().subscribe(role => {
+      if (role === null) {
+        this.router.navigate(['/login']);
+      } else {
+          this.getAllBooks();
+      }
+    })
   }
 
   pageChanged(page : number) {
     this.currentPage = page
-    this.getAllBooks()
+    this.authService.GetUserRole().subscribe(role => {
+      if (role === null) {
+        this.router.navigate(['/login']);
+      } else {
+        this.getAllBooks();
+      }
+    })
   }
 
   onGenreSelected(selectedGenre: string) {
