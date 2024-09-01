@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SubmitBtnComponent} from "../submit-btn/submit-btn.component";
-import {NgClass} from "@angular/common";
+import {NgClass, NgIf} from "@angular/common";
 import {AuthService} from "../../services/AuthService";
 import {Router} from "@angular/router";
 
@@ -9,7 +9,8 @@ import {Router} from "@angular/router";
   standalone: true,
   imports: [
     SubmitBtnComponent,
-    NgClass
+    NgClass,
+    NgIf
   ],
   templateUrl: './navbar.component.html',
   styles: ``

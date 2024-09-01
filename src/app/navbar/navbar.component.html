@@ -1,4 +1,4 @@
-<nav class="flex flex-col pr-5 pl-5 bg-akcent-color shadow pt-3 pb-3 tablet:flex-row tablet:justify-between tablet:items-center tablet:pt-0 tablet:pb-0">
+<nav [class]="isLoggedIn ? 'flex-col' : 'flex-row'" class="flex pr-5 pl-5 bg-akcent-color shadow pt-3 pb-3 tablet:flex-row justify-between tablet:items-center tablet:pt-0 tablet:pb-0">
   <div class="flex justify-between items-center">
     <div class="font-bold text-secondary-color text-xl tablet:text-2xl">
       <a href="" class="flex items-center">
@@ -6,20 +6,12 @@
         <p class="pl-2 text-[1.7rem] pt-1.5 ">PANDARY</p>
       </a>
     </div>
-    <button [ngClass]="{'border-secondary-color' : openedBool}" class="flex items-center px-3 py-2 border rounded hover:text-white tablet:hidden bg-secondary-color" (click)="toggleOpenedBool()">
+    <button *ngIf="isLoggedIn" [ngClass]="{'border-secondary-color' : openedBool}" class="flex items-center px-3 py-2 border rounded hover:text-white tablet:hidden bg-secondary-color" (click)="toggleOpenedBool()">
       <svg class="h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
     </button>
   </div>
 
-  <div [ngClass]="openedBool ? 'max-h-screen' : 'max-h-0'" class="overflow-hidden transition-all duration-500 ease-in-out tablet:max-h-screen items-center">
-
-    <ul [class]="!isLoggedIn ? '' : 'hidden'" class="flex flex-col items-end font-semibold pt-3 pb-3 tablet:flex-row tablet:text-lg">
-      <li class="tablet:pl-5">
-        <a href="/login" class="text-secondary-color hover:underline hover:underline-offset-4 hover:transition-all">Sign In</a>
-      </li>
-    </ul>
-
-
+  <div *ngIf="isLoggedIn" [ngClass]="openedBool ? 'max-h-screen' : 'max-h-0'" class="overflow-hidden transition-all duration-500 ease-in-out tablet:max-h-screen items-center">
     <ul [class]="isLoggedIn ? '' : 'hidden'"  class="flex flex-col items-end font-semibold pt-3 pb-3 tablet:flex-row tablet:text-lg">
       <li class="hover:underline hover:underline-offset-4 hover:transition-all hover:text-gray-700 tablet:pr-5 tablet:pl-5 text-primary-color">
         <a href="/books">Books</a>
@@ -32,6 +24,15 @@
       </li>
     </ul>
   </div>
+
+  <div *ngIf="!isLoggedIn" class="flex items-center justify-center">
+    <ul [class]="!isLoggedIn ? '' : 'hidden'" class="flex items-end font-semibold pt-3 pb-3 flex-row tablet:text-lg">
+      <li class="tablet:pl-5">
+        <a href="/login" class="text-secondary-color hover:underline hover:underline-offset-4 hover:transition-all">Sign In</a>
+      </li>
+    </ul>
+  </div>
+
 </nav>
 
 
