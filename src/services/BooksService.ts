@@ -59,4 +59,19 @@ export class BooksService {
     )
   }
 
+  GetNewestBooks(genre : string) : Observable<any> {
+    let httpParams = new HttpParams();
+    if (genre){
+      httpParams = httpParams.set('genre', genre);
+    }
+    return this.http.get("http://localhost:8080/books/get/newest", {
+      params: httpParams,
+      withCredentials: true
+    }).pipe(
+      map(response => {
+        return response;
+      })
+    )
+  }
+
 }
