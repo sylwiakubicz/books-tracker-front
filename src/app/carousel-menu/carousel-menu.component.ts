@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-carousel-menu',
@@ -8,5 +8,11 @@ import { Component } from '@angular/core';
   styles: ``
 })
 export class CarouselMenuComponent {
+  @Output() genre = new EventEmitter<string>();
+
+  handleGenreChange(genre : string) {
+    this.genre.emit(genre)
+  }
+
 
 }
