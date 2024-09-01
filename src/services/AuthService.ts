@@ -37,4 +37,10 @@ export class AuthService {
       })
     );
   }
+
+  GetUserRole() : Observable<String | null> {
+    return this.http.get<{role: string}>("http://localhost:8080/api/auth/role", {withCredentials: true}).pipe(
+      map(response => response.role || null)
+    )
+  }
 }
