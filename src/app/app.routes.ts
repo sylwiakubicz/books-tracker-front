@@ -32,12 +32,15 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginPageComponent,
-    title:"Sign in"
+    title:"Sign in",
+    canActivate: [authGuard]
   },
   {
     path: 'register',
     component: RegisterPageComponent,
-    title: "Register"},
+    title: "Register",
+    canActivate: [authGuard]
+  },
   {
     path: 'admin',
     component: AdminPageComponent,
