@@ -54,7 +54,8 @@
   </app-mybook-card>
 </div>
 
-<pagination-controls (pageChange)="pageChanged($event)"
+<pagination-controls *ngIf="!isLoading"
+                     (pageChange)="pageChanged($event)"
                      [maxSize]="5"
                      [directionLinks]="true"
                      [autoHide]="true"
