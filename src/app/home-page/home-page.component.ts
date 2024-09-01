@@ -34,25 +34,14 @@ import {AuthService} from "../../services/AuthService";
   templateUrl: './home-page.component.html',
 })
 export class HomePageComponent implements OnInit{
-  randomBooksData : Book[] | undefined;
 
-  constructor(private booksService: BooksService,  private authService : AuthService, private router : Router) {
+  constructor(private authService : AuthService, private router : Router) {
   }
 
   ngOnInit() {
     this.authService.GetUserRole().subscribe(role => {
       if (role === "ROLE_ADMIN") {
         this.router.navigate(['/admin']);
-      } else {
-        this.getRandomBooks()
-      }
-    })
-  }
-
-  getRandomBooks() {
-    this.booksService.GetRandomBooks().subscribe({
-      next: (response) => {
-        this.randomBooksData = response;
       }
     })
   }
