@@ -14,6 +14,7 @@ import {BooksService} from "../../services/BooksService";
 import {AuthService} from "../../services/AuthService";
 import {Router} from "@angular/router";
 import {LoadingComponent} from "../loading/loading.component";
+import {ResetFiltersComponent} from "../reset-filters/reset-filters.component";
 
 
 @Component({
@@ -31,7 +32,8 @@ import {LoadingComponent} from "../loading/loading.component";
     FormsModule,
     BookCardComponent,
     NgIf,
-    LoadingComponent
+    LoadingComponent,
+    ResetFiltersComponent
   ],
   providers: [],
   templateUrl: './search-books-panel.component.html',
@@ -48,16 +50,18 @@ export class SearchBooksPanelComponent implements OnInit{
   totalItems = 0;
   pageSize = 10;
   currentPage = 1;
-  search : string ='';
-  selectedGenre : string ='';
+  search : string = '';
+  selectedGenre : string = '';
   selectedSort : string = '';
   isLoading : boolean | undefined;
+  changeInFilters : boolean | undefined;
 
   ngOnInit() {
     this.getAllBooks()
   }
 
   handleSearch() {
+    this.changeInFilters = true;
     this.authService.GetUserRole().subscribe(role => {
       if (role === null) {
         this.router.navigate(['/login']);

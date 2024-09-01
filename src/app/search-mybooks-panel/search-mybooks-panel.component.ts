@@ -15,6 +15,7 @@ import {BookStatesService} from "../../services/BookStatesService";
 import {AuthService} from "../../services/AuthService";
 import {Router} from "@angular/router";
 import {LoadingComponent} from "../loading/loading.component";
+import {ResetFiltersComponent} from "../reset-filters/reset-filters.component";
 
 
 @Component({
@@ -32,7 +33,8 @@ import {LoadingComponent} from "../loading/loading.component";
     CustomSelectStaticDataComponent,
     MybookCardComponent,
     LoadingComponent,
-    NgIf
+    NgIf,
+    ResetFiltersComponent
   ],
   templateUrl: './search-mybooks-panel.component.html',
   styleUrl: `./search-mybooks-panel.component.css`
@@ -51,6 +53,7 @@ export class SearchMybooksPanelComponent implements OnInit{
   selectedSort : string = '';
   statusSelected : string = '';
   isLoading : boolean | undefined;
+  changeInFilters : boolean | undefined;
 
   constructor(private bookStatesService : BookStatesService, private authService: AuthService, private router: Router) {
   }
@@ -86,6 +89,7 @@ export class SearchMybooksPanelComponent implements OnInit{
   }
 
   handleSearch() {
+    this.changeInFilters = true;
     this.authService.GetUserRole().subscribe(role => {
       if (role === null) {
         this.router.navigate(['/login']);
