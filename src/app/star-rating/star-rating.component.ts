@@ -3,6 +3,8 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {faStar as farStar} from "@fortawesome/free-regular-svg-icons/faStar";
 import {faStar} from "@fortawesome/free-solid-svg-icons/faStar";
 import {BookStatesService} from "../../services/BookStatesService";
+import {AuthService} from "../../services/AuthService";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-star-rating',
@@ -20,13 +22,20 @@ export class StarRatingComponent {
   @Input() endDate : Date | undefined;
   @Input() book_id : number | undefined;
 
-  constructor(private bookStateService : BookStatesService) {
+  constructor(private bookStateService : BookStatesService,  private authService : AuthService, private router : Router) {
   }
 
   setRating (value : number) {
     this.rating = value;
-    if (this.book_id)
-    this.updateBookToNewStatus(this.book_id, "Read", this.rating, this.startDate ? this.startDate : null, this.endDate ? this.endDate : null )
+    this.authService.GetUserRole().subscribe(role => {
+      if (role === null) {
+        this.router.navigate(['/login']);
+      } else {
+        if (this.book_id && this.rating) {
+          this.updateBookToNewStatus(this.book_id, "Read", this.rating, this.startDate ? this.startDate : null, this.endDate ? this.endDate : null )
+        }
+      }
+    })
   }
 
   updateBookToNewStatus(book_id : number, status : string, rate : number | null, startDate : Date | null, endDate : Date | null) {

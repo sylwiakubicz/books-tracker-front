@@ -4,6 +4,8 @@ import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faSquareCheck as farSquareCheck} from "@fortawesome/free-regular-svg-icons/faSquareCheck";
 import {BookStatesService} from "../../services/BookStatesService";
 import {DeleteStatusOptionComponent} from "../delete-status-option/delete-status-option.component";
+import {AuthService} from "../../services/AuthService";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-status-btn',
@@ -23,7 +25,7 @@ export class StatusBtnComponent implements OnChanges{
   statusText : string = "Want to read"
   protected readonly farSquareCheck = farSquareCheck;
 
-  constructor(private bookStateService : BookStatesService) {
+  constructor(private bookStateService : BookStatesService,  private authService : AuthService, private router : Router) {
   }
 
   ngOnChanges() {
@@ -38,17 +40,23 @@ export class StatusBtnComponent implements OnChanges{
     this.showStatuses = false;
     this.statusText = status;
 
-    if (this.status) {
-      this.status = status;
-      if (this.book_id) {
-        this.updateBookToNewStatus(this.book_id, this.status)
+    this.authService.GetUserRole().subscribe(role => {
+      if (role === null) {
+        this.router.navigate(['/login']);
+      } else {
+        if (this.status) {
+          this.status = status;
+          if (this.book_id) {
+            this.updateBookToNewStatus(this.book_id, this.status)
+          }
+        } else {
+          this.status = status;
+          if (this.book_id && this.status) {
+            this.addBookToNewStatus(this.book_id, this.status)
+          }
+        }
       }
-    } else {
-      this.status = status;
-      if (this.book_id && this.status) {
-        this.addBookToNewStatus(this.book_id, this.status)
-      }
-    }
+    })
   }
 
   addBookToNewStatus(book_id : number, status : string) {

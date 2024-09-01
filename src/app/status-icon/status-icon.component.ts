@@ -4,6 +4,8 @@ import {faSquareCheck} from "@fortawesome/free-solid-svg-icons/faSquareCheck";
 import {faSquareCheck as farSquareCheck} from "@fortawesome/free-regular-svg-icons/faSquareCheck";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {NgSwitch, NgSwitchCase} from "@angular/common";
+import {AuthService} from "../../services/AuthService";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-status-icon',
@@ -24,7 +26,7 @@ export class StatusIconComponent implements OnInit{
   protected readonly faSquareCheck = faSquareCheck;
   protected readonly farSquareCheck = farSquareCheck;
 
-  constructor(private bookStatesService : BookStatesService) {
+  constructor(private bookStatesService : BookStatesService,  private authService : AuthService, private router : Router) {
   }
 
   ngOnInit() {
@@ -40,15 +42,22 @@ export class StatusIconComponent implements OnInit{
   }
 
   addWantToReadStatus(status : string) {
-    if (status === '') {
-      this.bookStatesService.AddBookToStatus(this.id, "Want to read", null, null, null, null).subscribe({
-        next: (response) => {
-          this.status = response.status.statusName;
+
+    this.authService.GetUserRole().subscribe(role => {
+      if (role === null) {
+        this.router.navigate(['/login']);
+      } else {
+        if (status === '') {
+          this.bookStatesService.AddBookToStatus(this.id, "Want to read", null, null, null, null).subscribe({
+            next: (response) => {
+              this.status = response.status.statusName;
+            }
+          })
+        } else {
+          return
         }
-      })
-    } else {
-      return
-    }
+      }
+    })
   }
 
 }
