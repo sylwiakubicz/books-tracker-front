@@ -10,8 +10,9 @@ import {CarouselWrapperPopularComponent} from "../carousel-wrapper-popular/carou
 import {CarouselWrapperRandomComponent} from "../carousel-wrapper-random/carousel-wrapper-random.component";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
-import {RouterOutlet} from "@angular/router";
+import {Router, RouterOutlet} from "@angular/router";
 import {FooterComponent} from "../footer/footer.component";
+import {AuthService} from "../../services/AuthService";
 
 @Component({
   selector: 'app-home-page',
@@ -34,11 +35,17 @@ import {FooterComponent} from "../footer/footer.component";
 export class HomePageComponent implements OnInit{
   booksData : Book[] | undefined;
 
-  constructor(private booksService: BooksService) {
+  constructor(private booksService: BooksService,  private authService : AuthService, private router : Router) {
   }
 
   ngOnInit() {
-    this.getAllBooks();
+    this.authService.GetUserRole().subscribe(role => {
+      if (role === "ROLE_ADMIN") {
+        this.router.navigate(['/admin']);
+      } else {
+        this.getAllBooks();
+      }
+    })
   }
 
   getAllBooks() {
