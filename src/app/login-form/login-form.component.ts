@@ -29,7 +29,14 @@ export class LoginFormComponent {
     this.authService.Login(this.loginObj.username, this.loginObj.password).subscribe({
       next: (response) => {
         this.error = null;
-        this.router.navigate(['/']); // Navigate to home or another route on successful login
+
+        if (response.role === "ROLE_USER") {
+          this.router.navigate(['/']);
+        }
+        else if (response.role === "ROLE_ADMIN"){
+          this.router.navigate(['/admin']);
+        }
+
       },
       error: (err) => {
         this.error = err.error.message;
