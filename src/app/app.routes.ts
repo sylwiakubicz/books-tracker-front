@@ -7,15 +7,43 @@ import {BookPageComponent} from "./book-page/book-page.component";
 import {BooksPageComponent} from "./books-page/books-page.component";
 import {PageNotfoundComponent} from "./page-notfound/page-notfound.component";
 import {AdminPageComponent} from "./admin-page/admin-page.component";
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {path: "", component: HomePageComponent},
-  {path: "books", component: BooksPageComponent},
-  {path: "mybooks", component: MyBooksPageComponent},
-  {path: "book/:id", component: BookPageComponent},
-  {path: 'login', component: LoginPageComponent, title:"Sign in"},
-  {path: 'register', component: RegisterPageComponent, title: "Register"},
-  {path: 'admin', component: AdminPageComponent},
+  {
+    path: "books",
+    component: BooksPageComponent,
+    canActivate: [authGuard],
+    data: { role: 'ROLE_USER' }
+  },
+  {
+    path: "mybooks",
+    component: MyBooksPageComponent,
+    canActivate: [authGuard],
+    data: { role: 'ROLE_USER' }
+  },
+  {
+    path: "book/:id",
+    component: BookPageComponent,
+    canActivate: [authGuard],
+    data: { role: 'ROLE_USER' }
+  },
+  {
+    path: 'login',
+    component: LoginPageComponent,
+    title:"Sign in"
+  },
+  {
+    path: 'register',
+    component: RegisterPageComponent,
+    title: "Register"},
+  {
+    path: 'admin',
+    component: AdminPageComponent,
+    canActivate: [authGuard],
+    data: { role: 'ROLE_ADMIN' }
+  },
   {path: '**', component: PageNotfoundComponent}
 ];
 
