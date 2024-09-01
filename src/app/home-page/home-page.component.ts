@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SubmitBtnComponent} from "../submit-btn/submit-btn.component";
 import {BooksService} from "../../services/BooksService";
 import {NavbarComponent} from "../navbar/navbar.component";
@@ -34,7 +34,6 @@ import {AuthService} from "../../services/AuthService";
   templateUrl: './home-page.component.html',
 })
 export class HomePageComponent implements OnInit{
-  booksData : Book[] | undefined;
   randomBooksData : Book[] | undefined;
 
   constructor(private booksService: BooksService,  private authService : AuthService, private router : Router) {
@@ -45,29 +44,7 @@ export class HomePageComponent implements OnInit{
       if (role === "ROLE_ADMIN") {
         this.router.navigate(['/admin']);
       } else {
-        this.getAllBooks();
         this.getRandomBooks()
-      }
-    })
-  }
-
-  getAllBooks() {
-    this.booksService.GetAllBooks({
-      size: '',
-      sort: '',
-      page: '',
-      title: '',
-      author: '',
-      genre: '',
-      year: ''
-    }).subscribe({
-      next: (response) => {
-        console.log("Test successful:", response);
-        this.booksData = response.content;
-        console.log(this.booksData)
-      },
-      error: (error) => {
-        console.error("Test failed:", error);
       }
     })
   }
