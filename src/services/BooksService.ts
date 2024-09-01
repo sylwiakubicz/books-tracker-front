@@ -51,4 +51,12 @@ export class BooksService {
     );
   }
 
+  GetRandomBooks() : Observable<any> {
+    return this.http.get("http://localhost:8080/books/get/random", {withCredentials: true}).pipe(
+      map(response => {
+        return response;
+      })
+    )
+  }
+
 }
