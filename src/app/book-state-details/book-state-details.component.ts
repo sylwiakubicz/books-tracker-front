@@ -4,6 +4,8 @@ import {StatusBtnComponent} from "../status-btn/status-btn.component";
 import { DatePipe } from '@angular/common';
 import {FormsModule} from "@angular/forms";
 import {BookStatesService} from "../../services/BookStatesService";
+import {AuthService} from "../../services/AuthService";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-book-state-details',
@@ -27,7 +29,7 @@ export class BookStateDetailsComponent implements OnChanges {
   hideSaveBtn : boolean = true;
   barProgress : number = 0;
 
-  constructor(private bookStateService : BookStatesService) {
+  constructor(private bookStateService : BookStatesService,  private authService : AuthService, private router : Router) {
   }
 
   ngOnChanges() {
@@ -55,30 +57,37 @@ export class BookStateDetailsComponent implements OnChanges {
     this.hideSaveBtn = false;
     this.endDate = newVal;
   }
+
   onStartDateChange(newVal : Date) {
     this.hideSaveBtn = false;
     this.startDate = newVal;
   }
 
   saveData() {
-    if (this.endDate != null || this.currentPage == this.totalPageNumber) {
-      this.status = "Read"
-      if (this.currentPage && this.totalPageNumber && this.currentPage < this.totalPageNumber || this.currentPage == 0) {
-        this.status = "Currently reading"
-      }
-    }
-    else if (this.startDate != null && this.endDate == null || this.currentPage != null) {
-      this.status = "Currently reading"
-    }
-    else {
-      this.status = "Want to read"
-    }
-    console.log(this.status)
-    if (this.book_id && this.status) {
-      this.updateBookToNewStatus(this.book_id, this.status, this.currentPage ? this.currentPage : 0, this.startDate ? this.startDate : null, this.endDate ? this.endDate : null)
-    }
-    this.hideSaveBtn = true;
 
+    this.authService.GetUserRole().subscribe(role => {
+      if (role === null) {
+        this.router.navigate(['/login']);
+      } else {
+        if (this.endDate != null || this.currentPage == this.totalPageNumber) {
+          this.status = "Read"
+          if (this.currentPage && this.totalPageNumber && this.currentPage < this.totalPageNumber || this.currentPage == 0) {
+            this.status = "Currently reading"
+          }
+        }
+        else if (this.startDate != null && this.endDate == null || this.currentPage != null) {
+          this.status = "Currently reading"
+        }
+        else {
+          this.status = "Want to read"
+        }
+        console.log(this.status)
+        if (this.book_id && this.status) {
+          this.updateBookToNewStatus(this.book_id, this.status, this.currentPage ? this.currentPage : 0, this.startDate ? this.startDate : null, this.endDate ? this.endDate : null)
+        }
+        this.hideSaveBtn = true;
+      }
+    })
   }
 
   updateBookToNewStatus(book_id : number, status : string, currentPage : number, startDate : Date | null, endDate : Date | null) {
