@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {SubmitBtnComponent} from "../submit-btn/submit-btn.component";
 import {BooksService} from "../../services/BooksService";
 import {NavbarComponent} from "../navbar/navbar.component";
 import {BookCardComponent} from "../book-card/book-card.component";
 import {BannerComponent} from "../banner/banner.component";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {CarouselSectionComponent} from "../carousel-section/carousel-section.component";
 import {CarouselWrapperPopularComponent} from "../carousel-wrapper-popular/carousel-wrapper-popular.component";
 import {CarouselWrapperRandomComponent} from "../carousel-wrapper-random/carousel-wrapper-random.component";
@@ -28,12 +28,14 @@ import {AuthService} from "../../services/AuthService";
     CarouselWrapperRandomComponent,
     FaIconComponent,
     RouterOutlet,
-    FooterComponent
+    FooterComponent,
+    NgIf
   ],
   templateUrl: './home-page.component.html',
 })
 export class HomePageComponent implements OnInit{
   booksData : Book[] | undefined;
+  randomBooksData : Book[] | undefined;
 
   constructor(private booksService: BooksService,  private authService : AuthService, private router : Router) {
   }
@@ -44,6 +46,7 @@ export class HomePageComponent implements OnInit{
         this.router.navigate(['/admin']);
       } else {
         this.getAllBooks();
+        this.getRandomBooks()
       }
     })
   }
@@ -65,6 +68,14 @@ export class HomePageComponent implements OnInit{
       },
       error: (error) => {
         console.error("Test failed:", error);
+      }
+    })
+  }
+
+  getRandomBooks() {
+    this.booksService.GetRandomBooks().subscribe({
+      next: (response) => {
+        this.randomBooksData = response;
       }
     })
   }
