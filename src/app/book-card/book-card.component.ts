@@ -23,7 +23,7 @@ export class BookCardComponent implements OnInit{
   @Input() description: string = '';
   @Input() id : number = 0;
   url : string = "https://drive.google.com/thumbnail?id=";
-  defaultUrl : string = "assets/images/cover_v1.png"
+  defaultUrl : string = ""
   authorsNames: string = "";
 
 
@@ -37,6 +37,8 @@ export class BookCardComponent implements OnInit{
     }
     else {
       this.url = ''
+      let randomNum = Math.floor(Math.random() * 5) + 1;
+      this.defaultUrl = "assets/images/cover_v" + randomNum + ".png"
     }
 
     this.authorsNames = this.authors?.map((author: Author) =>
