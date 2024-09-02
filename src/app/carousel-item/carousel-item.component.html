@@ -1,5 +1,5 @@
 <div class="card relative flex justify-center w-full snap-start" >
-  <img [src]="url+bookUrl" alt="{{bookTitle}} cover">
+  <img [src]="bookUrl ? url+bookUrl : defaultUrl" alt="{{bookTitle}} cover">
   <span class="flex justify-center items-center
               absolute top-0 bottom-0 left-0 right-0
               bg-black bg-opacity-75 opacity-0 hover:opacity-100
