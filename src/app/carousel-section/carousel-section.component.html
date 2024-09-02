@@ -21,12 +21,6 @@
                        [id]="book.bookId"
                        [dragging]="isDragging"
                        ></app-carousel-item>
-    <app-carousel-item #carouselItemElement
-                       *ngFor="let book of booksData"
-                       [bookTitle]="book.title"
-                       [bookUrl]="book.covering"
-                       [id]="book.bookId"
-                       ></app-carousel-item>
   </ul>
   <fa-icon id="right" (click)="arrowClick($event, 'right', carouselElement)"
            [icon]="faAngleRight" class="flex h-[30px] w-[30px] justify-center items-center cursor-pointer
