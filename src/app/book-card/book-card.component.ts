@@ -23,6 +23,7 @@ export class BookCardComponent implements OnInit{
   @Input() description: string = '';
   @Input() id : number = 0;
   url : string = "https://drive.google.com/thumbnail?id=";
+  defaultUrl : string = "assets/images/cover_v1.png"
   authorsNames: string = "";
 
 
@@ -31,7 +32,12 @@ export class BookCardComponent implements OnInit{
   }
 
   manageReceivedData() {
-    this.url = this.url + this.covering;
+    if (this.covering) {
+      this.url = this.url + this.covering;
+    }
+    else {
+      this.url = ''
+    }
 
     this.authorsNames = this.authors?.map((author: Author) =>
       `${author.name} ${author.surname}`
