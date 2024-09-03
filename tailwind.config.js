@@ -1,6 +1,7 @@
-/** @type {import('tailwindcss').Config} */
-const url = require("node:url");
-module.exports = {
+  /** @type {import('tailwindcss').Config} */
+  import url from "node:url";
+
+  module.exports = {
   content: [
     "./src/**/*.{html,ts}",
   ],
@@ -19,7 +20,12 @@ module.exports = {
         'primary-color': "#F8EDE3",
         'secondary-color': '#E8DFCA',
         'akcent-color': "#4F6F52",
-        "additional-color": '#1A4D2E'
+        "additional-color": '#1A4D2E',
+        "admin-primary": '#f7f7f7',
+        "admin-secondary": '#22272b',
+        "admin-gray": '#25292f',
+        "admin-lightgray": '#31363a',
+        "admin-akcent-color": '#0072a9'
       },
       backgroundImage: {
         'baner-tlo': "url('/assets/images/baner_tlo1.png')",

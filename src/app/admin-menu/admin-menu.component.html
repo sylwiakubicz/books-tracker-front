@@ -1,1 +1,39 @@
-<p>admin-menu works!</p>
+<div class="bg-admin-secondary w-[15rem] h-screen text-white pt-6">
+  <h1 class="font-semibold text-2xl pl-3">PANDARY Admin</h1>
+
+  <div class="bg-admin-gray mt-4 text-lg">
+
+    <div class="relative pt-2.5 pb-2.5 cursor-pointer pl-3" (click)="toggleDropdown()">
+      <span>
+        <fa-icon [icon]="faUserCircle" class="pr-4 text-xl"></fa-icon>
+        Accounts
+      </span>
+      <div class="h-4 w-4 bg-admin-primary -right-[8px] bottom-3.5 rotate-45" [class]="isShow ? 'hidden' : 'absolute'"></div>
+    </div>
+
+
+    <div #dropdownadmin class="relative">
+      <div class="flex justify-between relative pl-3">
+        <button class="w-full focus-visible:outline-none flex justify-between pt-2.5 pb-2.5"
+                (click)="toggleDropdown()">
+          <span>
+            <fa-icon [icon]="faBookOpen" class="pr-4 text-xl"></fa-icon>
+            Library
+          </span>
+        </button>
+        <div class="h-4 w-4 bg-admin-primary -right-[8px] bottom-3.5 rotate-45" [class]="isShow ? 'absolute' : 'hidden'"></div>
+      </div>
+
+      <ul class="absolute w-full bg-admin-lightgray pl-3" [ngClass]="isShow ? '' : 'hidden'">
+        <li class="flex justify-between items-center cursor-pointer pt-2.5 pb-2.5">
+          Want to read
+        </li>
+        <li class="flex justify-between items-center cursor-pointer pt-2.5 pb-2.5">
+          Currently reading
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+</div>
