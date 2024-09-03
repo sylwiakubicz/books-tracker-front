@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import {NgClass} from "@angular/common";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faBookOpen, faLock, faUserCircle} from "@fortawesome/free-solid-svg-icons";
+import {AuthService} from "../../services/AuthService";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-admin-menu',
@@ -14,6 +16,9 @@ import {faBookOpen, faLock, faUserCircle} from "@fortawesome/free-solid-svg-icon
   styles: ``
 })
 export class AdminMenuComponent {
+
+  constructor(private authService : AuthService, private router : Router) {
+  }
   isShow : Boolean = false;
   activeSection : string = 'accounts';
   activeLibrarySection : string = 'books'
@@ -36,6 +41,17 @@ export class AdminMenuComponent {
 
   handleActiveLibrarySection(active : string) {
     this.activeLibrarySection = active
+  }
+
+  logout() {
+    this.authService.Logout().subscribe({
+      next: (response) => {
+        this.router.navigate(['/login']);
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    });
   }
 
   protected readonly faUserCircle = faUserCircle;
