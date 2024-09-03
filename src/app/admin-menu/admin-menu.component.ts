@@ -15,9 +15,27 @@ import {faBookOpen, faUserCircle} from "@fortawesome/free-solid-svg-icons";
 })
 export class AdminMenuComponent {
   isShow : Boolean = false;
+  activeSection : string = 'accounts';
+  activeLibrarySection : string = 'books'
 
-  toggleDropdown() {
+  handleClick(active : string) {
+    this.toggleDropdown(active)
+    this.handleActiveSection(active)
+  }
+
+  toggleDropdown(active : string) {
+    if (this.activeSection === active) {
+      return
+    }
     this.isShow = !this.isShow;
+  }
+
+  handleActiveSection(active : string) {
+    this.activeSection = active
+  }
+
+  handleActiveLibrarySection(active : string) {
+    this.activeLibrarySection = active
   }
 
   protected readonly faUserCircle = faUserCircle;
