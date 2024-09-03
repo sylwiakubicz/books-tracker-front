@@ -1,4 +1,5 @@
 import {
+  AfterViewChecked,
   AfterViewInit,
   Component,
   ElementRef,
@@ -29,7 +30,7 @@ import {BookCardComponent} from "../book-card/book-card.component";
   templateUrl: './carousel-section.component.html',
   styleUrl: `./carousel-section.component.css`
 })
-export class CarouselSectionComponent implements AfterViewInit, OnChanges{
+export class CarouselSectionComponent implements AfterViewChecked{
   @Input() title : string = ''
   @Input() booksData : Book[] | undefined;
 
@@ -41,22 +42,21 @@ export class CarouselSectionComponent implements AfterViewInit, OnChanges{
   startX : number = 0;
   startScrollLeft : number = 0;
   timeoutId: any;
+  isInitialized :boolean = false;
   @ViewChild('carouselElement') carouselElement!: ElementRef<HTMLUListElement>;
   @ViewChildren(CarouselItemComponent, { read: ElementRef }) carouselItems!: QueryList<ElementRef>;
 
-  ngAfterViewInit() {
-    if (this.carouselElement) {
-      this.setupCarousel();
-      this.autoPlay();
+  ngAfterViewChecked() {
+    if (!this.isInitialized && this.carouselItems.length > 0) {
+      this.tryInitializeCarousel();
     }
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['booksData'] && this.booksData) {
-      if (this.carouselElement) {
-        this.setupCarousel();
-        this.autoPlay();
-      }
+  private tryInitializeCarousel() {
+    if (this.booksData && this.carouselItems.length > 0 && !this.isInitialized) {
+      this.setupCarousel();
+      this.autoPlay();
+      this.isInitialized = true;
     }
   }
 
