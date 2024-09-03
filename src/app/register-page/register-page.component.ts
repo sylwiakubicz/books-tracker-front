@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import {GalleryCardComponent} from "../gallery-card/gallery-card.component";
 import {LoginCardComponent} from "../login-card/login-card.component";
 import {RegisterCardComponent} from "../register-card/register-card.component";
+import {FooterComponent} from "../footer/footer.component";
+import {NavbarComponent} from "../navbar/navbar.component";
 
 @Component({
   selector: 'app-register-page',
@@ -9,7 +11,9 @@ import {RegisterCardComponent} from "../register-card/register-card.component";
   imports: [
     GalleryCardComponent,
     LoginCardComponent,
-    RegisterCardComponent
+    RegisterCardComponent,
+    FooterComponent,
+    NavbarComponent
   ],
   templateUrl: './register-page.component.html',
 })

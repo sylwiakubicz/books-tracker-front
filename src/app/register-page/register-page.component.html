@@ -1,5 +1,10 @@
-<div class="flex flex-col justify-center h-screen bg-primary-color
+<div class="flex flex-col justify-between bg-primary-color min-h-screen desktop:w-[1260px] m-auto">
+  <app-navbar></app-navbar>
+  <div class="flex flex-col justify-center h-screen bg-primary-color
   laptop:flex-row laptop:items-center">
-  <app-register-card class="flex justify-center z-20"></app-register-card>
-  <app-gallery-card class="relative right-[1rem] z-10 hidden laptop:flex"></app-gallery-card>
+    <app-register-card class="flex justify-center z-20"></app-register-card>
+    <app-gallery-card class="relative right-[1rem] z-10 hidden laptop:flex"></app-gallery-card>
+  </div>
+  <app-footer></app-footer>
 </div>
+
