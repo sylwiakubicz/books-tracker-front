@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {NgClass} from "@angular/common";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
-import {faBookOpen, faUserCircle} from "@fortawesome/free-solid-svg-icons";
+import {faBookOpen, faLock, faUserCircle} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-admin-menu',
@@ -40,4 +40,5 @@ export class AdminMenuComponent {
 
   protected readonly faUserCircle = faUserCircle;
   protected readonly faBookOpen = faBookOpen;
+  protected readonly faLock = faLock;
 }
