@@ -41,7 +41,7 @@ export class HomePageComponent implements OnInit{
   ngOnInit() {
     this.authService.GetUserRole().subscribe(role => {
       if (role === "ROLE_ADMIN") {
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/admin/accounts']);
       }
     })
   }

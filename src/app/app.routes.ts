@@ -6,7 +6,7 @@ import {MyBooksPageComponent} from "./my-books-page/my-books-page.component";
 import {BookPageComponent} from "./book-page/book-page.component";
 import {BooksPageComponent} from "./books-page/books-page.component";
 import {PageNotfoundComponent} from "./page-notfound/page-notfound.component";
-import {AdminPageComponent} from "./admin-page/admin-page.component";
+import {AdminAccountsPageComponent} from "./admin-accounts-page/admin-accounts-page.component";
 import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
@@ -42,8 +42,8 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
   {
-    path: 'admin',
-    component: AdminPageComponent,
+    path: 'admin/accounts',
+    component: AdminAccountsPageComponent,
     canActivate: [authGuard],
     data: { role: 'ROLE_ADMIN' }
   },

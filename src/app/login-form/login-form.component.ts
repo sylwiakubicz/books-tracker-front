@@ -34,7 +34,7 @@ export class LoginFormComponent {
           this.router.navigate(['/']);
         }
         else if (response.role === "ROLE_ADMIN"){
-          this.router.navigate(['/admin']);
+          this.router.navigate(['/admin/accounts']);
         }
 
       },
