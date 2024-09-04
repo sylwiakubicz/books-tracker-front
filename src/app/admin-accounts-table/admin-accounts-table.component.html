@@ -1,1 +1,34 @@
-<p>admin-accounts-table works!</p>
+<section class="flex justify-between w-full">
+  <div class="flex ">
+    <button class="pr-2 font-semibold" [ngClass]="activeFilter === 'all' ? 'text-black' : 'text-admin-akcent-color'">
+      All
+      <span class="text-admin-lightgray text-opacity-60 font-normal">(3)</span>
+    </button>
+    <span class="pr-2 text-admin-lightgray text-opacity-60">|</span>
+    <button class="pr-2 font-semibold" [ngClass]="activeFilter === 'admin' ? 'text-black' : 'text-admin-akcent-color'">
+      Administrator
+      <span class="text-admin-lightgray text-opacity-60 font-normal">(1)</span>
+    </button>
+    <span class="pr-2 text-admin-lightgray text-opacity-60">|</span>
+    <button class="font-semibold" [ngClass]="activeFilter === 'users' ? 'text-black' : 'text-admin-akcent-color'">
+      Users
+      <span class="text-admin-lightgray text-opacity-60 font-normal">(2)</span>
+    </button>
+  </div>
+  <input type="text" placeholder="Search...">
+</section>
+
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Password</th>
+    <th>Role</th>
+  </tr>
+  <tr>
+    <td>Jan</td>
+    <td>Kowalski</td>
+    <td>fnjdkds</td>
+    <td>User</td>
+  </tr>
+</table>

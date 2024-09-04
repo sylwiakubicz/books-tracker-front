@@ -1,6 +1,10 @@
 <div class="flex flex-row h-screen bg-admin-primary w-screen">
   <app-admin-menu></app-admin-menu>
-  <section>
+  <section class="w-full pl-5 pt-4">
+    <header class="flex items-center mb-4">
+      <h1 class="text-3xl font-semibold pr-5">Accounts</h1>
+      <button class="bg-white text-admin-akcent-color border-admin-lightgray border-[1px] border-opacity-20 font-semibold px-3 drop-shadow-sm py-1.5">Add new</button>
+    </header>
     <app-admin-accounts-table></app-admin-accounts-table>
   </section>
 </div>
