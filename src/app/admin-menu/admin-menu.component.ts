@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {NgClass} from "@angular/common";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faBookOpen, faLock, faUserCircle} from "@fortawesome/free-solid-svg-icons";
@@ -19,13 +19,15 @@ export class AdminMenuComponent {
 
   constructor(private authService : AuthService, private router : Router) {
   }
-  isShow : Boolean = false;
-  activeSection : string = 'accounts';
-  activeLibrarySection : string = 'books'
+  @Input() isShow : Boolean = false;
+  @Input() activeSection : string = 'accounts';
+  @Input() activeLibrarySection : string = 'books'
 
   handleClick(active : string) {
     this.toggleDropdown(active)
     this.handleActiveSection(active)
+    let url : string = "/admin/" + active
+    this.router.navigate([url])
   }
 
   toggleDropdown(active : string) {
