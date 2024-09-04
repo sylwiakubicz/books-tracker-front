@@ -1,8 +1,8 @@
 <div class="bg-admin-secondary w-[15rem] h-screen pt-6 text-white flex justify-between flex-col">
 
-  <div>
+  <aside>
     <h1 class="font-semibold text-2xl pl-3">PANDARY Admin</h1>
-    <div class="bg-admin-gray mt-4 text-lg">
+    <nav class="bg-admin-gray mt-4 text-lg">
       <div class="relative pt-2.5 pb-2.5 cursor-pointer pl-3" (click)="handleClick('accounts')" [ngClass]="activeSection === 'accounts' ? 'bg-admin-akcent-color' : ''">
         <span>
           <fa-icon [icon]="faUserCircle" class="pr-4 text-xl"></fa-icon>
@@ -32,8 +32,8 @@
           </li>
         </ul>
       </div>
-    </div>
-  </div>
+    </nav>
+  </aside>
 
   <button class="text-xl self-start pb-6 pl-3" (click)="logout()">
     <fa-icon [icon]="faLock" class="pr-4"></fa-icon>
