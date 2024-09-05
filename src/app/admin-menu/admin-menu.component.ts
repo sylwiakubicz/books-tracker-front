@@ -27,6 +27,9 @@ export class AdminMenuComponent {
     this.toggleDropdown(active)
     this.handleActiveSection(active)
     let url : string = "/admin/" + active
+    if (active === 'library') {
+      url += ('/' + this.activeLibrarySection)
+    }
     this.router.navigate([url])
   }
 
