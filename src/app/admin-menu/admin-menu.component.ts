@@ -23,9 +23,10 @@ export class AdminMenuComponent {
   @Input() activeSection : string = 'accounts';
   @Input() activeLibrarySection : string = 'books'
 
-  handleClick(active : string) {
+  handleClick(active : string, libraryActive : string) {
     this.toggleDropdown(active)
     this.handleActiveSection(active)
+    this.handleActiveLibrarySection(libraryActive)
     let url : string = "/admin/" + active
     if (active === 'library') {
       url += ('/' + this.activeLibrarySection)
