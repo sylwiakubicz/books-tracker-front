@@ -1,11 +1,9 @@
 <div class="flex flex-row h-screen bg-admin-primary w-screen">
   <app-admin-menu [activeSection]="'library'" [isShow]="true"></app-admin-menu>
   <section class="w-full pl-5 pt-4 pr-5">
-    <header class="flex items-center mb-4">
-      <div class="flex">
-        <h1 class="text-3xl font-semibold pr-5">Library</h1>
-        <h2 class="text-3xl font-semibold pr-5">Books</h2>
-      </div>
+    <header class="flex items-center mb-4 ">
+      <h1 class="text-3xl font-semibold pr-5 pb-2">Library</h1>
+      <h2 class="text-xl font-semibold pr-5">Books</h2>
       <button class="bg-white text-admin-akcent-color border-admin-lightgray border-[1px] border-opacity-20 font-semibold px-3 drop-shadow-sm py-1.5">Add new</button>
     </header>
     <app-admin-books-table></app-admin-books-table>
