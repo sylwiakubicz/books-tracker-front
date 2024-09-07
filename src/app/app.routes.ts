@@ -1,22 +1,25 @@
 import {Routes} from '@angular/router';
-import {LoginPageComponent} from "./login-page/login-page.component";
-import {RegisterPageComponent} from "./register-page/register-page.component";
-import {HomePageComponent} from "./home-page/home-page.component";
-import {MyBooksPageComponent} from "./my-books-page/my-books-page.component";
-import {BookPageComponent} from "./book-page/book-page.component";
-import {BooksPageComponent} from "./books-page/books-page.component";
-import {PageNotfoundComponent} from "./page-notfound/page-notfound.component";
-import {AdminAccountsPageComponent} from "./admin-accounts-page/admin-accounts-page.component";
-import { authGuard } from './guards/auth.guard';
-import {AdminBooksPageComponent} from "./admin-books-page/admin-books-page.component";
-import {AdminAuthorsPageComponent} from "./admin-authors-page/admin-authors-page.component";
-import {AdminManageBookDataPageComponent} from "./admin-manage-book-data-page/admin-manage-book-data-page.component";
+import {HomePageComponent} from "./user-front/home-page/home-page.component";
+import {BooksPageComponent} from "./user-front/books-page/books-page.component";
+import {authGuard} from "./guards/auth.guard";
+import {MyBooksPageComponent} from "./user-front/my-books-page/my-books-page.component";
+import {BookPageComponent} from "./user-front/book-page/book-page.component";
+import {LoginPageComponent} from "./user-front/login-page/login-page.component";
+import {RegisterPageComponent} from "./user-front/register-page/register-page.component";
+import {AdminAccountsPageComponent} from "./admin-front/admin-accounts-page/admin-accounts-page.component";
+import {AdminBooksPageComponent} from "./admin-front/admin-books-page/admin-books-page.component";
+import {AdminAuthorsPageComponent} from "./admin-front/admin-authors-page/admin-authors-page.component";
+import {
+  AdminManageBookDataPageComponent
+} from "./admin-front/admin-manage-book-data-page/admin-manage-book-data-page.component";
 import {
   AdminManagaAccountsDataPageComponent
-} from "./admin-managa-accounts-data-page/admin-managa-accounts-data-page.component";
+} from "./admin-front/admin-managa-accounts-data-page/admin-managa-accounts-data-page.component";
 import {
   AdminManageAuthorsDataPageComponent
-} from "./admin-manage-authors-data-page/admin-manage-authors-data-page.component";
+} from "./admin-front/admin-manage-authors-data-page/admin-manage-authors-data-page.component";
+import {PageNotfoundComponent} from "./user-front/page-notfound/page-notfound.component";
+
 
 export const routes: Routes = [
   {path: "", component: HomePageComponent},
