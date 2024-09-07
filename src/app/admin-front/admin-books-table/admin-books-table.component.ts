@@ -81,6 +81,7 @@ export class AdminBooksTableComponent implements OnInit{
       if (role === null) {
         this.router.navigate(['/login']);
       } else {
+        window.scrollTo(0, 0);
         this.getAllBooks();
       }
     })
