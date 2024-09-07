@@ -15,7 +15,7 @@
       <span class="text-admin-lightgray text-opacity-60 font-normal">(2)</span>
     </button>
   </div>
-  <input type="text" placeholder="Search..." class="pl-2 h-10 w-[16rem] border-admin-lightgray border-[1px] border-opacity-20">
+  <input [(ngModel)]="search" (keyup.enter)="handleSearch()" type="text" placeholder="Search..." class="pl-2 h-10 w-[16rem] border-admin-lightgray border-[1px] border-opacity-20">
 </section>
 
 <div class="relative overflow-x-auto shadow-md">

@@ -49,6 +49,9 @@ export class AuthService {
     if (params.role) {
       httpParams = httpParams.set('role', params.role);
     }
+    if (params.search) {
+      httpParams = httpParams.set('search', params.search);
+    }
     if (params.page) {
       httpParams = httpParams.set('page', params.page);
     }

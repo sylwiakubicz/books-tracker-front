@@ -6,6 +6,7 @@ import {AuthService} from "../../services/AuthService";
 import {LoadingComponent} from "../../user-front/loading/loading.component";
 import {NgxPaginationModule} from "ngx-pagination";
 import {Router} from "@angular/router";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-admin-accounts-table',
@@ -17,7 +18,8 @@ import {Router} from "@angular/router";
     NgForOf,
     NgIf,
     LoadingComponent,
-    NgxPaginationModule
+    NgxPaginationModule,
+    FormsModule
   ],
   templateUrl: './admin-accounts-table.component.html',
   styles: ``
@@ -32,6 +34,7 @@ export class AdminAccountsTableComponent implements OnInit{
   currentPage = 1;
   isLoading : boolean = true
   userData : User[] = []
+  search : string = ''
 
 
   ngOnInit() {
@@ -41,6 +44,7 @@ export class AdminAccountsTableComponent implements OnInit{
   getAllUsers() {
     this.authService.GetAllUsers({
       role: this.activeFilter,
+      search: this.search,
       page: this.currentPage - 1,
       size: this.pageSize
     }).subscribe({
@@ -72,6 +76,16 @@ export class AdminAccountsTableComponent implements OnInit{
   handleFilter(filter : string) {
     this.activeFilter = filter
     this.getAllUsers()
+  }
+
+  handleSearch() {
+    this.authService.GetUserRole().subscribe(role => {
+      if (role === null) {
+        this.router.navigate(['/login']);
+      } else {
+        this.getAllUsers();
+      }
+    })
   }
 
 }
