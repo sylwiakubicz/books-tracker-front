@@ -14,6 +14,9 @@ import {AdminManageBookDataPageComponent} from "./admin-manage-book-data-page/ad
 import {
   AdminManagaAccountsDataPageComponent
 } from "./admin-managa-accounts-data-page/admin-managa-accounts-data-page.component";
+import {
+  AdminManageAuthorsDataPageComponent
+} from "./admin-manage-authors-data-page/admin-manage-authors-data-page.component";
 
 export const routes: Routes = [
   {path: "", component: HomePageComponent},
@@ -86,6 +89,18 @@ export const routes: Routes = [
   {
     path: 'admin/accounts/:id',
     component: AdminManagaAccountsDataPageComponent,
+    canActivate: [authGuard],
+    data: { role: 'ROLE_ADMIN' }
+  },
+  {
+    path: 'admin/library/authors/new',
+    component: AdminManageAuthorsDataPageComponent,
+    canActivate: [authGuard],
+    data: { role: 'ROLE_ADMIN' }
+  },
+  {
+    path: 'admin/library/authors/:id',
+    component: AdminManageAuthorsDataPageComponent,
     canActivate: [authGuard],
     data: { role: 'ROLE_ADMIN' }
   },
