@@ -84,7 +84,7 @@ export interface Book {
   description: string;
   pageNumber: number;
   publicationYear: number;
-  ISBN: string;
+  isbn: string;
   covering: string;
   authors: Author[];
   genres: Genre[];

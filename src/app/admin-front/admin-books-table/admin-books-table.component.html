@@ -2,7 +2,7 @@
 
 <div class="relative overflow-x-auto shadow-md">
   <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-nowrap">
     <tr>
       <th scope="col" class="px-6 py-3 text-admin-akcent-color">Title</th>
       <th scope="col" class="px-6 py-3">Author</th>
@@ -21,20 +21,20 @@
                                                     currentPage: currentPage,
                                                     totalItems: totalItems}"
         class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-      <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap dark:text-white text-admin-akcent-color">{{book.title}}</th>
+      <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap dark:text-white text-admin-akcent-color text-wrap">{{book.title}}</th>
       <td class="px-6 py-4">{{book.authorsName}}</td>
-      <td class="px-6 py-4">{{book.description}}</td>
+      <td class="px-6 py-4 text-wrap w-[20rem]">{{book.description}}</td>
       <td class="px-6 py-4">{{book.genresName}}</td>
       <td class="px-6 py-4">{{book.pageNumber}}</td>
       <td class="px-6 py-4">{{book.publicationYear}}</td>
-      <td class="px-6 py-4">{{book.ISBN}}</td>
-      <td *ngIf="book.covering"  class="px-6 py-4 text-admin-akcent-color underline">
+      <td class="px-6 py-4">{{book.isbn}}</td>
+      <td *ngIf="book.covering"  class="px-6 py-4 text-admin-akcent-color underline text-nowrap">
         <a href="{{book.covering}}" target="_blank">Image url</a>
       </td>
       <td *ngIf="!book.covering" class="px-6 py-4">
         book does not have cover
       </td>
-      <td class="px-6 py-4">
+      <td class="px-6 py-4 text-nowrap">
         <app-admin-edit-btn [id]="book.bookId" [url]="'/admin/library/books/'" class="mr-2"></app-admin-edit-btn>
         <app-admin-delete-btn [id]="book.bookId" ></app-admin-delete-btn>
       </td>

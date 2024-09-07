@@ -49,17 +49,18 @@ export class HomePageComponent implements OnInit{
 }
 
 export interface Book {
-  authorsName: string;
-  genresName: string;
+
   bookId: number;
   title: string;
   description: string;
   pageNumber: number;
   publicationYear: number;
-  ISBN: string;
+  isbn: string;
   covering: string;
   authors: Author[];
   genres: Genre[];
+  authorsName: string;
+  genresName: string;
 }
 
 export interface Author {

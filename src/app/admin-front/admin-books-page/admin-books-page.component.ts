@@ -22,4 +22,5 @@ export class AdminBooksPageComponent {
   handleAddNew() {
     this.router.navigate(["/admin/library/books/new"])
   }
+
 }
