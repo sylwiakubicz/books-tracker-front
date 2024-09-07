@@ -59,4 +59,8 @@ export class AuthorsService {
       })
     )
   }
+
+  DeleteAuthor(id: number) : Observable<any> {
+    return this.http.delete(`http://localhost:8080/authors/${id}`, {withCredentials: true})
+  }
 }
