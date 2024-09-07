@@ -1,27 +1,42 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AuthorsService} from "../../services/AuthorsService";
 import {map} from "rxjs/operators";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Author} from "../../user-front/home-page/home-page.component";
+import {NgIf} from "@angular/common";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-admin-authors-form',
   standalone: true,
-  imports: [],
+  imports: [
+    NgIf,
+    FormsModule
+  ],
   templateUrl: './admin-authors-form.component.html',
   styles: ``
 })
 export class AdminAuthorsFormComponent implements OnInit{
 
-  constructor(private authorService : AuthorsService, private router : Router) {
+  constructor(private authorService : AuthorsService, private router : Router, private route: ActivatedRoute) {
   }
 
-  @Input() id : number = 0
+  id : number = 0
   authorName : string = ''
   authorSurname : string = ''
 
   ngOnInit() {
-    if (this.id !== 0) {
+    this.route.paramMap.subscribe(params => {
+      const idParam = params.get('id');
+      if (idParam) {
+        this.id = +idParam;
+        this.loadAuthorData();
+      }
+    });
+  }
+
+  loadAuthorData(): void {
+    if (this.id != 0) {
       this.authorService.GetAuthorById(this.id).subscribe({
         next: (author: Author) => {
           this.authorName = author.name;
@@ -55,12 +70,20 @@ export class AdminAuthorsFormComponent implements OnInit{
 
     this.authorService.UpdateAuthor(updatedAuthor).subscribe({
         next: (response) => {
-          this.router.navigate(['/admin/library/authors']);
+          this.router.navigate(["/admin/library/authors"]);
         },
         error: (err) => {
           console.log(err)
         }
       }
     )
+  }
+
+  save() {
+    if (this.id != 0 ){
+      this.UpdateAuthor()
+    } else {
+      this.AddAuthor()
+    }
   }
 }

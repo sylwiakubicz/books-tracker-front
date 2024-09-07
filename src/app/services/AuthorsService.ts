@@ -42,8 +42,8 @@ export class AuthorsService {
     return this.http.post(
       "http://localhost:8080/authors",
       {
-        name: authorsName,
-        surname: authorsSurname
+        authorsName: authorsName,
+        authorsSurname: authorsSurname
       },
       {withCredentials: true}).pipe(
       map(response => {
