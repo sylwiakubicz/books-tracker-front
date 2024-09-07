@@ -1,16 +1,16 @@
 <section class="flex justify-between w-full mb-5 items-center">
   <div class="flex ">
-    <button class="pr-2 font-semibold" (click)="handleFilter('')" [ngClass]="activeFilter === '' ? 'text-black' : 'text-admin-akcent-color'">
+    <button class="pr-2 font-semibold" (click)="handleFilter('')" [ngClass]="activeFilter === '' ? 'text-admin-akcent-color' : 'text-black'">
       All
       <span class="text-admin-lightgray text-opacity-60 font-normal">(3)</span>
     </button>
     <span class="pr-2 text-admin-lightgray text-opacity-60">|</span>
-    <button class="pr-2 font-semibold" (click)="handleFilter('ROLE_ADMIN')" [ngClass]="activeFilter === 'ROLE_ADMIN' ? 'text-black' : 'text-admin-akcent-color'">
+    <button class="pr-2 font-semibold" (click)="handleFilter('ROLE_ADMIN')" [ngClass]="activeFilter === 'ROLE_ADMIN' ? 'text-admin-akcent-color' : 'text-black'">
       Administrator
       <span class="text-admin-lightgray text-opacity-60 font-normal">(1)</span>
     </button>
     <span class="pr-2 text-admin-lightgray text-opacity-60">|</span>
-    <button class="font-semibold" (click)="handleFilter('ROLE_USER')" [ngClass]="activeFilter === 'ROLE_USER' ? 'text-black' : 'text-admin-akcent-color'">
+    <button class="font-semibold" (click)="handleFilter('ROLE_USER')" [ngClass]="activeFilter === 'ROLE_USER' ? 'text-admin-akcent-color' : 'text-black'">
       Regular users
       <span class="text-admin-lightgray text-opacity-60 font-normal">(2)</span>
     </button>
