@@ -8,6 +8,7 @@ import {AuthService} from "../../services/AuthService";
 import {NgForOf, NgIf} from "@angular/common";
 import {NgxPaginationModule} from "ngx-pagination";
 import {LoadingComponent} from "../../user-front/loading/loading.component";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-admin-books-table',
@@ -18,7 +19,8 @@ import {LoadingComponent} from "../../user-front/loading/loading.component";
     NgForOf,
     NgxPaginationModule,
     NgIf,
-    LoadingComponent
+    LoadingComponent,
+    FormsModule
   ],
   templateUrl: './admin-books-table.component.html',
   styles: ``
@@ -33,7 +35,6 @@ export class AdminBooksTableComponent implements OnInit{
   pageSize = 20;
   currentPage = 1;
   search : string = '';
-  changeInFilters : boolean | undefined;
 
 
   ngOnInit() {
@@ -89,7 +90,6 @@ export class AdminBooksTableComponent implements OnInit{
 
 
   handleSearch() {
-    this.changeInFilters = true;
     this.authService.GetUserRole().subscribe(role => {
       if (role === null) {
         this.router.navigate(['/login']);

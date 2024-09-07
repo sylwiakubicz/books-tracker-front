@@ -1,4 +1,4 @@
-<input type="text" placeholder="Search..." class="pl-2 h-10 w-[16rem] border-admin-lightgray border-[1px] border-opacity-20 mb-5">
+<input type="text" placeholder="Search..." class="pl-2 h-10 w-[16rem] border-admin-lightgray border-[1px] border-opacity-20 mb-5" [(ngModel)]="search" (keyup.enter)="handleSearch()">
 
 <div class="relative overflow-x-auto shadow-md">
   <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
