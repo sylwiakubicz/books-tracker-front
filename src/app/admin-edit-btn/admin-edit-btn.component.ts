@@ -13,5 +13,5 @@ import {RouterLink} from "@angular/router";
 export class AdminEditBtnComponent {
 
   @Input() id : number = 0;
-
+  @Input() url : string = '/admin/accounts/'
 }
