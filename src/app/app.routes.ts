@@ -22,91 +22,102 @@ import {PageNotfoundComponent} from "./user-front/page-notfound/page-notfound.co
 
 
 export const routes: Routes = [
-  {path: "", component: HomePageComponent},
+  {path: "", component: HomePageComponent, title: "Pandary"},
   {
     path: "books",
     component: BooksPageComponent,
+    title: "Pandary - Books",
     canActivate: [authGuard],
     data: { role: 'ROLE_USER' }
   },
   {
     path: "mybooks",
     component: MyBooksPageComponent,
+    title: "Pandary - My Books",
     canActivate: [authGuard],
     data: { role: 'ROLE_USER' }
   },
   {
     path: "book/:id",
     component: BookPageComponent,
+    title: "Pandary - Book Details",
     canActivate: [authGuard],
     data: { role: 'ROLE_USER' }
   },
   {
     path: 'login',
     component: LoginPageComponent,
-    title:"Sign in",
+    title:"Pandary - Sign in",
     canActivate: [authGuard]
   },
   {
     path: 'register',
     component: RegisterPageComponent,
-    title: "Register",
+    title: "Pandary - Register",
     canActivate: [authGuard]
   },
   {
     path: 'admin/accounts',
     component: AdminAccountsPageComponent,
+    title: "Pandary Admin - Manage Accounts",
     canActivate: [authGuard],
     data: { role: 'ROLE_ADMIN' }
   },
   {
     path: 'admin/library/books',
     component: AdminBooksPageComponent,
+    title: "Pandary Admin - Manage Books",
     canActivate: [authGuard],
     data: { role: 'ROLE_ADMIN' }
   },
   {
     path: 'admin/library/authors',
     component: AdminAuthorsPageComponent,
+    title: "Pandary Admin - Manage Authors",
     canActivate: [authGuard],
     data: { role: 'ROLE_ADMIN' }
   },
   {
     path: 'admin/library/books/new',
     component: AdminManageBookDataPageComponent,
+    title: "Pandary Admin - Add New Book",
     canActivate: [authGuard],
     data: { role: 'ROLE_ADMIN' }
   },
   {
     path: 'admin/library/books/:id',
     component: AdminManageBookDataPageComponent,
+    title: "Pandary Admin - Edit Book",
     canActivate: [authGuard],
     data: { role: 'ROLE_ADMIN' }
   },
   {
     path: 'admin/accounts/user/new',
     component: AdminManagaAccountsDataPageComponent,
+    title: "Pandary Admin - Add New Account",
     canActivate: [authGuard],
     data: { role: 'ROLE_ADMIN' }
   },
   {
     path: 'admin/accounts/:id',
     component: AdminManagaAccountsDataPageComponent,
+    title: "Pandary Admin - Edit Account",
     canActivate: [authGuard],
     data: { role: 'ROLE_ADMIN' }
   },
   {
     path: 'admin/library/authors/new',
     component: AdminManageAuthorsDataPageComponent,
+    title: "Pandary Admin - Add New Author",
     canActivate: [authGuard],
     data: { role: 'ROLE_ADMIN' }
   },
   {
     path: 'admin/library/authors/:id',
     component: AdminManageAuthorsDataPageComponent,
+    title: "Pandary Admin - Edit Author",
     canActivate: [authGuard],
     data: { role: 'ROLE_ADMIN' }
   },
-  {path: '**', component: PageNotfoundComponent}
+  {path: '**', component: PageNotfoundComponent, title: "Pandary - Page Not Found"}
 ];
-
