@@ -2,17 +2,17 @@
   <div class="flex ">
     <button class="pr-2 font-semibold" (click)="handleFilter('')" [ngClass]="activeFilter === '' ? 'text-admin-akcent-color' : 'text-black'">
       All
-      <span class="text-admin-lightgray text-opacity-60 font-normal">(3)</span>
+      <span class="text-admin-lightgray text-opacity-60 font-normal">({{allCount}})</span>
     </button>
     <span class="pr-2 text-admin-lightgray text-opacity-60">|</span>
     <button class="pr-2 font-semibold" (click)="handleFilter('ROLE_ADMIN')" [ngClass]="activeFilter === 'ROLE_ADMIN' ? 'text-admin-akcent-color' : 'text-black'">
       Administrator
-      <span class="text-admin-lightgray text-opacity-60 font-normal">(1)</span>
+      <span class="text-admin-lightgray text-opacity-60 font-normal">({{adminCount}})</span>
     </button>
     <span class="pr-2 text-admin-lightgray text-opacity-60">|</span>
     <button class="font-semibold" (click)="handleFilter('ROLE_USER')" [ngClass]="activeFilter === 'ROLE_USER' ? 'text-admin-akcent-color' : 'text-black'">
       Regular users
-      <span class="text-admin-lightgray text-opacity-60 font-normal">(2)</span>
+      <span class="text-admin-lightgray text-opacity-60 font-normal">({{userCount}})</span>
     </button>
   </div>
   <input [(ngModel)]="search" (keyup.enter)="handleSearch()" type="text" placeholder="Search..." class="pl-2 h-10 w-[16rem] border-admin-lightgray border-[1px] border-opacity-20">

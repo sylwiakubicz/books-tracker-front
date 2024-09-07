@@ -35,10 +35,14 @@ export class AdminAccountsTableComponent implements OnInit{
   isLoading : boolean = true
   userData : User[] = []
   search : string = ''
+  userCount : number = 0
+  adminCount : number = 0
+  allCount : number = 0
 
 
   ngOnInit() {
     this.getAllUsers()
+    this.countAllRecords()
   }
 
   getAllUsers() {
@@ -86,6 +90,12 @@ export class AdminAccountsTableComponent implements OnInit{
         this.getAllUsers();
       }
     })
+  }
+
+  countAllRecords() {
+    this.authService.GetNumberOfAll().subscribe(count => this.allCount = count)
+    this.authService.GetNumberOfAdmin().subscribe(count => this.adminCount = count)
+    this.authService.GetNumberOfUser().subscribe(count => this.userCount = count)
   }
 
 }
