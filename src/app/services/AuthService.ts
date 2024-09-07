@@ -64,5 +64,30 @@ export class AuthService {
       })
     )
   }
+
+  GetNumberOfAll() : Observable<any> {
+    return this.http.get("http://localhost:8080/api/auth/total", {withCredentials: true}).pipe(
+      map(response => {
+        return response
+      })
+    )
+  }
+
+  GetNumberOfAdmin() : Observable<any> {
+    return this.http.get("http://localhost:8080/api/auth/admins/count", {withCredentials: true}).pipe(
+      map(response => {
+        return response
+      })
+    )
+  }
+
+  GetNumberOfUser() : Observable<any> {
+    return this.http.get("http://localhost:8080/api/auth/users/count", {withCredentials: true}).pipe(
+      map(response => {
+        return response
+      })
+    )
+  }
+
 }
 
