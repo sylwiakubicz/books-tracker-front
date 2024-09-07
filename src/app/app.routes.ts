@@ -11,6 +11,9 @@ import { authGuard } from './guards/auth.guard';
 import {AdminBooksPageComponent} from "./admin-books-page/admin-books-page.component";
 import {AdminAuthorsPageComponent} from "./admin-authors-page/admin-authors-page.component";
 import {AdminManageBookDataPageComponent} from "./admin-manage-book-data-page/admin-manage-book-data-page.component";
+import {
+  AdminManagaAccountsDataPageComponent
+} from "./admin-managa-accounts-data-page/admin-managa-accounts-data-page.component";
 
 export const routes: Routes = [
   {path: "", component: HomePageComponent},
@@ -68,9 +71,21 @@ export const routes: Routes = [
     canActivate: [authGuard],
     data: { role: 'ROLE_ADMIN' }
   },
-  {
+  {git
     path: 'admin/library/books/:id',
     component: AdminManageBookDataPageComponent,
+    canActivate: [authGuard],
+    data: { role: 'ROLE_ADMIN' }
+  },
+  {
+    path: 'admin/accounts/user/new',
+    component: AdminManagaAccountsDataPageComponent,
+    canActivate: [authGuard],
+    data: { role: 'ROLE_ADMIN' }
+  },
+  {
+    path: 'admin/accounts/:id',
+    component: AdminManagaAccountsDataPageComponent,
     canActivate: [authGuard],
     data: { role: 'ROLE_ADMIN' }
   },

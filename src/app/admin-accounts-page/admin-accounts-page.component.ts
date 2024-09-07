@@ -3,6 +3,7 @@ import {AdminMenuComponent} from "../admin-menu/admin-menu.component";
 import {AdminBooksFormComponent} from "../admin-books-form/admin-books-form.component";
 import {AdminAuthorsTableComponent} from "../admin-authors-table/admin-authors-table.component";
 import {AdminAccountsTableComponent} from "../admin-accounts-table/admin-accounts-table.component";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-admin-page',
@@ -11,7 +12,8 @@ import {AdminAccountsTableComponent} from "../admin-accounts-table/admin-account
     AdminMenuComponent,
     AdminBooksFormComponent,
     AdminAuthorsTableComponent,
-    AdminAccountsTableComponent
+    AdminAccountsTableComponent,
+    RouterLink
   ],
   templateUrl: './admin-accounts-page.component.html',
   styles: ``
