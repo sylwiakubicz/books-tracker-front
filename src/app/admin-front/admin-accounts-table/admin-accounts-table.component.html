@@ -17,6 +17,18 @@
   </div>
   <input [(ngModel)]="search" (keyup.enter)="handleSearch()" type="text" placeholder="Search..." class="pl-2 h-10 w-[16rem] border-admin-lightgray border-[1px] border-opacity-20">
 </section>
+<pagination-controls (pageChange)="pageChanged($event)"
+                     [maxSize]="5"
+                     [directionLinks]="true"
+                     [autoHide]="true"
+                     [responsive]="true"
+                     previousLabel="Previous"
+                     nextLabel="Next"
+                     screenReaderPaginationLabel="Pagination"
+                     screenReaderPageLabel="page"
+                     screenReaderCurrentLabel="You're on page"
+                     class="flex -ml-1.5 customPagination mt-2"
+></pagination-controls>
 
 <div class="relative overflow-x-auto shadow-md">
   <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -45,17 +57,16 @@
     </tbody>
   </table>
   <app-loading [isLoading]="isLoading"></app-loading>
-  <pagination-controls (pageChange)="pageChanged($event)"
-                       [maxSize]="5"
-                       [directionLinks]="true"
-                       [autoHide]="true"
-                       [responsive]="true"
-                       previousLabel="Previous"
-                       nextLabel="Next"
-                       screenReaderPaginationLabel="Pagination"
-                       screenReaderPageLabel="page"
-                       screenReaderCurrentLabel="You're on page"
-                       class="flex ml-5 customPagination flex-row-reverse mt-2"
-  ></pagination-controls>
 </div>
-
+<pagination-controls (pageChange)="pageChanged($event)"
+                     [maxSize]="5"
+                     [directionLinks]="true"
+                     [autoHide]="true"
+                     [responsive]="true"
+                     previousLabel="Previous"
+                     nextLabel="Next"
+                     screenReaderPaginationLabel="Pagination"
+                     screenReaderPageLabel="page"
+                     screenReaderCurrentLabel="You're on page"
+                     class="flex ml-5 customPagination flex-row-reverse mt-2"
+></pagination-controls>
