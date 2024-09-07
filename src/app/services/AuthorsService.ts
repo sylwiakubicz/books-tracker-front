@@ -30,6 +30,14 @@ export class AuthorsService {
     )
   }
 
+  GetAuthorById(id : number) : Observable<any> {
+    return this.http.get(`http://localhost:8080/authors/${id}`, {withCredentials: true}).pipe(
+      map(response => {
+        return response
+      })
+    )
+  }
+
   AddAuthor(authorsName: string, authorsSurname: string) : Observable<any> {
     return this.http.post(
       "http://localhost:8080/authors",
