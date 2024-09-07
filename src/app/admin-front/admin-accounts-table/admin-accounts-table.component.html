@@ -1,16 +1,16 @@
 <section class="flex justify-between w-full mb-5 items-center">
   <div class="flex ">
-    <button class="pr-2 font-semibold" [ngClass]="activeFilter === '' ? 'text-black' : 'text-admin-akcent-color'">
+    <button class="pr-2 font-semibold" (click)="handleFilter('')" [ngClass]="activeFilter === '' ? 'text-black' : 'text-admin-akcent-color'">
       All
       <span class="text-admin-lightgray text-opacity-60 font-normal">(3)</span>
     </button>
     <span class="pr-2 text-admin-lightgray text-opacity-60">|</span>
-    <button class="pr-2 font-semibold" [ngClass]="activeFilter === 'ROLE_ADMIN' ? 'text-black' : 'text-admin-akcent-color'">
+    <button class="pr-2 font-semibold" (click)="handleFilter('ROLE_ADMIN')" [ngClass]="activeFilter === 'ROLE_ADMIN' ? 'text-black' : 'text-admin-akcent-color'">
       Administrator
       <span class="text-admin-lightgray text-opacity-60 font-normal">(1)</span>
     </button>
     <span class="pr-2 text-admin-lightgray text-opacity-60">|</span>
-    <button class="font-semibold" [ngClass]="activeFilter === 'ROLE_USER' ? 'text-black' : 'text-admin-akcent-color'">
+    <button class="font-semibold" (click)="handleFilter('ROLE_USER')" [ngClass]="activeFilter === 'ROLE_USER' ? 'text-black' : 'text-admin-akcent-color'">
       Regular users
       <span class="text-admin-lightgray text-opacity-60 font-normal">(2)</span>
     </button>
@@ -29,8 +29,10 @@
         <th scope="col" class="px-6 py-3 text-admin-akcent-color">Action</th>
       </tr>
     </thead>
-    <tbody>
-      <tr *ngFor="let user of userData" class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+    <tbody *ngIf="!isLoading">
+      <tr *ngFor="let user of userData | paginate: {itemsPerPage: pageSize,
+                                                    currentPage: currentPage,
+                                                    totalItems: totalItems}" class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
         <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap dark:text-white text-admin-akcent-color">{{user.username}}</th>
         <td class="px-6 py-4">{{user.email}}</td>
         <td class="px-6 py-4">{{user.role.role}}</td>
@@ -42,5 +44,18 @@
       </tr>
     </tbody>
   </table>
+  <app-loading [isLoading]="isLoading"></app-loading>
+  <pagination-controls (pageChange)="pageChanged($event)"
+                       [maxSize]="5"
+                       [directionLinks]="true"
+                       [autoHide]="true"
+                       [responsive]="true"
+                       previousLabel="Previous"
+                       nextLabel="Next"
+                       screenReaderPaginationLabel="Pagination"
+                       screenReaderPageLabel="page"
+                       screenReaderCurrentLabel="You're on page"
+                       class="flex ml-5 customPagination flex-row-reverse"
+  ></pagination-controls>
 </div>
 

@@ -1,8 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {NgClass, NgForOf} from "@angular/common";
+import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {AdminEditBtnComponent} from "../admin-edit-btn/admin-edit-btn.component";
 import {AdminDeleteBtnComponent} from "../admin-delete-btn/admin-delete-btn.component";
 import {AuthService} from "../../services/AuthService";
+import {LoadingComponent} from "../../user-front/loading/loading.component";
+import {NgxPaginationModule} from "ngx-pagination";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-admin-accounts-table',
@@ -11,14 +14,17 @@ import {AuthService} from "../../services/AuthService";
     NgClass,
     AdminEditBtnComponent,
     AdminDeleteBtnComponent,
-    NgForOf
+    NgForOf,
+    NgIf,
+    LoadingComponent,
+    NgxPaginationModule
   ],
   templateUrl: './admin-accounts-table.component.html',
   styles: ``
 })
 export class AdminAccountsTableComponent implements OnInit{
 
-  constructor(private authService : AuthService) {
+  constructor(private authService : AuthService, private router : Router) {
   }
   activeFilter : string = ''
   totalItems = 0;
@@ -34,7 +40,7 @@ export class AdminAccountsTableComponent implements OnInit{
 
   getAllUsers() {
     this.authService.GetAllUsers({
-      role: 'ROLE_USER',
+      role: this.activeFilter,
       page: this.currentPage - 1,
       size: this.pageSize
     }).subscribe({
@@ -50,6 +56,24 @@ export class AdminAccountsTableComponent implements OnInit{
       }
     })
   }
+
+  pageChanged(page : number) {
+    this.currentPage = page
+    this.authService.GetUserRole().subscribe(role => {
+      if (role === null) {
+        this.router.navigate(['/login']);
+      } else {
+        window.scrollTo(0, 0);
+        this.getAllUsers();
+      }
+    })
+  }
+
+  handleFilter(filter : string) {
+    this.activeFilter = filter
+    this.getAllUsers()
+  }
+
 }
 
 export interface User {
