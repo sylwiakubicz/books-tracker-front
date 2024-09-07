@@ -71,7 +71,7 @@ export const routes: Routes = [
     canActivate: [authGuard],
     data: { role: 'ROLE_ADMIN' }
   },
-  {git
+  {
     path: 'admin/library/books/:id',
     component: AdminManageBookDataPageComponent,
     canActivate: [authGuard],
