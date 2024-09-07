@@ -1,10 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthorsService} from "../../services/AuthorsService";
-import {map} from "rxjs/operators";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Author} from "../../user-front/home-page/home-page.component";
 import {NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
+import {AuthService} from "../../services/AuthService";
 
 @Component({
   selector: 'app-admin-authors-form',
@@ -18,7 +18,7 @@ import {FormsModule} from "@angular/forms";
 })
 export class AdminAuthorsFormComponent implements OnInit{
 
-  constructor(private authorService : AuthorsService, private router : Router, private route: ActivatedRoute) {
+  constructor(private authorService : AuthorsService, private router : Router, private route: ActivatedRoute, private authService : AuthService) {
   }
 
   id : number = 0
@@ -80,10 +80,16 @@ export class AdminAuthorsFormComponent implements OnInit{
   }
 
   save() {
-    if (this.id != 0 ){
-      this.UpdateAuthor()
-    } else {
-      this.AddAuthor()
-    }
+    this.authService.GetUserRole().subscribe(role => {
+      if (role === null) {
+        this.router.navigate(['/login']);
+      } else {
+        if (this.id != 0) {
+          this.UpdateAuthor()
+        } else {
+          this.AddAuthor()
+        }
+      }
+    })
   }
 }
