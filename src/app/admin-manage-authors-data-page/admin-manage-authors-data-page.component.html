@@ -1,0 +1,7 @@
+<div class="flex flex-row h-screen bg-admin-primary w-screen">
+  <app-admin-menu [activeSection]="'library'" [isShow]="true" [activeLibrarySection]="'authors'"></app-admin-menu>
+  <section class="w-full pl-5 pt-4 pr-5">
+    <h1 class="text-xl font-semibold">Add new author</h1>
+    <app-admin-authors-form></app-admin-authors-form>
+  </section>
+</div>
