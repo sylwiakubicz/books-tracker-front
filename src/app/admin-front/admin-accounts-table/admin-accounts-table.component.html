@@ -1,16 +1,16 @@
 <section class="flex justify-between w-full mb-5 items-center">
   <div class="flex ">
-    <button class="pr-2 font-semibold" [ngClass]="activeFilter === 'all' ? 'text-black' : 'text-admin-akcent-color'">
+    <button class="pr-2 font-semibold" [ngClass]="activeFilter === '' ? 'text-black' : 'text-admin-akcent-color'">
       All
       <span class="text-admin-lightgray text-opacity-60 font-normal">(3)</span>
     </button>
     <span class="pr-2 text-admin-lightgray text-opacity-60">|</span>
-    <button class="pr-2 font-semibold" [ngClass]="activeFilter === 'admin' ? 'text-black' : 'text-admin-akcent-color'">
+    <button class="pr-2 font-semibold" [ngClass]="activeFilter === 'ROLE_ADMIN' ? 'text-black' : 'text-admin-akcent-color'">
       Administrator
       <span class="text-admin-lightgray text-opacity-60 font-normal">(1)</span>
     </button>
     <span class="pr-2 text-admin-lightgray text-opacity-60">|</span>
-    <button class="font-semibold" [ngClass]="activeFilter === 'users' ? 'text-black' : 'text-admin-akcent-color'">
+    <button class="font-semibold" [ngClass]="activeFilter === 'ROLE_USER' ? 'text-black' : 'text-admin-akcent-color'">
       Regular users
       <span class="text-admin-lightgray text-opacity-60 font-normal">(2)</span>
     </button>
@@ -24,40 +24,20 @@
       <tr>
         <th scope="col" class="px-6 py-3 text-admin-akcent-color">Username</th>
         <th scope="col" class="px-6 py-3">Email</th>
-        <th scope="col" class="px-6 py-3 text-admin-akcent-color">Password</th>
-        <th scope="col" class="px-6 py-3">Role</th>
+        <th scope="col" class="px-6 py-3 text-admin-akcent-color">Role</th>
+        <th scope="col" class="px-6 py-3">Creation date</th>
         <th scope="col" class="px-6 py-3 text-admin-akcent-color">Action</th>
       </tr>
     </thead>
     <tbody>
-      <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-        <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap dark:text-white text-admin-akcent-color">Jan</th>
-        <td class="px-6 py-4">Kowalski</td>
-        <td class="px-6 py-4">fnjdkds</td>
-        <td class="px-6 py-4">User</td>
+      <tr *ngFor="let user of userData" class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap dark:text-white text-admin-akcent-color">{{user.username}}</th>
+        <td class="px-6 py-4">{{user.email}}</td>
+        <td class="px-6 py-4">{{user.role.role}}</td>
+        <td class="px-6 py-4">{{user.creationDate}}</td>
         <td class="px-6 py-4">
-          <app-admin-edit-btn [id]="1" class="mr-2"></app-admin-edit-btn>
-          <app-admin-delete-btn [id]="1"></app-admin-delete-btn>
-        </td>
-      </tr>
-      <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-        <th scope="row" class="px-6 py-4 font-medium text-admin-akcent-color whitespace-nowrap dark:text-white">Jan</th>
-        <td class="px-6 py-4">Kowalski</td>
-        <td class="px-6 py-4">fnjdkds</td>
-        <td class="px-6 py-4">User</td>
-        <td class="px-6 py-4">
-          <app-admin-edit-btn [id]="1" class="mr-2"></app-admin-edit-btn>
-          <app-admin-delete-btn [id]="1"></app-admin-delete-btn>
-        </td>
-      </tr>
-      <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-        <th scope="row" class="px-6 py-4 font-medium text-admin-akcent-color whitespace-nowrap dark:text-white">Jan</th>
-        <td class="px-6 py-4">Kowalski</td>
-        <td class="px-6 py-4">fnjdkds</td>
-        <td class="px-6 py-4">User</td>
-        <td class="px-6 py-4">
-          <app-admin-edit-btn [id]="1" class="mr-2"></app-admin-edit-btn>
-          <app-admin-delete-btn [id]="1"></app-admin-delete-btn>
+          <app-admin-edit-btn [id]="user.userId" class="mr-2"></app-admin-edit-btn>
+          <app-admin-delete-btn [id]="user.userId"></app-admin-delete-btn>
         </td>
       </tr>
     </tbody>
