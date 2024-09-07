@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {SubmitBtnComponent} from "../submit-btn/submit-btn.component";
-import {BooksService} from "../../services/BooksService";
 import {NavbarComponent} from "../navbar/navbar.component";
 import {BookCardComponent} from "../book-card/book-card.component";
 import {BannerComponent} from "../banner/banner.component";
@@ -50,6 +49,8 @@ export class HomePageComponent implements OnInit{
 }
 
 export interface Book {
+  authorsName: string;
+  genresName: string;
   bookId: number;
   title: string;
   description: string;
