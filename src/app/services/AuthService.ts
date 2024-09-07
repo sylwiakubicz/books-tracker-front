@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 
@@ -41,6 +41,24 @@ export class AuthService {
   GetUserRole() : Observable<String | null> {
     return this.http.get<{role: string}>("http://localhost:8080/api/auth/role", {withCredentials: true}).pipe(
       map(response => response.role || null)
+    )
+  }
+
+  GetAllUsers(params : any) : Observable<any> {
+    let httpParams = new HttpParams();
+    if (params.role) {
+      httpParams = httpParams.set('role', params.role);
+    }
+    if (params.page) {
+      httpParams = httpParams.set('page', params.page);
+    }
+    if (params.size) {
+      httpParams = httpParams.set('size', params.size);
+    }
+    return this.http.get("http://localhost:8080/api/auth", {params: httpParams, withCredentials: true}).pipe(
+      map( response => {
+        return response;
+      })
     )
   }
 }
