@@ -1,25 +1,25 @@
 <form class="mt-4 bg-white shadow-md flex flex-col mr-5">
-  <div class="grid grid-cols-8 items-center py-3 px-5 text-lg even:bg-white odd:bg-gray-50 border-b">
+  <div *ngIf="id" class="grid grid-cols-8 items-center py-3 px-5 text-lg even:bg-white odd:bg-gray-50 border-b">
     <label class="col-span-1">Id</label>
-    <p class="col-span-7">1</p>
+    <p class="col-span-7">{{id}}</p>
   </div>
   <div class="grid grid-cols-8 items-center py-3 px-5 text-lg even:bg-white odd:bg-gray-50 border-b dark:border-gray-700">
-    <label class="span-col-1">Usernmae</label>
-    <input type="text" class="col-span-7 border-admin-lightgray border-opacity-30 pl-2 border-[1px] flex-grow">
+    <label class="span-col-1">Username</label>
+    <input type="text" [(ngModel)]="username" name="username" class="col-span-7 border-admin-lightgray border-opacity-30 pl-2 border-[1px] flex-grow">
   </div>
   <div class="grid grid-cols-8 items-start py-3 px-5 text-lg even:bg-white odd:bg-gray-50 border-b dark:border-gray-700">
     <label class="pan-col-1">Email</label>
-    <input type="email" class="col-span-2 border-admin-lightgray border-opacity-30 pl-2 border-[1px]">
+    <input type="email" [(ngModel)]="email" name="email" class="col-span-7 border-admin-lightgray border-opacity-30 pl-2 border-[1px]">
   </div>
   <div class="grid grid-cols-8 items-start py-3 px-5 text-lg even:bg-white odd:bg-gray-50 border-b dark:border-gray-700">
     <label class="span-col-1">Password</label>
-    <input type="password" class="col-span-1 border-admin-lightgray border-opacity-30 pl-2 border-[1px]">
+    <input type="password" [(ngModel)]="password" name="password" class="col-span-7 border-admin-lightgray border-opacity-30 pl-2 border-[1px]">
   </div>
   <div class="grid grid-cols-8 items-start py-3 px-5 text-lg even:bg-white odd:bg-gray-50 border-b dark:border-gray-700">
     <label class="span-col-1">Role</label>
-    <select class="spna-col-2">
-      <option>User</option>
-      <option>Admin</option>
+    <select class="spna-col-3" [(ngModel)]="role" name="role">
+      <option >ROLE_USER</option>
+      <option>ROLE_ADMIN</option>
     </select>
   </div>
   <button class="w-[10rem] mr-5 my-2 self-end bg-admin-akcent-color text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">

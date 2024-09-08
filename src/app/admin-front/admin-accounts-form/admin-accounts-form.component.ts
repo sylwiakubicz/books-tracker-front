@@ -2,11 +2,16 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../services/AuthService";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Author} from "../../user-front/home-page/home-page.component";
+import {FormsModule} from "@angular/forms";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-admin-accounts-form',
   standalone: true,
-  imports: [],
+  imports: [
+    FormsModule,
+    NgIf
+  ],
   templateUrl: './admin-accounts-form.component.html',
   styles: ``
 })
@@ -16,7 +21,7 @@ export class AdminAccountsFormComponent implements OnInit{
   username : string = ''
   email : string = ''
   password : string = ''
-  role : string = ''
+  role : string = 'ROLE_USER'
 
   constructor(private authService : AuthService, private router : Router,  private route: ActivatedRoute) {
   }
