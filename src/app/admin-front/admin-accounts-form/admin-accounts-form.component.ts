@@ -52,5 +52,41 @@ export class AdminAccountsFormComponent implements OnInit{
     }
   }
 
+  AddUser() {
+      this.authService.CreateUserByAdmin(this.username, this.email, this.password, this.role).subscribe({
+          next: (response) => {
+            this.router.navigate(["/admin/accounts"]);
+          },
+          error: (err) => {
+            console.log(err)
+          }
+      })
+  }
+
+  UpdateUser() {
+    this.authService.UpdateUser(this.id, this.username, this.email, this.password, this.role).subscribe({
+      next: (response) => {
+        this.router.navigate(["/admin/accounts"]);
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    })
+  }
+
+  save() {
+    this.authService.GetUserRole().subscribe(role => {
+      if (role === null) {
+        this.router.navigate(['/login']);
+      } else {
+        if (this.id != 0) {
+          this.UpdateUser()
+        } else {
+          this.AddUser()
+        }
+      }
+    })
+  }
+
 
 }
