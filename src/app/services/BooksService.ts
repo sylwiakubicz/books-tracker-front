@@ -74,4 +74,8 @@ export class BooksService {
     )
   }
 
+  DeleteUser(id : number) : Observable<any> {
+    return this.http.delete(`http://localhost:8080/books/${id}`, {withCredentials: true})
+  }
+
 }
