@@ -51,7 +51,7 @@
         <td class="px-6 py-4">{{user.creationDate}}</td>
         <td class="px-6 py-4">
           <app-admin-edit-btn [id]="user.userId" class="mr-2"></app-admin-edit-btn>
-          <app-admin-delete-btn [id]="user.userId"></app-admin-delete-btn>
+          <app-admin-delete-btn [id]="user.userId" [tableName]="'accounts'"></app-admin-delete-btn>
         </td>
       </tr>
     </tbody>

@@ -24,12 +24,23 @@ export class AdminDeleteBtnComponent {
         this.router.navigate(['/login']);
       } else {
         if (this.tableName === 'authors') {
-          console.log("id" + this.id)
           this.authorsService.DeleteAuthor(this.id).subscribe({
             next: () => {
               location.reload()
             },
             error: (error) => {
+              console.log(error)
+            }
+          })
+        }
+        else if (this.tableName === 'accounts') {
+          this.authService.DeleteUser(this.id).subscribe({
+            next: () => {
+              console.log("hi")
+              location.reload()
+            },
+            error: (error) => {
+              console.log("hihi")
               console.log(error)
             }
           })

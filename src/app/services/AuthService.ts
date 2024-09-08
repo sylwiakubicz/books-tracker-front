@@ -129,5 +129,9 @@ export class AuthService {
     )
   }
 
+  DeleteUser(id : number) : Observable<any> {
+    return this.http.delete(`http://localhost:8080/api/auth/${id}`, {withCredentials: true})
+  }
+
 }
 
