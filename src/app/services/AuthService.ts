@@ -89,5 +89,37 @@ export class AuthService {
     )
   }
 
+  CreateUserByAdmin(username: string, email: string, password: string, role : string) : Observable<any> {
+    return this.http.post(
+      "https://localhost:8080/api/auth/create",
+      {
+        username: username,
+        email: email,
+        password: password,
+        role: role
+      },
+      {withCredentials: true}).pipe(
+      map(res => {
+        return res
+      })
+    )
+  }
+
+  UpdateUser(id : number, username: string, email: string, password: string, role : string) : Observable<any> {
+    return this.http.put(
+      `https://localhost:8080/api/auth/update/user/${id}`,
+      {
+      username: username,
+      email: email,
+      password: password,
+      role: role
+      },
+      {withCredentials: true}).pipe(
+      map(res => {
+        return res
+      })
+    )
+  }
+
 }
 
