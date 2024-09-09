@@ -35,7 +35,7 @@ export class AdminBooksFormComponent implements OnInit{
   genresJson: GenreOnlyString[] = [];
   genresList: Array<Genre> = [];
   authorsList : Array<Author> = [];
-  url : string = "https://drive.google.com/thumbnail?id=";
+  url : string = "";
 
   ngOnInit() {
     this.getAllGenres();
@@ -131,7 +131,7 @@ export class AdminBooksFormComponent implements OnInit{
           this.pageNumber = response.pageNumber
           this.authorsJson = response.authors.map((author : Author)=> {return {"name": author.name, "surname": author.surname}})
           this.genresJson = response.genres.map((genre : Genre) => {return {"name": genre.name}})
-          if(response.covering) {this.url += response.covering}
+          if(response.covering) {this.url += "https://drive.google.com/thumbnail?id=" + response.covering}
         },
         error: (error) => {
           console.error(error);
