@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FooterComponent} from "../footer/footer.component";
 import {NavbarComponent} from "../navbar/navbar.component";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-page-notfound',
@@ -26,7 +26,9 @@ export class PageNotfoundComponent implements OnInit{
       this.timer -= 1;
       if (this.timer === 0) {
         clearInterval(interval);
-        this.router.navigate(['/']);
+        if (this.router.url !== '/') {
+          this.router.navigate(['/']);
+        }
       }
     }, 1000);
   }
