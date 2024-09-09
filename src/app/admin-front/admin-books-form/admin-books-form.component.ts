@@ -51,11 +51,10 @@ export class AdminBooksFormComponent implements OnInit{
 
   submitBook() {
     if (this.id != 0) {
-      console.log("save")
+      this.updateBook()
     }
     else {
       this.addBook()
-      this.router.navigate(["/admin/library/books"])
     }
   }
 
@@ -71,9 +70,37 @@ export class AdminBooksFormComponent implements OnInit{
         this.authorsJson,
         this.genresJson
       )
-      .subscribe((response) => {
-        console.log('Book added successfully', response);
+      .subscribe({
+        next: (response) => {
+          this.router.navigate(["/admin/library/books"])
+        },
+        error: (error) => {
+          console.error(error);
+        }
       });
+  }
+
+  updateBook() {
+    this.booksService
+      .UpdateBook(
+        this.title,
+        this.description,
+        this.pageNumber,
+        this.publicationYear,
+        this.ISBN,
+        this.image ? this.image : undefined,
+        this.authorsJson,
+        this.genresJson,
+        this.id
+      )
+      .subscribe({
+        next: (response) => {
+        this.router.navigate(["/admin/library/books"])
+      },
+      error: (error) => {
+      console.error(error);
+      }
+    });
   }
 
   getAllGenres(): void {
@@ -82,7 +109,7 @@ export class AdminBooksFormComponent implements OnInit{
         this.genresList = response;
       },
       error: (error) => {
-        console.error("Błąd pobierania gatunków:", error);
+        console.error(error);
       }
     });
   }
@@ -101,7 +128,7 @@ export class AdminBooksFormComponent implements OnInit{
           this.genresJson = response.genres.map((genre : Genre) => {return {"name": genre.name}})
         },
         error: (error) => {
-          console.error("Błąd pobierania gatunków:", error);
+          console.error(error);
         }
       })
   }
@@ -112,7 +139,7 @@ export class AdminBooksFormComponent implements OnInit{
       this.authorsList = response.content;
     },
       error: (error) => {
-      console.error("Błąd pobierania gatunków:", error);
+      console.error(error);
     }
     })
   }
