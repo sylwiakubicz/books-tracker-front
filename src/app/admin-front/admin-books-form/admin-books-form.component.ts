@@ -7,6 +7,7 @@ import {FormsModule} from "@angular/forms";
 import {Author, Genre} from "../../user-front/home-page/home-page.component";
 import {NgForOf, NgIf} from "@angular/common";
 import {AuthorsService} from "../../services/AuthorsService";
+import {retry} from "rxjs";
 
 @Component({
   selector: 'app-admin-books-form',
@@ -43,6 +44,7 @@ export class AdminBooksFormComponent implements OnInit{
       const idParam = params.get('id');
       if (idParam) {
         this.id = +idParam;
+        this.loadBookData()
       }
     });
   }
@@ -56,6 +58,25 @@ export class AdminBooksFormComponent implements OnInit{
         console.error("Błąd pobierania gatunków:", error);
       }
     });
+  }
+
+  loadBookData() {
+    this.booksService.GetBook(this.id).subscribe(
+      {
+        next: (response) => {
+          console.log(response)
+          this.title = response.title
+          this.description = response.description
+          this.ISBN = response.isbn
+          this.publicationYear = response.publicationYear
+          this.pageNumber = response.pageNumber
+          this.authorsJson = response.authors.map((author : Author)=> {return {"name": author.name, "surname": author.surname}})
+          this.genresJson = response.genres.map((genre : Genre) => {return {"name": genre.name}})
+        },
+        error: (error) => {
+          console.error("Błąd pobierania gatunków:", error);
+        }
+      })
   }
 
   getAllAuthors() {
