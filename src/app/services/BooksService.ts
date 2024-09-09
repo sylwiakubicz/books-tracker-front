@@ -74,8 +74,35 @@ export class BooksService {
     )
   }
 
-  DeleteUser(id : number) : Observable<any> {
+  DeleteBook(id : number) : Observable<any> {
     return this.http.delete(`http://localhost:8080/books/${id}`, {withCredentials: true})
+  }
+
+  AddBook(
+    title: string,
+    description: string,
+    pageNumber: number,
+    publicationYear: number,
+    ISBN: string,
+    image: File | undefined,
+    authorsJson: any[],
+    genresJson: any[]
+  ): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('title', title);
+    formData.append('description', description);
+    formData.append('pageNumber', pageNumber.toString());
+    formData.append('publicationYear', publicationYear.toString());
+    formData.append('ISBN', ISBN);
+    if (image) {
+      formData.append('image', image);
+    }
+    formData.append('authorsJson', JSON.stringify(authorsJson));
+    formData.append('genresJson', JSON.stringify(genresJson));
+
+    return this.http.post("http://localhost:8080/books", formData, {
+      withCredentials: true,
+    });
   }
 
 }
