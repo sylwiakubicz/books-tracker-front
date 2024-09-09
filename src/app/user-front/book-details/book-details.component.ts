@@ -29,6 +29,7 @@ export class BookDetailsComponent implements OnChanges {
   authorsNames: string = "";
   genresNames: string ='';
   url : string = "https://drive.google.com/thumbnail?id=";
+  defaultUrl : string = ""
 
   constructor(private booksService: BooksService, private  bookStateService : BookStatesService) {
   }
@@ -68,13 +69,23 @@ export class BookDetailsComponent implements OnChanges {
   }
 
   manageData () {
+    console.log(this.bookData)
     this.authorsNames = this.bookData?.authors?.map((author: Author) =>
       `${author.name} ${author.surname}`
     ).join(', ') || '';
     this.genresNames = this.bookData?.genres?.map((genre: Genre) =>
       `${genre.name}`
     ).join(', ') || '';
-    this.url = this.url + this.bookData?.covering;
+    if (this.bookData?.covering) {
+      this.url = this.url + this.bookData.covering;
+    }
+    else {
+      this.url = ''
+      let randomNum = Math.floor(Math.random() * 5) + 1;
+      this.defaultUrl = "assets/images/cover_v" + randomNum + ".png"
+    }
+    console.log("url " + this.url)
+    console.log("default " + this.defaultUrl)
   }
 }
 
