@@ -105,4 +105,32 @@ export class BooksService {
     });
   }
 
+  UpdateBook(
+    title: string,
+    description: string,
+    pageNumber: number,
+    publicationYear: number,
+    ISBN: string,
+    image: File | undefined,
+    authorsJson: any[],
+    genresJson: any[],
+    id : number
+  ): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('title', title);
+    formData.append('description', description);
+    formData.append('pageNumber', pageNumber.toString());
+    formData.append('publicationYear', publicationYear.toString());
+    formData.append('ISBN', ISBN);
+    if (image) {
+      formData.append('image', image);
+    }
+    formData.append('authorsJson', JSON.stringify(authorsJson));
+    formData.append('genresJson', JSON.stringify(genresJson));
+
+    return this.http.put(`http://localhost:8080/books/${id}`, formData, {
+      withCredentials: true,
+    });
+  }
+
 }
