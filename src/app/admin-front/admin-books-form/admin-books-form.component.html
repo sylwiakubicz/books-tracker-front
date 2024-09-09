@@ -43,8 +43,9 @@
     <input [(ngModel)]="pageNumber" name="pageNumber" type="number" class="span-col-1 border-admin-lightgray border-opacity-30 pl-2 border-[1px]">
   </div>
   <div class="grid grid-cols-8 items-start py-3 px-5 text-lg even:bg-white odd:bg-gray-50 border-b dark:border-gray-700">
-    <label class="pan-col-1">Covering</label>
+    <label class="col-span-1">Covering</label>
     <input type="file" (change)="onFileSelected($event)" class="col-span-2 border-admin-lightgray border-opacity-30 pl-2 border-[1px]">
+    <img *ngIf="url" [src]="url" class="col-span-2 h-[7rem] ml-5">
   </div>
   <div class="grid grid-cols-8 items-start py-3 px-5 text-lg even:bg-white odd:bg-gray-50 border-b dark:border-gray-700">
     <label class="span-col-1">Publication year</label>
