@@ -19,7 +19,7 @@
       <div class="h-[7rem] w-[15rem] overflow-scroll overflow-x-hidden col-span-2">
         <div *ngFor="let author of authorsList; let i = index">
           <label>
-            <input type="checkbox" [value]="i" (change)="onAuthorCheckboxChange($event)">
+            <input type="checkbox" [value]="i" [checked]="isAuthorSelected(author)" (change)="onAuthorCheckboxChange($event)">
             {{ author.name }} {{ author.surname }}
           </label>
         </div>
@@ -31,7 +31,7 @@
     <div class="h-[7rem] w-[15rem] overflow-y-auto scroll overflow-x-hidden col-span-2">
       <div *ngFor="let genre of genresList">
         <label>
-          <input type="checkbox" [value]="genre.name" (change)="onGenreCheckboxChange($event)">
+          <input type="checkbox" [value]="genre.name" [checked]="isGenreSelected(genre)" (change)="onGenreCheckboxChange($event)">
           {{ genre.name }}
         </label>
       </div>

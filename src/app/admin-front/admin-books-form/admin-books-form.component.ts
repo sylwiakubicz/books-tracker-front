@@ -90,6 +90,14 @@ export class AdminBooksFormComponent implements OnInit{
     })
   }
 
+  isAuthorSelected(author: Author): boolean {
+    return this.authorsJson.some(a => a.name === author.name && a.surname === author.surname);
+  }
+
+  isGenreSelected(genre: Genre): boolean {
+    return this.genresJson.some(g => g.name === genre.name);
+  }
+
   onGenreCheckboxChange(event: Event): void {
     const checkbox = event.target as HTMLInputElement;
     const genreName = checkbox.value;
