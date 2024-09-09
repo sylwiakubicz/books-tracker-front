@@ -49,6 +49,33 @@ export class AdminBooksFormComponent implements OnInit{
     });
   }
 
+  submitBook() {
+    if (this.id != 0) {
+      console.log("save")
+    }
+    else {
+      this.addBook()
+      this.router.navigate(["/admin/library/books"])
+    }
+  }
+
+  addBook() {
+    this.booksService
+      .AddBook(
+        this.title,
+        this.description,
+        this.pageNumber,
+        this.publicationYear,
+        this.ISBN,
+        this.image ? this.image : undefined,
+        this.authorsJson,
+        this.genresJson
+      )
+      .subscribe((response) => {
+        console.log('Book added successfully', response);
+      });
+  }
+
   getAllGenres(): void {
     this.genresService.GetAllGenres().subscribe({
       next: (response) => {

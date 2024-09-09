@@ -45,7 +45,7 @@ export class AdminDeleteBtnComponent {
           })
         }
         else if (this.tableName === 'books') {
-          this.booksService.DeleteUser(this.id).subscribe({
+          this.booksService.DeleteBook(this.id).subscribe({
             next: () => {
               location.reload()
             },
