@@ -7,7 +7,6 @@ import {FormsModule} from "@angular/forms";
 import {Author, Genre} from "../../user-front/home-page/home-page.component";
 import {NgForOf, NgIf} from "@angular/common";
 import {AuthorsService} from "../../services/AuthorsService";
-import {retry} from "rxjs";
 
 @Component({
   selector: 'app-admin-books-form',
@@ -50,12 +49,17 @@ export class AdminBooksFormComponent implements OnInit{
   }
 
   submitBook() {
-    if (this.id != 0) {
-      this.updateBook()
-    }
-    else {
-      this.addBook()
-    }
+    this.authService.GetUserRole().subscribe(role => {
+      if (role === null) {
+        this.router.navigate(['/login']);
+      } else {
+        if (this.id != 0) {
+          this.updateBook()
+        } else {
+          this.addBook()
+        }
+      }
+   })
   }
 
   addBook() {
