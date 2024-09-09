@@ -1,47 +1,52 @@
 <form class="mt-4 bg-white shadow-md flex flex-col mr-5">
   <div class="grid grid-cols-8 items-center py-3 px-5 text-lg even:bg-white odd:bg-gray-50 border-b">
     <label class="col-span-1">Id</label>
-    <p class="col-span-7">1</p>
+    <p class="col-span-7">{{id}}</p>
   </div>
   <div class="grid grid-cols-8 items-center py-3 px-5 text-lg even:bg-white odd:bg-gray-50 border-b dark:border-gray-700">
     <label class="span-col-1">Title</label>
-    <input type="text" class="col-span-7 border-admin-lightgray border-opacity-30 pl-2 border-[1px] flex-grow">
+    <input type="text" class="col-span-7 border-admin-lightgray border-opacity-30 pl-2 border-[1px] flex-grow" [(ngModel)]="title" name="title" >
   </div>
   <div class="grid grid-cols-8 items-start py-3 px-5 text-lg even:bg-white odd:bg-gray-50 border-b dark:border-gray-700">
     <label class="span-col-1">Description</label>
-    <textarea rows="6" class="col-span-7 border-admin-lightgray border-opacity-30 pl-2 border-[1px] flex-grow"></textarea>
+    <textarea rows="6" class="col-span-7 border-admin-lightgray border-opacity-30 pl-2 border-[1px] flex-grow" [(ngModel)]="description"  name="description" ></textarea>
   </div>
-  <div class="grid grid-cols-8 items-start py-3 px-5 text-lg even:bg-white odd:bg-gray-50 border-b dark:border-gray-700">
-    <label class="span-col-1">Authors</label>
-    <select class="span-col-2">
-      <option>one</option>
-      <option>one</option>
-      <option>one</option>
-    </select>
-  </div>
-  <div class="grid grid-cols-8 items-start py-3 px-5 text-lg even:bg-white odd:bg-gray-50 border-b dark:border-gray-700">
-    <label class="span-col-1">Genres</label>
-    <select class="spna-col-2">
-      <option>one</option>
-      <option>one</option>
-      <option>one</option>
-    </select>
-  </div>
+
+
+  <fieldset class="grid grid-cols-8 items-start py-3 px-5 text-lg even:bg-white odd:bg-gray-50 border-b dark:border-gray-700">
+    <legend>Authors</legend>
+    <div *ngFor="let author of authorsList; let i = index">
+      <label>
+        <input type="checkbox" [value]="i" (change)="onAuthorCheckboxChange($event)">
+        {{ author.name }} {{ author.surname }}
+      </label>
+    </div>
+  </fieldset>
+  <fieldset class="grid grid-cols-8 items-start py-3 px-5 text-lg even:bg-white odd:bg-gray-50 border-b dark:border-gray-700">
+    <legend>Genres</legend>
+    <div *ngFor="let genre of genresList">
+      <label>
+        <input type="checkbox" [value]="genre.name" (change)="onGenreCheckboxChange($event)">
+        {{ genre.name }}
+      </label>
+    </div>
+  </fieldset>
+
   <div class="grid grid-cols-8 items-start py-3 px-5 text-lg even:bg-white odd:bg-gray-50 border-b dark:border-gray-700">
     <label class="span-col-1">Number of page</label>
-    <input type="number" class="span-col-1 border-admin-lightgray border-opacity-30 pl-2 border-[1px]">
+    <input [(ngModel)]="pageNumber" name="pageNumber" type="number" class="span-col-1 border-admin-lightgray border-opacity-30 pl-2 border-[1px]">
   </div>
   <div class="grid grid-cols-8 items-start py-3 px-5 text-lg even:bg-white odd:bg-gray-50 border-b dark:border-gray-700">
     <label class="pan-col-1">Covering</label>
-    <input type="file" class="col-span-2 border-admin-lightgray border-opacity-30 pl-2 border-[1px]">
+    <input type="file" (change)="onFileSelected($event)" class="col-span-2 border-admin-lightgray border-opacity-30 pl-2 border-[1px]">
   </div>
   <div class="grid grid-cols-8 items-start py-3 px-5 text-lg even:bg-white odd:bg-gray-50 border-b dark:border-gray-700">
     <label class="span-col-1">Publication year</label>
-    <input type="date" class="col-span-1 border-admin-lightgray border-opacity-30 pl-2 border-[1px]">
+    <input type="number"[(ngModel)]="publicationYear" name="publicationYear" class="col-span-1 border-admin-lightgray border-opacity-30 pl-2 border-[1px]">
   </div>
   <div class="grid grid-cols-8 items-start py-3 px-5 text-lg even:bg-white odd:bg-gray-50 border-b dark:border-gray-700">
     <label class="span-col-1">ISBN</label>
-    <input type="text" class="col-span-7 border-admin-lightgray border-opacity-30 pl-2 border-[1px]">
+    <input type="text" [(ngModel)]="ISBN" name="ISBN" class="col-span-7 border-admin-lightgray border-opacity-30 pl-2 border-[1px]">
   </div>
   <button class="w-[10rem] mr-5 my-2 self-end bg-admin-akcent-color text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
     Save
