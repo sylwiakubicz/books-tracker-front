@@ -5,7 +5,7 @@ import {AuthService} from "../../services/AuthService";
 import {GenresService} from "../../services/GenresService";
 import {FormsModule} from "@angular/forms";
 import {Author, Genre} from "../../user-front/home-page/home-page.component";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {AuthorsService} from "../../services/AuthorsService";
 
 @Component({
@@ -13,7 +13,8 @@ import {AuthorsService} from "../../services/AuthorsService";
   standalone: true,
   imports: [
     FormsModule,
-    NgForOf
+    NgForOf,
+    NgIf
   ],
   templateUrl: './admin-books-form.component.html',
   styles: ``
@@ -38,6 +39,12 @@ export class AdminBooksFormComponent implements OnInit{
   ngOnInit() {
     this.getAllGenres();
     this.getAllAuthors();
+    this.route.paramMap.subscribe(params => {
+      const idParam = params.get('id');
+      if (idParam) {
+        this.id = +idParam;
+      }
+    });
   }
 
   getAllGenres(): void {

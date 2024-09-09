@@ -1,5 +1,5 @@
 <form class="mt-4 bg-white shadow-md flex flex-col mr-5">
-  <div class="grid grid-cols-8 items-center py-3 px-5 text-lg even:bg-white odd:bg-gray-50 border-b">
+  <div *ngIf="id" class="grid grid-cols-8 items-center py-3 px-5 text-lg even:bg-white odd:bg-gray-50 border-b">
     <label class="col-span-1">Id</label>
     <p class="col-span-7">{{id}}</p>
   </div>
