@@ -35,7 +35,6 @@ export class CarouselWrapperPopularComponent implements OnInit{
   getNewestBooks(genre :string) {
     this.booksService.GetNewestBooks(genre).subscribe({
       next: (response) => {
-        console.log(response)
         this.booksData = response;
       }
     })

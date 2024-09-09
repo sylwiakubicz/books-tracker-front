@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 import {StarRatingComponent} from "../star-rating/star-rating.component";
 import {StatusBtnComponent} from "../status-btn/status-btn.component";
 import {InformationCardComponent} from "../information-card/information-card.component";
@@ -69,7 +69,6 @@ export class BookDetailsComponent implements OnChanges {
   }
 
   manageData () {
-    console.log(this.bookData)
     this.authorsNames = this.bookData?.authors?.map((author: Author) =>
       `${author.name} ${author.surname}`
     ).join(', ') || '';
@@ -84,8 +83,6 @@ export class BookDetailsComponent implements OnChanges {
       let randomNum = Math.floor(Math.random() * 5) + 1;
       this.defaultUrl = "assets/images/cover_v" + randomNum + ".png"
     }
-    console.log("url " + this.url)
-    console.log("default " + this.defaultUrl)
   }
 }
 

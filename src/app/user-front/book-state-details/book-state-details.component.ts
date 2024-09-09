@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 import {StarRatingComponent} from "../star-rating/star-rating.component";
 import {StatusBtnComponent} from "../status-btn/status-btn.component";
 import { DatePipe } from '@angular/common';
@@ -81,7 +81,6 @@ export class BookStateDetailsComponent implements OnChanges {
         else {
           this.status = "Want to read"
         }
-        console.log(this.status)
         if (this.book_id && this.status) {
           this.updateBookToNewStatus(this.book_id, this.status, this.currentPage ? this.currentPage : 0, this.startDate ? this.startDate : null, this.endDate ? this.endDate : null)
         }

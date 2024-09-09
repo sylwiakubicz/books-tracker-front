@@ -45,8 +45,6 @@ export class LoginFormComponent {
   }
 
   handleSignIn() {
-    console.log(this.loginObj);
-    console.log('Sign In button clicked');
     this.login();
   }
 }

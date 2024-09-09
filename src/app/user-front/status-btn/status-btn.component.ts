@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 import {SubmitBtnComponent} from "../submit-btn/submit-btn.component";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faSquareCheck as farSquareCheck} from "@fortawesome/free-regular-svg-icons/faSquareCheck";

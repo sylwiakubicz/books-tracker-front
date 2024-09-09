@@ -8,7 +8,6 @@ export class AuthInterceptor implements HttpInterceptor {
     const clonedRequest = req.clone({
       withCredentials: true
     });
-    console.log('Interceptor: Adding credentials to request', clonedRequest);
     return next.handle(clonedRequest);
   }
 }

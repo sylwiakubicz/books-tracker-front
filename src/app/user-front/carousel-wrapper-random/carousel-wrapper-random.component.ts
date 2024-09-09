@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CarouselSectionComponent} from "../carousel-section/carousel-section.component";
 import {CarouselTitleComponent} from "../carousel-title/carousel-title.component";
 import {Book} from "../home-page/home-page.component";
@@ -27,8 +27,6 @@ export class CarouselWrapperRandomComponent implements OnInit{
   getRandomBooks() {
     this.booksService.GetRandomBooks().subscribe({
       next: (response) => {
-        console.log("random")
-        console.log(response)
         this.booksData = response;
       }
     })

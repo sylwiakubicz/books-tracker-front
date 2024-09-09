@@ -19,7 +19,6 @@ export class AdminDeleteBtnComponent {
   @Input() tableName : string = ''
 
   handleDelete() {
-    console.log(this.id)
     this.authService.GetUserRole().subscribe(role => {
       if (role === null) {
         this.router.navigate(['/login']);

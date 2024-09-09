@@ -123,7 +123,6 @@ export class AdminBooksFormComponent implements OnInit{
     this.booksService.GetBook(this.id).subscribe(
       {
         next: (response) => {
-          console.log(response)
           this.title = response.title
           this.description = response.description
           this.ISBN = response.isbn

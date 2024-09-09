@@ -1,4 +1,4 @@
-import {Component, Input, input} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {faStar as farStar} from "@fortawesome/free-regular-svg-icons/faStar";
 import {faStar} from "@fortawesome/free-solid-svg-icons/faStar";

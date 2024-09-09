@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 import {faSearch} from "@fortawesome/free-solid-svg-icons";
 import {NgClass, NgForOf, NgIf} from "@angular/common";
@@ -100,7 +100,6 @@ export class SearchBooksPanelComponent implements OnInit{
       genre: this.selectedGenre,
     }).subscribe({
       next: (response) => {
-        console.log("Test successful:", response);
         this.booksData = response.content;
         this.totalItems = response.totalElements
         this.isLoading = false;

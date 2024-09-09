@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {BookStatesService} from "../../services/BookStatesService";
 import {faSquareCheck} from "@fortawesome/free-solid-svg-icons/faSquareCheck";
 import {faSquareCheck as farSquareCheck} from "@fortawesome/free-regular-svg-icons/faSquareCheck";

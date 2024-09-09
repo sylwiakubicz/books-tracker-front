@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../services/AuthService";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Author} from "../../user-front/home-page/home-page.component";
 import {FormsModule} from "@angular/forms";
 import {NgIf} from "@angular/common";
 

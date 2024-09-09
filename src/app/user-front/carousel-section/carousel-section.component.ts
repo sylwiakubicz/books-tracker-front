@@ -1,11 +1,9 @@
 import {
   AfterViewChecked,
-  AfterViewInit,
   Component,
   ElementRef,
   Input,
-  OnChanges, QueryList,
-  SimpleChanges,
+  QueryList,
   ViewChild,
   ViewChildren
 } from '@angular/core';

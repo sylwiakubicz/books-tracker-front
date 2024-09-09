@@ -54,7 +54,6 @@ export class AdminAccountsTableComponent implements OnInit{
     }).subscribe({
       next: (response) => {
         this.userData = response.content
-        console.log(this.userData)
         this.totalItems = response.totalElements
         this.isLoading = false;
       },
