@@ -30,6 +30,7 @@ export class MybookCardComponent implements OnInit{
   url : string = "https://drive.google.com/thumbnail?id=";
   authorsNames: string = "";
   barProgress : number = 0;
+  defaultUrl : string = ""
 
   ngOnInit() {
     this.manageReceivedData()
@@ -37,8 +38,14 @@ export class MybookCardComponent implements OnInit{
   }
 
   manageReceivedData() {
-    this.url = this.url + this.covering;
-
+    if (this.covering) {
+      this.url = this.url + this.covering;
+    }
+    else {
+      this.url = ''
+      let randomNum = Math.floor(Math.random() * 5) + 1;
+      this.defaultUrl = "assets/images/cover_v" + randomNum + ".png"
+    }
     this.authorsNames = this.authors?.map((author: Author) =>
       `${author.name} ${author.surname}`
     ).join(', ') || '';
