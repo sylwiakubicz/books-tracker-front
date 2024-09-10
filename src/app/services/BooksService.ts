@@ -9,7 +9,7 @@ import {map} from "rxjs/operators";
 
 export class BooksService {
   constructor(private http: HttpClient) {}
-  base_url : string = "pandary-api.up.railway.app"
+  base_url : string = "https://pandary-api.up.railway.app"
 
   GetAllBooks(params : any): Observable<any> {
 

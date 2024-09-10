@@ -10,7 +10,7 @@ import {Author} from "../user-front/home-page/home-page.component";
 
 export class AuthorsService {
   constructor(private http: HttpClient) {}
-  base_url : string = "pandary-api.up.railway.app"
+  base_url : string = "https://pandary-api.up.railway.app"
 
   GetAllAuthors(params :any) :Observable<any>{
     let httpParams = new HttpParams();

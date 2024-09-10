@@ -8,7 +8,7 @@ import {map} from "rxjs/operators";
 })
 export class AuthService {
   constructor(private http: HttpClient) {}
-  base_url : string = "pandary-api.up.railway.app"
+  base_url : string = "https://pandary-api.up.railway.app"
 
   Register(username: string, email: string, password: string): Observable<any> {
     return this.http.post(`${this.base_url}/api/auth/register`, { username, email, password }, { withCredentials: true }).pipe(

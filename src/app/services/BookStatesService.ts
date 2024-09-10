@@ -12,7 +12,7 @@ export class BookStatesService {
   constructor(private http: HttpClient) {}
 
   bookStateData : BookStateData | undefined
-  base_url : string = "pandary-api.up.railway.app"
+  base_url : string = "https://pandary-api.up.railway.app"
 
 
   GetAllBooksState(params : any) :Observable<any> {
