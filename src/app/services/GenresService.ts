@@ -10,8 +10,10 @@ import {map} from "rxjs/operators";
 export class GenresService {
   constructor(private http: HttpClient) {}
 
+  base_url : string = "pandary-api.up.railway.app"
+
   GetAllGenres(): Observable<any> {
-    return this.http.get("http://localhost:8080/genres", { withCredentials: true }).pipe(
+    return this.http.get(`${this.base_url}/genres`, { withCredentials: true }).pipe(
       map((response) => {
         return response;
       })

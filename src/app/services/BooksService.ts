@@ -9,6 +9,7 @@ import {map} from "rxjs/operators";
 
 export class BooksService {
   constructor(private http: HttpClient) {}
+  base_url : string = "pandary-api.up.railway.app"
 
   GetAllBooks(params : any): Observable<any> {
 
@@ -33,7 +34,7 @@ export class BooksService {
       httpParams = httpParams.set('year', params.year);
     }
 
-    return this.http.get("http://localhost:8080/books/get", {
+    return this.http.get(`${this.base_url}/books/get`, {
       params: httpParams,
       withCredentials: true
     }).pipe(
@@ -44,7 +45,7 @@ export class BooksService {
   }
 
   GetBook(id : number): Observable<any> {
-    return this.http.get(`http://localhost:8080/books/get/${id}`, { withCredentials: true }).pipe(
+    return this.http.get(`${this.base_url}/books/get/${id}`, { withCredentials: true }).pipe(
       map((response) => {
         return response;
       })
@@ -52,7 +53,7 @@ export class BooksService {
   }
 
   GetRandomBooks() : Observable<any> {
-    return this.http.get("http://localhost:8080/books/get/random", {withCredentials: true}).pipe(
+    return this.http.get(`${this.base_url}/books/get/random`, {withCredentials: true}).pipe(
       map(response => {
         return response;
       })
@@ -64,7 +65,7 @@ export class BooksService {
     if (genre){
       httpParams = httpParams.set('genre', genre);
     }
-    return this.http.get("http://localhost:8080/books/get/newest", {
+    return this.http.get(`${this.base_url}/books/get/newest`, {
       params: httpParams,
       withCredentials: true
     }).pipe(
@@ -75,7 +76,7 @@ export class BooksService {
   }
 
   DeleteBook(id : number) : Observable<any> {
-    return this.http.delete(`http://localhost:8080/books/${id}`, {withCredentials: true})
+    return this.http.delete(`${this.base_url}/books/${id}`, {withCredentials: true})
   }
 
   AddBook(
@@ -100,7 +101,7 @@ export class BooksService {
     formData.append('authorsJson', JSON.stringify(authorsJson));
     formData.append('genresJson', JSON.stringify(genresJson));
 
-    return this.http.post("http://localhost:8080/books", formData, {
+    return this.http.post(`${this.base_url}/books`, formData, {
       withCredentials: true,
     });
   }
@@ -128,7 +129,7 @@ export class BooksService {
     formData.append('authorsJson', JSON.stringify(authorsJson));
     formData.append('genresJson', JSON.stringify(genresJson));
 
-    return this.http.put(`http://localhost:8080/books/${id}`, formData, {
+    return this.http.put(`${this.base_url}/books/${id}`, formData, {
       withCredentials: true,
     });
   }

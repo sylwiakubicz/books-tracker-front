@@ -10,6 +10,7 @@ import {Author} from "../user-front/home-page/home-page.component";
 
 export class AuthorsService {
   constructor(private http: HttpClient) {}
+  base_url : string = "pandary-api.up.railway.app"
 
   GetAllAuthors(params :any) :Observable<any>{
     let httpParams = new HttpParams();
@@ -23,7 +24,7 @@ export class AuthorsService {
     if (params.search) {
       httpParams = httpParams.set('search', params.search);
     }
-    return this.http.get("http://localhost:8080/authors", { params: httpParams,withCredentials: true}).pipe(
+    return this.http.get(`${this.base_url}/authors`, { params: httpParams,withCredentials: true}).pipe(
       map(response => {
         return response
       })
@@ -31,7 +32,7 @@ export class AuthorsService {
   }
 
   GetAuthorById(id : number) : Observable<any> {
-    return this.http.get(`http://localhost:8080/authors/${id}`, {withCredentials: true}).pipe(
+    return this.http.get(`${this.base_url}/authors/${id}`, {withCredentials: true}).pipe(
       map(response => {
         return response
       })
@@ -40,7 +41,7 @@ export class AuthorsService {
 
   AddAuthor(authorsName: string, authorsSurname: string) : Observable<any> {
     return this.http.post(
-      "http://localhost:8080/authors",
+      `${this.base_url}/authors`,
       {
         authorsName: authorsName,
         authorsSurname: authorsSurname
@@ -53,7 +54,7 @@ export class AuthorsService {
   }
 
   UpdateAuthor(author : Author) : Observable<any> {
-    return this.http.put("http://localhost:8080/authors", author, {withCredentials: true}).pipe(
+    return this.http.put(`${this.base_url}/authors`, author, {withCredentials: true}).pipe(
       map(response => {
         return response
       })
@@ -61,6 +62,6 @@ export class AuthorsService {
   }
 
   DeleteAuthor(id: number) : Observable<any> {
-    return this.http.delete(`http://localhost:8080/authors/${id}`, {withCredentials: true})
+    return this.http.delete(`${this.base_url}/authors/${id}`, {withCredentials: true})
   }
 }

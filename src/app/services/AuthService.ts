@@ -8,9 +8,10 @@ import {map} from "rxjs/operators";
 })
 export class AuthService {
   constructor(private http: HttpClient) {}
+  base_url : string = "pandary-api.up.railway.app"
 
   Register(username: string, email: string, password: string): Observable<any> {
-    return this.http.post("http://localhost:8080/api/auth/register", { username, email, password }, { withCredentials: true }).pipe(
+    return this.http.post(`${this.base_url}/api/auth/register`, { username, email, password }, { withCredentials: true }).pipe(
       map((response) => {
         return response;
       })
@@ -18,7 +19,7 @@ export class AuthService {
   }
 
   Login(username: string, password: string): Observable<any> {
-    return this.http.post("http://localhost:8080/api/auth/login", { username, password }, { withCredentials: true }).pipe(
+    return this.http.post(`${this.base_url}/api/auth/login`, { username, password }, { withCredentials: true }).pipe(
       map((response) => {
         return response;
       })
@@ -26,7 +27,7 @@ export class AuthService {
   }
 
   Logout(): Observable<any> {
-    return this.http.get("http://localhost:8080/api/auth/logout",  { withCredentials: true }).pipe(
+    return this.http.get(`${this.base_url}/api/auth/logout`,  { withCredentials: true }).pipe(
       map((response) => {
         return response;
       })
@@ -34,7 +35,7 @@ export class AuthService {
   }
 
   GetUserRole() : Observable<String | null> {
-    return this.http.get<{role: string}>("http://localhost:8080/api/auth/role", {withCredentials: true}).pipe(
+    return this.http.get<{role: string}>(`${this.base_url}/api/auth/role`, {withCredentials: true}).pipe(
       map(response => response.role || null)
     )
   }
@@ -53,7 +54,7 @@ export class AuthService {
     if (params.size) {
       httpParams = httpParams.set('size', params.size);
     }
-    return this.http.get("http://localhost:8080/api/auth", {params: httpParams, withCredentials: true}).pipe(
+    return this.http.get(`${this.base_url}/api/auth`, {params: httpParams, withCredentials: true}).pipe(
       map( response => {
         return response;
       })
@@ -61,7 +62,7 @@ export class AuthService {
   }
 
   GetUser(id : number) : Observable<any> {
-    return this.http.get(`http://localhost:8080/api/auth/${id}`, {withCredentials: true}).pipe(
+    return this.http.get(`${this.base_url}/api/auth/${id}`, {withCredentials: true}).pipe(
       map(res => {
         return res
       })
@@ -69,7 +70,7 @@ export class AuthService {
   }
 
   GetNumberOfAll() : Observable<any> {
-    return this.http.get("http://localhost:8080/api/auth/total", {withCredentials: true}).pipe(
+    return this.http.get(`${this.base_url}/api/auth/total`, {withCredentials: true}).pipe(
       map(response => {
         return response
       })
@@ -77,7 +78,7 @@ export class AuthService {
   }
 
   GetNumberOfAdmin() : Observable<any> {
-    return this.http.get("http://localhost:8080/api/auth/admins/count", {withCredentials: true}).pipe(
+    return this.http.get(`${this.base_url}/api/auth/admins/count`, {withCredentials: true}).pipe(
       map(response => {
         return response
       })
@@ -85,7 +86,7 @@ export class AuthService {
   }
 
   GetNumberOfUser() : Observable<any> {
-    return this.http.get("http://localhost:8080/api/auth/users/count", {withCredentials: true}).pipe(
+    return this.http.get(`${this.base_url}/api/auth/users/count`, {withCredentials: true}).pipe(
       map(response => {
         return response
       })
@@ -94,7 +95,7 @@ export class AuthService {
 
   CreateUserByAdmin(username: string, email: string, password: string, role : string) : Observable<any> {
     return this.http.post(
-      "http://localhost:8080/api/auth/create",
+      `${this.base_url}/api/auth/create`,
       {
         username: username,
         email: email,
@@ -110,7 +111,7 @@ export class AuthService {
 
   UpdateUser(id : number, username: string, email: string, password: string, role : string) : Observable<any> {
     return this.http.put(
-      `http://localhost:8080/api/auth/update/user/${id}`,
+      `${this.base_url}/api/auth/update/user/${id}`,
       {
       username: username,
       email: email,
@@ -125,7 +126,7 @@ export class AuthService {
   }
 
   DeleteUser(id : number) : Observable<any> {
-    return this.http.delete(`http://localhost:8080/api/auth/${id}`, {withCredentials: true})
+    return this.http.delete(`${this.base_url}/api/auth/${id}`, {withCredentials: true})
   }
 
 }

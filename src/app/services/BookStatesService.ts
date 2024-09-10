@@ -12,6 +12,8 @@ export class BookStatesService {
   constructor(private http: HttpClient) {}
 
   bookStateData : BookStateData | undefined
+  base_url : string = "pandary-api.up.railway.app"
+
 
   GetAllBooksState(params : any) :Observable<any> {
     let httpParams = new HttpParams();
@@ -35,7 +37,7 @@ export class BookStatesService {
       httpParams = httpParams.set('search', params.search);
     }
 
-    return this.http.get("http://localhost:8080/bookstate", {
+    return this.http.get(`${this.base_url}/bookstate`, {
       params: httpParams,
       withCredentials: true
     }).pipe(
@@ -46,7 +48,7 @@ export class BookStatesService {
   }
 
   CheckIfExistAndThenGet(book_id : number) :Observable<any> {
-    return this.http.get(`http://localhost:8080/bookstate/exist/${book_id}`, { withCredentials: true }).pipe(
+    return this.http.get(`${this.base_url}/bookstate/exist/${book_id}`, { withCredentials: true }).pipe(
       map((response) => {
         return response;
       })
@@ -62,7 +64,7 @@ export class BookStatesService {
       endDate: this.formatDateToCustomString(endDate)
     }
 
-    return this.http.post(`http://localhost:8080/bookstate/create/${book_id}`, this.bookStateData, { withCredentials: true }).pipe(
+    return this.http.post(`${this.base_url}/bookstate/create/${book_id}`, this.bookStateData, { withCredentials: true }).pipe(
       map((response) => {
         return response;
       })
@@ -78,7 +80,7 @@ export class BookStatesService {
       endDate: this.formatDateToCustomString(endDate)
     }
 
-    return this.http.put(`http://localhost:8080/bookstate/update/${book_id}`, this.bookStateData, { withCredentials: true }).pipe(
+    return this.http.put(`${this.base_url}/bookstate/update/${book_id}`, this.bookStateData, { withCredentials: true }).pipe(
       map((response) => {
         return response;
       })
@@ -86,7 +88,7 @@ export class BookStatesService {
   };
 
   DeleteBookState(book_id : number) {
-    return this.http.delete(`http://localhost:8080/bookstate/${book_id}`)
+    return this.http.delete(`${this.base_url}/bookstate/${book_id}`)
   }
 
   formatDateToCustomString = (date: Date | null): string | null => {
