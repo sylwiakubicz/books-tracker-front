@@ -4,11 +4,14 @@ import {AuthService} from "../../services/AuthService";
 import {Router} from "@angular/router";
 import {BooksService} from "../../services/BooksService";
 import {GenresService} from "../../services/GenresService";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-admin-delete-btn',
   standalone: true,
-  imports: [],
+  imports: [
+    NgIf
+  ],
   templateUrl: './admin-delete-btn.component.html',
   styles: ``
 })
@@ -18,6 +21,7 @@ export class AdminDeleteBtnComponent {
 
   @Input() id : number = 0;
   @Input() tableName : string = ''
+  error : string = ''
 
   handleDelete() {
     this.authService.GetUserRole().subscribe(role => {
@@ -30,7 +34,7 @@ export class AdminDeleteBtnComponent {
               location.reload()
             },
             error: (error) => {
-              console.log(error)
+              this.error = error.error.message
             }
           })
         }
@@ -40,7 +44,7 @@ export class AdminDeleteBtnComponent {
               location.reload()
             },
             error: (error) => {
-              console.log(error)
+              this.error = error.error.message
             }
           })
         }
@@ -50,7 +54,7 @@ export class AdminDeleteBtnComponent {
               location.reload()
             },
             error: (error) => {
-              console.log(error)
+              this.error = error.error.message
             }
           })
         }
@@ -60,7 +64,7 @@ export class AdminDeleteBtnComponent {
               location.reload()
             },
             error: (error) => {
-              console.log(error)
+              this.error = error.error.message
             }
           })
         }

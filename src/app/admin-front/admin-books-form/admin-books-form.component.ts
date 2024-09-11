@@ -36,6 +36,7 @@ export class AdminBooksFormComponent implements OnInit{
   genresList: Array<Genre> = [];
   authorsList : Array<Author> = [];
   url : string = "";
+  error: string = ''
 
   ngOnInit() {
     this.getAllGenres();
@@ -80,7 +81,7 @@ export class AdminBooksFormComponent implements OnInit{
           this.router.navigate(["/admin/library/books"])
         },
         error: (error) => {
-          console.error(error);
+          this.error = error.message
         }
       });
   }
@@ -103,7 +104,7 @@ export class AdminBooksFormComponent implements OnInit{
         this.router.navigate(["/admin/library/books"])
       },
       error: (error) => {
-      console.error(error);
+          this.error = error.message
       }
     });
   }
@@ -114,7 +115,6 @@ export class AdminBooksFormComponent implements OnInit{
         this.genresList = response;
       },
       error: (error) => {
-        console.error(error);
       }
     });
   }
@@ -133,7 +133,6 @@ export class AdminBooksFormComponent implements OnInit{
           if(response.covering) {this.url += "https://drive.google.com/thumbnail?id=" + response.covering}
         },
         error: (error) => {
-          console.error(error);
         }
       })
   }
@@ -144,7 +143,6 @@ export class AdminBooksFormComponent implements OnInit{
       this.authorsList = response.content;
     },
       error: (error) => {
-      console.error(error);
     }
     })
   }

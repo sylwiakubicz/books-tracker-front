@@ -52,7 +52,6 @@ export class AdminAuthorsTableComponent implements OnInit{
         this.isLoading = false;
       },
       error: (error) => {
-        console.log("Failed: ", error)
         this.isLoading = false
       }
     })

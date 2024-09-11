@@ -44,12 +44,10 @@ export class AdminGenresTableComponent implements OnInit{
     this.genreService.GetAllGenresPages(this.currentPage - 1,this.pageSize , this.search).subscribe({
       next: (response) => {
         this.genresData = response.content
-        console.log(this.genresData)
         this.totalItems = response.totalElements
         this.isLoading = false;
       },
       error: (error) => {
-        console.log("Failed: ", error)
         this.isLoading = false
       }
     })

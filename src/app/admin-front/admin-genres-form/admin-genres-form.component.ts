@@ -22,6 +22,7 @@ export class AdminGenresFormComponent implements OnInit{
 
   id : number = 0
   genre : string = ''
+  error : string = ''
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -40,7 +41,6 @@ export class AdminGenresFormComponent implements OnInit{
           this.genre = genre.name;
         },
         error: (error) => {
-          console.log(error);
         }
       });
     }
@@ -52,7 +52,7 @@ export class AdminGenresFormComponent implements OnInit{
           this.router.navigate(['/admin/library/genres']);
         },
         error: (err) => {
-          console.log(err)
+          this.error = err.error.message
         }
       }
     )
@@ -64,7 +64,7 @@ export class AdminGenresFormComponent implements OnInit{
           this.router.navigate(["/admin/library/genres"]);
         },
         error: (err) => {
-          console.log(err)
+          this.error = err.error.message
         }
       }
     )

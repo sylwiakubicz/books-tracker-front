@@ -96,7 +96,6 @@ export class BookStateDetailsComponent implements OnChanges {
           window.location.reload();
         },
         error : (error) => {
-          console.log(error)
         }
       }
     )

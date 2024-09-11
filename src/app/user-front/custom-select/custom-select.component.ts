@@ -44,7 +44,6 @@ export class CustomSelectComponent implements OnInit{
         this.genresList = response
       },
       error: (error) => {
-        console.error("Test failed:", error);
       }
     })
   }

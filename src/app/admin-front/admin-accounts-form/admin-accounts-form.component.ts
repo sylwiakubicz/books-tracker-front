@@ -21,6 +21,7 @@ export class AdminAccountsFormComponent implements OnInit{
   email : string = ''
   password : string = ''
   role : string = 'ROLE_USER'
+  error : string = ''
 
   constructor(private authService : AuthService, private router : Router,  private route: ActivatedRoute) {
   }
@@ -45,7 +46,6 @@ export class AdminAccountsFormComponent implements OnInit{
           this.role = res.role.role
         },
         error: (error) => {
-          console.log(error);
         }
       });
     }
@@ -57,7 +57,7 @@ export class AdminAccountsFormComponent implements OnInit{
             this.router.navigate(["/admin/accounts"]);
           },
           error: (err) => {
-            console.log(err)
+            this.error = err.error.message
           }
       })
   }
@@ -68,7 +68,7 @@ export class AdminAccountsFormComponent implements OnInit{
         this.router.navigate(["/admin/accounts"]);
       },
       error: (err) => {
-        console.log(err)
+        this.error = err.error.message
       }
     })
   }

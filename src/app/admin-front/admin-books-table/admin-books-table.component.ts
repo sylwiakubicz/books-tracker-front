@@ -68,7 +68,6 @@ export class AdminBooksTableComponent implements OnInit{
         this.isLoading = false;
       },
       error: (error) => {
-        console.error("Test failed:", error);
         this.isLoading = false;
       }
     });

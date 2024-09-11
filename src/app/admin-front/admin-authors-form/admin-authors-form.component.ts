@@ -24,6 +24,7 @@ export class AdminAuthorsFormComponent implements OnInit{
   id : number = 0
   authorName : string = ''
   authorSurname : string = ''
+  error : string = ''
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -43,7 +44,6 @@ export class AdminAuthorsFormComponent implements OnInit{
           this.authorSurname = author.surname;
         },
         error: (error) => {
-          console.log(error);
         }
       });
     }
@@ -55,7 +55,7 @@ export class AdminAuthorsFormComponent implements OnInit{
           this.router.navigate(['/admin/library/authors']);
         },
         error: (err) => {
-          console.log(err)
+          this.error = err.error.message
         }
       }
     )
@@ -73,7 +73,7 @@ export class AdminAuthorsFormComponent implements OnInit{
           this.router.navigate(["/admin/library/authors"]);
         },
         error: (err) => {
-          console.log(err)
+          this.error = err.error.message
         }
       }
     )

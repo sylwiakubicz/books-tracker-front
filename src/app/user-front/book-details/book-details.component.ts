@@ -45,7 +45,6 @@ export class BookDetailsComponent implements OnChanges {
         this.manageData()
       },
       error: (error) => {
-        console.log(error)
       }
     })
   }
@@ -63,7 +62,6 @@ export class BookDetailsComponent implements OnChanges {
        this.manageData()
       },
       error: (error) => {
-        console.log(error)
       }
     })
   }

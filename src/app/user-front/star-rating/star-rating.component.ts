@@ -45,7 +45,6 @@ export class StarRatingComponent {
           window.location.reload();
         },
         error : (error) => {
-          console.log(error)
         }
       }
     )

@@ -55,7 +55,6 @@ export class AdminMenuComponent {
         this.router.navigate(['/login']);
       },
       error: (err) => {
-        console.log(err)
       }
     });
   }

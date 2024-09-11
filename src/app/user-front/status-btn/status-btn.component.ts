@@ -66,7 +66,6 @@ export class StatusBtnComponent implements OnChanges{
           window.location.reload();
         },
         error : (error) => {
-          console.log(error)
         }
       }
     )
@@ -79,7 +78,6 @@ export class StatusBtnComponent implements OnChanges{
           window.location.reload();
         },
         error : (error) => {
-          console.log(error)
         }
       }
     )

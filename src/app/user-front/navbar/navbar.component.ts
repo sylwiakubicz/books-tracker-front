@@ -40,7 +40,6 @@ export class NavbarComponent implements OnInit{
         this.router.navigate(['/login']);
       },
       error: (err) => {
-        console.log(err)
       }
     });
   }
