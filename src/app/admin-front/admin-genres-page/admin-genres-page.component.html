@@ -1,0 +1,11 @@
+<div class="flex flex-row min-h-screen bg-admin-primary">
+  <app-admin-menu [activeSection]="'library'" [isShow]="true" [activeLibrarySection]="'genres'"></app-admin-menu>
+  <section class="w-full pl-5 pt-4 pr-5 ml-[15rem]">
+    <header class="flex items-center mb-4 ">
+      <h1 class="text-3xl font-semibold pr-5 pb-2">Library</h1>
+      <h2 class="text-xl font-semibold pr-5 text-admin-lightgray text-opacity-50">Genres</h2>
+      <button [routerLink]="'/admin/library/genres/new'" class="bg-white text-admin-akcent-color border-admin-lightgray border-[1px] border-opacity-20 font-semibold px-3 drop-shadow-sm py-1.5">Add new</button>
+    </header>
+    <app-admin-genres-table></app-admin-genres-table>
+  </section>
+</div>
