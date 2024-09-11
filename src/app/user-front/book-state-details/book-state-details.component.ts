@@ -71,7 +71,7 @@ export class BookStateDetailsComponent implements OnChanges {
       } else {
         if (this.endDate != null || this.currentPage == this.totalPageNumber) {
           this.status = "Read"
-          if (this.currentPage && this.totalPageNumber && this.currentPage < this.totalPageNumber || this.currentPage == 0) {
+          if (this.endDate == null && this.currentPage && this.totalPageNumber && this.currentPage < this.totalPageNumber || this.currentPage == 0) {
             this.status = "Currently reading"
           }
         }
