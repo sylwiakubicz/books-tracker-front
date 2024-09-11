@@ -12,6 +12,14 @@ export class GenresService {
 
   base_url : string = "https://pandary-api.up.railway.app"
 
+  GetGenreById(id : number) : Observable<any> {
+    return this.http.get(`${this.base_url}/${id}`, {withCredentials: true}).pipe(
+      map((response) => {
+        return response;
+      })
+    )
+  }
+
   GetAllGenres(): Observable<any> {
     return this.http.get(`${this.base_url}/genres`, { withCredentials: true }).pipe(
       map((response) => {
