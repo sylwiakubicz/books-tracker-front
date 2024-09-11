@@ -13,7 +13,7 @@ export class GenresService {
   base_url : string = "https://pandary-api.up.railway.app"
 
   GetGenreById(id : number) : Observable<any> {
-    return this.http.get(`${this.base_url}/${id}`, {withCredentials: true}).pipe(
+    return this.http.get(`${this.base_url}/genres/${id}`, {withCredentials: true}).pipe(
       map((response) => {
         return response;
       })
@@ -62,7 +62,7 @@ export class GenresService {
   }
 
   DeleteGenre(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.base_url}/${id}`);
+    return this.http.delete<any>(`${this.base_url}/genres/${id}`);
   }
 
 }
