@@ -2,11 +2,11 @@
 <div class="bg-secondary-color w-full pl-5 pr-5 flex flex-col">
   <h2 class="font-semibold text-3xl pb-4 pt-3">Your Progress</h2>
   <div class="flex tablet:justify-between overflow-x-hidden">
-    <div class="flex pb-1">
+    <div class="flex flex-wrap pb-1">
       <p>{{startDate ? (startDate | date : 'longDate') : 'Pick start date'}}</p>
       <input type="date" [ngModel]="startDate == undefined ? '' : startDate" (ngModelChange)="onStartDateChange($event)" class="bg-secondary-color cursor-pointer pl-1 focus-visible:outline-none">
     </div>
-    <div class="flex">
+    <div class="flex flex-wrap pb-1">
       <p class="cursor-auto">{{endDate ? (endDate | date : 'longDate') : 'Pick end date'}}</p>
       <input type="date" [ngModel]="endDate == undefined ? '' : endDate" (ngModelChange)="onEndDateChange($event)" class="bg-secondary-color cursor-pointer pl-1 focus-visible:outline-none">
     </div>
