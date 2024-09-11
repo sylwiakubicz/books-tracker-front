@@ -70,6 +70,6 @@ export interface Author {
 }
 
 export interface Genre {
-  genreId: number;
+  genresId: number;
   name: string;
 }

@@ -19,6 +19,11 @@ import {
   AdminManageAuthorsDataPageComponent
 } from "./admin-front/admin-manage-authors-data-page/admin-manage-authors-data-page.component";
 import {PageNotfoundComponent} from "./user-front/page-notfound/page-notfound.component";
+import {AdminGenresPageComponent} from "./admin-front/admin-genres-page/admin-genres-page.component";
+import {
+  AdminManageGenresDataPageComponent
+} from "./admin-front/admin-manage-genres-data-page/admin-manage-genres-data-page.component";
+
 
 
 export const routes: Routes = [
@@ -115,6 +120,27 @@ export const routes: Routes = [
   {
     path: 'admin/library/authors/:id',
     component: AdminManageAuthorsDataPageComponent,
+    title: "Pandary Admin - Edit Author",
+    canActivate: [authGuard],
+    data: { role: 'ROLE_ADMIN' }
+  },
+  {
+    path: 'admin/library/genres',
+    component: AdminGenresPageComponent,
+    title: "Pandary Admin - Manage Genres",
+    canActivate: [authGuard],
+    data: { role: 'ROLE_ADMIN' }
+  },
+  {
+    path: 'admin/library/genres/new',
+    component: AdminManageGenresDataPageComponent,
+    title: "Pandary Admin - Add New Author",
+    canActivate: [authGuard],
+    data: { role: 'ROLE_ADMIN' }
+  },
+  {
+    path: 'admin/library/genres/:id',
+    component: AdminManageGenresDataPageComponent,
     title: "Pandary Admin - Edit Author",
     canActivate: [authGuard],
     data: { role: 'ROLE_ADMIN' }
