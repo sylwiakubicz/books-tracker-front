@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 
@@ -14,6 +14,21 @@ export class GenresService {
 
   GetAllGenres(): Observable<any> {
     return this.http.get(`${this.base_url}/genres`, { withCredentials: true }).pipe(
+      map((response) => {
+        return response;
+      })
+    );
+  }
+
+  GetAllGenresPages(page: number, size: number, search: string): Observable<any> {
+    let params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString());
+
+    if (search) {
+      params = params.set('search', search);
+    }
+    return this.http.get(`${this.base_url}/genres/pagable`, {params: params, withCredentials: true }).pipe(
       map((response) => {
         return response;
       })
