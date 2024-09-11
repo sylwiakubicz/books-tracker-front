@@ -37,11 +37,20 @@ export class GenresService {
 
   AddGenre(genre: string): Observable<any> {
     const body = { genres: genre };
-    return this.http.post<any>(`${this.base_url}/create`, body, {withCredentials: true }).pipe(
+    return this.http.post<any>(`${this.base_url}/genres/create`, body, {withCredentials: true }).pipe(
       map((response) => {
         return response;
       })
       );
     }
+
+  UpdateGenre(id: number, genre: string): Observable<any> {
+    const body = { genres: genre };
+    return this.http.put<any>(`${this.base_url}/genres/${id}`, body, {withCredentials: true}).pipe(
+      map((response) => {
+        return response;
+      })
+    );
+  }
 
 }
