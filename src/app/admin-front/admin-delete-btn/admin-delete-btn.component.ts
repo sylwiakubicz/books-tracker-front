@@ -3,6 +3,7 @@ import {AuthorsService} from "../../services/AuthorsService";
 import {AuthService} from "../../services/AuthService";
 import {Router} from "@angular/router";
 import {BooksService} from "../../services/BooksService";
+import {GenresService} from "../../services/GenresService";
 
 @Component({
   selector: 'app-admin-delete-btn',
@@ -12,7 +13,7 @@ import {BooksService} from "../../services/BooksService";
   styles: ``
 })
 export class AdminDeleteBtnComponent {
-  constructor(private authorsService : AuthorsService, private authService : AuthService, private router :Router, private booksService : BooksService) {
+  constructor(private genresService : GenresService, private authorsService : AuthorsService, private authService : AuthService, private router :Router, private booksService : BooksService) {
   }
 
   @Input() id : number = 0;
@@ -45,6 +46,16 @@ export class AdminDeleteBtnComponent {
         }
         else if (this.tableName === 'books') {
           this.booksService.DeleteBook(this.id).subscribe({
+            next: () => {
+              location.reload()
+            },
+            error: (error) => {
+              console.log(error)
+            }
+          })
+        }
+        else if (this.tableName === 'genres') {
+          this.genresService.DeleteGenre(this.id).subscribe({
             next: () => {
               location.reload()
             },
