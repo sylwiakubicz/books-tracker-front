@@ -16,9 +16,29 @@
 <h2>Page overview</h2>
 
 <h2>Technologies used</h2>
+<ul>
+  <li>Angular (Router, Services, HttpClient, Lifecycle Hooks)</li>
+  <li>Angular Directives (NgClass, NgFor, Ngx-Pagination)</li>
+  <li>RxJS</li>
+  <li>Auth Interceptor</li>
+  <li>Tailwind CSS, FontAwesome</li>
+  <li>DOM Manipulation (Mouse Events, Drag-and-Drop)</li>
+  <li>Vercel</li>
+  
+</ul>
 
 <h2>What I've learned</h2>
-
+During this project, I gained experience with various frontend technologies and frameworks, improving my skills in UI development, state management, and user interaction, such as:
+<ul>
+  <li>Developed a structured frontend application using <strong>Angular</strong>, including routing, services, HTTP requests, and lifecycle hooks.</li>
+  <li>Worked with <strong>Angular Directives</strong> like NgClass, NgFor, and Ngx-Pagination for dynamic styling, iteration, and pagination.</li>
+  <li>Used <strong>Angular Decorators</strong> such as ViewChild and ViewChildren to manage DOM elements and components.</li>
+  <li>Leveraged <strong>RxJS</strong> for handling asynchronous data streams, particularly with Observable, map, and pipe.</li>
+  <li>Implemented an <strong>HTTP Interceptor</strong> for secure authentication by attaching credentials to all outgoing HTTP requests.</li>
+  <li>Styled the application using <strong>Tailwind CSS</strong> and enhanced the UI with icons from <strong>FontAwesome</strong>.</li>
+  <li>Ensured <strong>responsiveness</strong> and a mobile-friendly interface.</li>
+  <li>Managed user interaction through <strong>DOM manipulation</strong>, handling mouse events and implementing drag-and-drop functionality for a carousel component.</li>
+</ul>
 <h2>How to Run the Application and Load Test Data</h2>
 
 <h2>Author</h2>
