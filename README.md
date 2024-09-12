@@ -22,6 +22,7 @@
   <li>RxJS</li>
   <li>Auth Interceptor</li>
   <li>Tailwind CSS, FontAwesome</li>
+  <li>TypeScript</li>
   <li>DOM Manipulation (Mouse Events, Drag-and-Drop)</li>
   <li>Vercel</li>
   
@@ -38,6 +39,7 @@ During this project, I gained experience with various frontend technologies and 
   <li>Styled the application using <strong>Tailwind CSS</strong> and enhanced the UI with icons from <strong>FontAwesome</strong>.</li>
   <li>Ensured <strong>responsiveness</strong> and a mobile-friendly interface.</li>
   <li>Managed user interaction through <strong>DOM manipulation</strong>, handling mouse events and implementing drag-and-drop functionality for a carousel component.</li>
+  <li>Deployed the frontend application to <strong>Vercel</strong>, ensuring fast and reliable hosting with automatic deployment from the repository.</li>
 </ul>
 <h2>How to Run the Application and Load Test Data</h2>
 
