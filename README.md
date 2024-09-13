@@ -82,5 +82,17 @@ To test the Angular application on your local machine using the GitHub repositor
    
    Once the server is running, the application will be available at [http://localhost:4200](http://localhost:4200). Open this address in your browser to test the app locally.
 
+6. **Note on using a local backend**
+
+   If you want to use a local version of the backend, you must update the `base_url` in the following files to point to your local backend URL:
+
+   - `AuthorsService.ts`
+   - `AuthService.ts`
+   - `BooksService.ts`
+   - `BookStatesService.ts`
+   - `GenresService.ts`
+
+   Update the `base_url` in these files to match the address of your locally running backend service.
+
 ## Author
 Sylwia Kubicz
