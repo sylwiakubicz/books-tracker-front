@@ -42,6 +42,16 @@ If you want to test the Angular application without cloning the repository or se
 1. [Click the link](https://pandary.vercel.app/) shared by the project maintainers.
 2. The application will open in your browser, and you can test it without any additional steps.
 
+You can use the following default credentials to test the application:
+
+- **Admin user:**
+  - **Username:** `adminUser`
+  - **Password:** `admin`
+
+- **Regular user:**
+  - **Username:** `regularUser`
+  - **Password:** `user`
+
 > **NOTE:**  
 > This method works only if the application is hosted online and the link is provided by the developers.
 
@@ -93,18 +103,6 @@ To test the Angular application on your local machine using the GitHub repositor
    - `GenresService.ts`
 
    Update the `base_url` in these files to match the address of your locally running backend service.
-
-7. **Default user credentials for testing**
-
-   You can use the following default credentials to test the application:
-
-   - **Admin user:**
-     - **Username:** `adminUser`
-     - **Password:** `admin`
-
-   - **Regular user:**
-     - **Username:** `regularUser`
-     - **Password:** `user`
        
 ## Author
 Sylwia Kubicz
