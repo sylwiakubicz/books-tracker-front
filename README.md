@@ -94,5 +94,17 @@ To test the Angular application on your local machine using the GitHub repositor
 
    Update the `base_url` in these files to match the address of your locally running backend service.
 
+7. **Default user credentials for testing**
+
+   You can use the following default credentials to test the application:
+
+   - **Admin user:**
+     - **Username:** `adminUser`
+     - **Password:** `admin`
+
+   - **Regular user:**
+     - **Username:** `regularUser`
+     - **Password:** `user`
+       
 ## Author
 Sylwia Kubicz
