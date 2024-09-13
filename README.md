@@ -11,6 +11,13 @@ Link to the corresponding [backend repository](https://github.com/sylwiakubicz/b
 
 ## Page overview
 
+![21999ef7-933b-4aaf-bac2-8fa386c7b6a1](https://github.com/user-attachments/assets/c788e65e-7d35-4d03-aa41-21f38c05ef4d)
+
+
+![1f0166d9-22bb-4aa9-94c1-9f0c0f622054](https://github.com/user-attachments/assets/99e6b7af-a12f-4234-a067-8ae963a889da)
+
+
+
 ## Technologies used
 - Angular (Router, Services, HttpClient, Lifecycle Hooks)
 - Angular Directives (NgClass, NgFor, Ngx-Pagination)
