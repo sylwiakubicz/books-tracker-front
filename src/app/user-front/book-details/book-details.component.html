@@ -1,4 +1,4 @@
-<app-book-state-details [book_id]="bookStateData?.book?.bookId" [status]="bookStateData?.status?.statusName" [totalPageNumber]="bookData?.pageNumber" [hidden]="!bookStateData" [endDate]="bookStateData?.endDate" [startDate]="bookStateData?.startDate" [currentPage]="bookStateData?.currentPage"></app-book-state-details>
+<app-book-state-details [book_id]="bookStateData?.book?.bookId" [status]="bookStateData?.status?.statusName" [totalPageNumber]="bookData?.pageNumber" [hidden]="!bookStateData" [endDate]="bookStateData?.endDate" [startDate]="bookStateData?.startDate" [currentPage]="bookStateData ? bookStateData.currentPage : 0"></app-book-state-details>
 
 <div class="text-center pl-5 pt-2 tablet:w-full tablet:text-left pr-5">
   <h1 class="text-3xl font-semibold tablet:order-1 tablet:self-start tablet:font-bold">{{bookData?.title}}</h1>

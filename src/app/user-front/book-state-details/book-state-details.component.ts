@@ -23,7 +23,7 @@ export class BookStateDetailsComponent implements OnChanges {
   @Input() totalPageNumber : number | undefined;
   @Input() startDate : Date | undefined;
   @Input() endDate : Date | undefined;
-  @Input() currentPage : number | undefined;
+  @Input() currentPage : number = 0;
   @Input() book_id : number | undefined;
   @Input() status : string | undefined;
   hideSaveBtn : boolean = true;
@@ -75,14 +75,14 @@ export class BookStateDetailsComponent implements OnChanges {
             this.status = "Currently reading"
           }
         }
-        else if (this.startDate != null && this.endDate == null || this.currentPage != null) {
+        else if ((this.startDate != null && this.endDate == null) || this.currentPage != null) {
           this.status = "Currently reading"
         }
         else {
           this.status = "Want to read"
         }
-        if (this.book_id && this.status) {
-          this.updateBookToNewStatus(this.book_id, this.status, this.currentPage ? this.currentPage : 0, this.startDate ? this.startDate : null, this.endDate ? this.endDate : null)
+        if (this.book_id && this.status ) {
+          this.updateBookToNewStatus(this.book_id, this.status, this.currentPage != 0 ? this.currentPage : 0, this.startDate ? this.startDate : null, this.endDate ? this.endDate : null)
         }
         this.hideSaveBtn = true;
       }
